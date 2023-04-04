@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(0,61,97);
+    background: linear-gradient(0deg, rgba(0,61,97,1) 0%, rgba(0,30,97,1) 100%);
+}
+
+canvas { display: none; }
+canvas.ready { display: block; }

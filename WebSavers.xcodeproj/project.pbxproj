@@ -1,0 +1,1070 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 53;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		44231EA129DC0978009FFAF9 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		44231EA229DC0978009FFAF9 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		44231EA429DC0978009FFAF9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		44231EA629DC0978009FFAF9 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		44231EAA29DC0978009FFAF9 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		44231EAC29DC0978009FFAF9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		44231EAD29DC0978009FFAF9 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		44231EAE29DC0978009FFAF9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		44231EAF29DC0978009FFAF9 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		44231EBB29DC0A17009FFAF9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 44231EB829DC0A17009FFAF9 /* index.html */; };
+		44231EBC29DC0A17009FFAF9 /* matrix.css in Resources */ = {isa = PBXBuildFile; fileRef = 44231EB929DC0A17009FFAF9 /* matrix.css */; };
+		44231EBD29DC0A17009FFAF9 /* matrix.js in Resources */ = {isa = PBXBuildFile; fileRef = 44231EBA29DC0A17009FFAF9 /* matrix.js */; };
+		44231EBE29DC0B9F009FFAF9 /* matrix.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A6729D2B34F00086131 /* matrix.js */; };
+		44231EBF29DC0BA3009FFAF9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A6529D2B34F00086131 /* index.html */; };
+		44231EC029DC0BA6009FFAF9 /* matrix.css in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A6629D2B34F00086131 /* matrix.css */; };
+		447E1A6D29D2B3CF00086131 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		447E1A6E29D2B3CF00086131 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		447E1A7629D2B3CF00086131 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		447E1A7829D2B3CF00086131 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		447E1A7929D2B3CF00086131 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		447E1A7A29D2B3CF00086131 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		447E1A7B29D2B3CF00086131 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		447E1A8929D2B4E900086131 /* stringy.css in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A8629D2B4E900086131 /* stringy.css */; };
+		447E1A8A29D2B4E900086131 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A8729D2B4E900086131 /* index.html */; };
+		447E1A8B29D2B4E900086131 /* stringy.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1A8829D2B4E900086131 /* stringy.js */; };
+		447E1A9029D2BB1700086131 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		447E1A9129D2BB1700086131 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		447E1A9A29D2BB1700086131 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		447E1A9C29D2BB1700086131 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		447E1A9D29D2BB1700086131 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		447E1A9E29D2BB1700086131 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		447E1A9F29D2BB1700086131 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		447E1AAD29D2BBD000086131 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AAA29D2BBD000086131 /* index.html */; };
+		447E1AAE29D2BBD000086131 /* starfield.css in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AAB29D2BBD000086131 /* starfield.css */; };
+		447E1AAF29D2BBD000086131 /* starfield.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AAC29D2BBD000086131 /* starfield.js */; };
+		447E1AB329D2BE9200086131 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		447E1AB629D2BEA600086131 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		447E1AB729D2BEE700086131 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		447E1ABF29D2BF2E00086131 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		447E1AC029D2BF2E00086131 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		447E1AC129D2BF2E00086131 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		447E1AC529D2C0E600086131 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		447E1AC629D2C0E600086131 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		447E1AC929D2C0E600086131 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		447E1ACB29D2C0E600086131 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		447E1ACF29D2C0E600086131 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		447E1AD129D2C0E600086131 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		447E1AD229D2C0E600086131 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		447E1AD329D2C0E600086131 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		447E1AD429D2C0E600086131 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		447E1C6929D2C11700086131 /* matrix3d.css in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADD29D2C11600086131 /* matrix3d.css */; };
+		447E1C6A29D2C11700086131 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADE29D2C11600086131 /* index.html */; };
+		447E1C6B29D2C11700086131 /* three.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADF29D2C11600086131 /* three.min.js */; };
+		447E1DDB29D2C11700086131 /* matrix3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1C6829D2C11700086131 /* matrix3d.js */; };
+		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		44231EB129DC0978009FFAF9 /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A7D29D2B3CF00086131 /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AA129D2BB1700086131 /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AD629D2C0E600086131 /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		863E1E470FCBA9AF0013CEA7 /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = /System/Library/Frameworks/ScreenSaver.framework; sourceTree = "<absolute>"; };
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		289EE80009F47CE000C096EC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaver_Prefix.pch; sourceTree = "<group>"; };
+		44231EB529DC0978009FFAF9 /* MatrixGrid.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatrixGrid.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		44231EB829DC0A17009FFAF9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		44231EB929DC0A17009FFAF9 /* matrix.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = matrix.css; sourceTree = "<group>"; };
+		44231EBA29DC0A17009FFAF9 /* matrix.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix.js; sourceTree = "<group>"; };
+		447E1A6529D2B34F00086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		447E1A6629D2B34F00086131 /* matrix.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = matrix.css; sourceTree = "<group>"; };
+		447E1A6729D2B34F00086131 /* matrix.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix.js; sourceTree = "<group>"; };
+		447E1A8329D2B3CF00086131 /* Stringy.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Stringy.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		447E1A8629D2B4E900086131 /* stringy.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = stringy.css; sourceTree = "<group>"; };
+		447E1A8729D2B4E900086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		447E1A8829D2B4E900086131 /* stringy.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = stringy.js; sourceTree = "<group>"; };
+		447E1AA729D2BB1700086131 /* Starfield.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Starfield.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		447E1AAA29D2BBD000086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		447E1AAB29D2BBD000086131 /* starfield.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = starfield.css; sourceTree = "<group>"; };
+		447E1AAC29D2BBD000086131 /* starfield.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = starfield.js; sourceTree = "<group>"; };
+		447E1AB429D2BE9200086131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/License.txt; sourceTree = "<group>"; };
+		447E1AB829D2BEEF00086131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/Changes.txt; sourceTree = "<group>"; };
+		447E1ABE29D2BF2E00086131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		447E1ADA29D2C0E600086131 /* Matrix3D.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Matrix3D.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		447E1ADD29D2C11600086131 /* matrix3d.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = matrix3d.css; sourceTree = "<group>"; };
+		447E1ADE29D2C11600086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		447E1ADF29D2C11600086131 /* three.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = three.min.js; sourceTree = "<group>"; };
+		447E1C6829D2C11700086131 /* matrix3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix3d.js; sourceTree = "<group>"; };
+		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D255AD30486D3F9007BF209 /* Matrix.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Matrix.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50079790118B23001CA0E54 /* WebSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaverView.h; sourceTree = "<group>"; };
+		F500797A0118B23001CA0E54 /* WebSaverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSaverView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44231EAB29DC0978009FFAF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44231EAC29DC0978009FFAF9 /* Cocoa.framework in Frameworks */,
+				44231EAD29DC0978009FFAF9 /* ScreenSaver.framework in Frameworks */,
+				44231EAE29DC0978009FFAF9 /* WebKit.framework in Frameworks */,
+				44231EAF29DC0978009FFAF9 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A7729D2B3CF00086131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A7829D2B3CF00086131 /* Cocoa.framework in Frameworks */,
+				447E1A7929D2B3CF00086131 /* ScreenSaver.framework in Frameworks */,
+				447E1A7A29D2B3CF00086131 /* WebKit.framework in Frameworks */,
+				447E1A7B29D2B3CF00086131 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A9B29D2BB1700086131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A9C29D2BB1700086131 /* Cocoa.framework in Frameworks */,
+				447E1A9D29D2BB1700086131 /* ScreenSaver.framework in Frameworks */,
+				447E1A9E29D2BB1700086131 /* WebKit.framework in Frameworks */,
+				447E1A9F29D2BB1700086131 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AD029D2C0E600086131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1AD129D2C0E600086131 /* Cocoa.framework in Frameworks */,
+				447E1AD229D2C0E600086131 /* ScreenSaver.framework in Frameworks */,
+				447E1AD329D2C0E600086131 /* WebKit.framework in Frameworks */,
+				447E1AD429D2C0E600086131 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D255ACD0486D3F9007BF209 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */,
+				8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */,
+				289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */,
+				861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* WebSaver */ = {
+			isa = PBXGroup;
+			children = (
+				863E1E560FCBAA150013CEA7 /* Documents */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32DBCFA70370C4F300C91783 /* Other Sources */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = WebSaver;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D255AD20486D3F9007BF209 /* Info.plist */,
+				447E1ABD29D2BF2E00086131 /* InfoPlist.strings */,
+				447E1A6429D2B34F00086131 /* Matrix */,
+				447E1ADC29D2C11600086131 /* Matrix3D */,
+				44231EB729DC0A17009FFAF9 /* MatrixGrid */,
+				447E1AA929D2BBD000086131 /* Starfield */,
+				447E1A8529D2B4E900086131 /* Stringy */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F50079790118B23001CA0E54 /* WebSaverView.h */,
+				F500797A0118B23001CA0E54 /* WebSaverView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				289EE80009F47CE000C096EC /* WebKit.framework */,
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+				06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				861F1E1E0D934DAA0089B530 /* IOKit.framework */,
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D255AD30486D3F9007BF209 /* Matrix.saver */,
+				447E1A8329D2B3CF00086131 /* Stringy.saver */,
+				447E1AA729D2BB1700086131 /* Starfield.saver */,
+				447E1ADA29D2C0E600086131 /* Matrix3D.saver */,
+				44231EB529DC0978009FFAF9 /* MatrixGrid.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32DBCFA70370C4F300C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		44231EB729DC0A17009FFAF9 /* MatrixGrid */ = {
+			isa = PBXGroup;
+			children = (
+				44231EB829DC0A17009FFAF9 /* index.html */,
+				44231EB929DC0A17009FFAF9 /* matrix.css */,
+				44231EBA29DC0A17009FFAF9 /* matrix.js */,
+			);
+			path = MatrixGrid;
+			sourceTree = SOURCE_ROOT;
+		};
+		447E1A6429D2B34F00086131 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				447E1A6529D2B34F00086131 /* index.html */,
+				447E1A6629D2B34F00086131 /* matrix.css */,
+				447E1A6729D2B34F00086131 /* matrix.js */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		447E1A8529D2B4E900086131 /* Stringy */ = {
+			isa = PBXGroup;
+			children = (
+				447E1A8729D2B4E900086131 /* index.html */,
+				447E1A8629D2B4E900086131 /* stringy.css */,
+				447E1A8829D2B4E900086131 /* stringy.js */,
+			);
+			path = Stringy;
+			sourceTree = "<group>";
+		};
+		447E1AA929D2BBD000086131 /* Starfield */ = {
+			isa = PBXGroup;
+			children = (
+				447E1AAA29D2BBD000086131 /* index.html */,
+				447E1AAB29D2BBD000086131 /* starfield.css */,
+				447E1AAC29D2BBD000086131 /* starfield.js */,
+			);
+			path = Starfield;
+			sourceTree = "<group>";
+		};
+		447E1ADC29D2C11600086131 /* Matrix3D */ = {
+			isa = PBXGroup;
+			children = (
+				447E1ADE29D2C11600086131 /* index.html */,
+				447E1ADD29D2C11600086131 /* matrix3d.css */,
+				447E1C6829D2C11700086131 /* matrix3d.js */,
+				447E1ADF29D2C11600086131 /* three.min.js */,
+			);
+			path = Matrix3D;
+			sourceTree = "<group>";
+		};
+		863E1E560FCBAA150013CEA7 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				447E1AB929D2BEEF00086131 /* Changes.txt */,
+				447E1AB529D2BE9200086131 /* License.txt */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		44231EA029DC0978009FFAF9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44231EA129DC0978009FFAF9 /* WebSaver_Prefix.pch in Headers */,
+				44231EA229DC0978009FFAF9 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A6C29D2B3CF00086131 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A6D29D2B3CF00086131 /* WebSaver_Prefix.pch in Headers */,
+				447E1A6E29D2B3CF00086131 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A8F29D2BB1700086131 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A9029D2BB1700086131 /* WebSaver_Prefix.pch in Headers */,
+				447E1A9129D2BB1700086131 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AC429D2C0E600086131 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1AC529D2C0E600086131 /* WebSaver_Prefix.pch in Headers */,
+				447E1AC629D2C0E600086131 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D255AC60486D3F9007BF209 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */,
+				8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		44231E9F29DC0978009FFAF9 /* MatrixGrid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44231EB229DC0978009FFAF9 /* Build configuration list for PBXNativeTarget "MatrixGrid" */;
+			buildPhases = (
+				44231EA029DC0978009FFAF9 /* Headers */,
+				44231EA329DC0978009FFAF9 /* Resources */,
+				44231EA929DC0978009FFAF9 /* Sources */,
+				44231EAB29DC0978009FFAF9 /* Frameworks */,
+				44231EB029DC0978009FFAF9 /* Rez */,
+				44231EB129DC0978009FFAF9 /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MatrixGrid;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 44231EB529DC0978009FFAF9 /* MatrixGrid.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		447E1A6B29D2B3CF00086131 /* Stringy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 447E1A8029D2B3CF00086131 /* Build configuration list for PBXNativeTarget "Stringy" */;
+			buildPhases = (
+				447E1A6C29D2B3CF00086131 /* Headers */,
+				447E1A6F29D2B3CF00086131 /* Resources */,
+				447E1A7529D2B3CF00086131 /* Sources */,
+				447E1A7729D2B3CF00086131 /* Frameworks */,
+				447E1A7C29D2B3CF00086131 /* Rez */,
+				447E1A7D29D2B3CF00086131 /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stringy;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 447E1A8329D2B3CF00086131 /* Stringy.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		447E1A8E29D2BB1700086131 /* Starfield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 447E1AA429D2BB1700086131 /* Build configuration list for PBXNativeTarget "Starfield" */;
+			buildPhases = (
+				447E1A8F29D2BB1700086131 /* Headers */,
+				447E1A9229D2BB1700086131 /* Resources */,
+				447E1A9929D2BB1700086131 /* Sources */,
+				447E1A9B29D2BB1700086131 /* Frameworks */,
+				447E1AA029D2BB1700086131 /* Rez */,
+				447E1AA129D2BB1700086131 /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Starfield;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 447E1AA729D2BB1700086131 /* Starfield.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		447E1AC329D2C0E600086131 /* Matrix3D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 447E1AD729D2C0E600086131 /* Build configuration list for PBXNativeTarget "Matrix3D" */;
+			buildPhases = (
+				447E1AC429D2C0E600086131 /* Headers */,
+				447E1AC729D2C0E600086131 /* Resources */,
+				447E1ACE29D2C0E600086131 /* Sources */,
+				447E1AD029D2C0E600086131 /* Frameworks */,
+				447E1AD529D2C0E600086131 /* Rez */,
+				447E1AD629D2C0E600086131 /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Matrix3D;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 447E1ADA29D2C0E600086131 /* Matrix3D.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8D255AC50486D3F9007BF209 /* Matrix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "Matrix" */;
+			buildPhases = (
+				8D255AC60486D3F9007BF209 /* Headers */,
+				8D255AC90486D3F9007BF209 /* Resources */,
+				8D255ACB0486D3F9007BF209 /* Sources */,
+				8D255ACD0486D3F9007BF209 /* Frameworks */,
+				8D255AD00486D3F9007BF209 /* Rez */,
+				863E1E470FCBA9AF0013CEA7 /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Matrix;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 8D255AD30486D3F9007BF209 /* Matrix.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "WebSavers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* WebSaver */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				447E1A8E29D2BB1700086131 /* Starfield */,
+				447E1A6B29D2B3CF00086131 /* Stringy */,
+				8D255AC50486D3F9007BF209 /* Matrix */,
+				447E1AC329D2C0E600086131 /* Matrix3D */,
+				44231E9F29DC0978009FFAF9 /* MatrixGrid */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44231EA329DC0978009FFAF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44231EA429DC0978009FFAF9 /* InfoPlist.strings in Resources */,
+				44231EBD29DC0A17009FFAF9 /* matrix.js in Resources */,
+				44231EBC29DC0A17009FFAF9 /* matrix.css in Resources */,
+				44231EA629DC0978009FFAF9 /* License.txt in Resources */,
+				44231EBB29DC0A17009FFAF9 /* index.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A6F29D2B3CF00086131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1AC029D2BF2E00086131 /* InfoPlist.strings in Resources */,
+				447E1A8A29D2B4E900086131 /* index.html in Resources */,
+				447E1AB629D2BEA600086131 /* License.txt in Resources */,
+				447E1A8929D2B4E900086131 /* stringy.css in Resources */,
+				447E1A8B29D2B4E900086131 /* stringy.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A9229D2BB1700086131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1ABF29D2BF2E00086131 /* InfoPlist.strings in Resources */,
+				447E1AAD29D2BBD000086131 /* index.html in Resources */,
+				447E1AAE29D2BBD000086131 /* starfield.css in Resources */,
+				447E1AB329D2BE9200086131 /* License.txt in Resources */,
+				447E1AAF29D2BBD000086131 /* starfield.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AC729D2C0E600086131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1DDB29D2C11700086131 /* matrix3d.js in Resources */,
+				447E1C6A29D2C11700086131 /* index.html in Resources */,
+				447E1AC929D2C0E600086131 /* InfoPlist.strings in Resources */,
+				447E1ACB29D2C0E600086131 /* License.txt in Resources */,
+				447E1C6929D2C11700086131 /* matrix3d.css in Resources */,
+				447E1C6B29D2C11700086131 /* three.min.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D255AC90486D3F9007BF209 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44231EC029DC0BA6009FFAF9 /* matrix.css in Resources */,
+				44231EBE29DC0B9F009FFAF9 /* matrix.js in Resources */,
+				44231EBF29DC0BA3009FFAF9 /* index.html in Resources */,
+				447E1AC129D2BF2E00086131 /* InfoPlist.strings in Resources */,
+				447E1AB729D2BEE700086131 /* License.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		44231EB029DC0978009FFAF9 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A7C29D2B3CF00086131 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AA029D2BB1700086131 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1AD529D2C0E600086131 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D255AD00486D3F9007BF209 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44231EA929DC0978009FFAF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44231EAA29DC0978009FFAF9 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A7529D2B3CF00086131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A7629D2B3CF00086131 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1A9929D2BB1700086131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1A9A29D2BB1700086131 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		447E1ACE29D2C0E600086131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447E1ACF29D2C0E600086131 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D255ACB0486D3F9007BF209 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		447E1AB529D2BE9200086131 /* License.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				447E1AB429D2BE9200086131 /* Base */,
+			);
+			name = License.txt;
+			sourceTree = "<group>";
+		};
+		447E1AB929D2BEEF00086131 /* Changes.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				447E1AB829D2BEEF00086131 /* Base */,
+			);
+			name = Changes.txt;
+			sourceTree = "<group>";
+		};
+		447E1ABD29D2BF2E00086131 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				447E1ABE29D2BF2E00086131 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		44231EB329DC0978009FFAF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		44231EB429DC0978009FFAF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		447E1A8129D2B3CF00086131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		447E1A8229D2B3CF00086131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		447E1AA529D2BB1700086131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		447E1AA629D2BB1700086131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		447E1AD829D2C0E600086131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		447E1AD929D2C0E600086131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		EF7AD72E08BB986600CE4634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = Matrix;
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		EF7AD72F08BB986600CE4634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_NAME = Matrix;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		EF7AD73208BB986600CE4634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EF7AD73308BB986600CE4634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44231EB229DC0978009FFAF9 /* Build configuration list for PBXNativeTarget "MatrixGrid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44231EB329DC0978009FFAF9 /* Debug */,
+				44231EB429DC0978009FFAF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		447E1A8029D2B3CF00086131 /* Build configuration list for PBXNativeTarget "Stringy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				447E1A8129D2B3CF00086131 /* Debug */,
+				447E1A8229D2B3CF00086131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		447E1AA429D2BB1700086131 /* Build configuration list for PBXNativeTarget "Starfield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				447E1AA529D2BB1700086131 /* Debug */,
+				447E1AA629D2BB1700086131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		447E1AD729D2C0E600086131 /* Build configuration list for PBXNativeTarget "Matrix3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				447E1AD829D2C0E600086131 /* Debug */,
+				447E1AD929D2C0E600086131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "Matrix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF7AD72E08BB986600CE4634 /* Debug */,
+				EF7AD72F08BB986600CE4634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "WebSavers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF7AD73208BB986600CE4634 /* Debug */,
+				EF7AD73308BB986600CE4634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

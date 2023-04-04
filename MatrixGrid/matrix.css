@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: black;
+}
+
+#overlay {
+  display: block;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100vw; height:100vh;
+  z-index: 2;
+}
+
+div.cel {
+  opacity: 0;
+  display: none;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 1;
+  animation-name: fadeout;
+}
+
+@keyframes fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}

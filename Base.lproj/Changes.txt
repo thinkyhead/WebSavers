@@ -1,0 +1,3 @@
+2023/04/04 v1.0.0
+    - Basic WebSaver adapted from brock-family/WebSaver
+    - Targets differing by name and included HTML/CSS/JS
