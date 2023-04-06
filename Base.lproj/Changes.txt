@@ -1,3 +1,8 @@
 2023/04/04 v1.0.0
     - Basic WebSaver adapted from brock-family/WebSaver
     - Targets differing by name and included HTML/CSS/JS
+
+2023/04/06 v1.0.1
+    - MatrixGrid: Optimize performance
+    - MatrixGrid: Add random character change option
+    - MatrixGrid: Add more timing options

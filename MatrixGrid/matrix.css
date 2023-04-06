@@ -3,27 +3,27 @@
   padding: 0;
 }
 
-body {
-  background: black;
-}
+body { background: black; }
 
-#overlay {
+#cels, #overlay {
   display: block;
   position: absolute;
   left: 0; top: 0;
   width: 100vw; height:100vh;
-  z-index: 2;
 }
+#cels { overflow: hidden; }
+#overlay { z-index: 2; display: none; }
 
-div.cel {
+#cels div {
   opacity: 0;
   display: none;
   position: absolute;
   text-align: center;
   vertical-align: middle;
-  z-index: 1;
   animation-name: fadeout;
 }
+
+.flop { transform: rotate(180deg); }
 
 @keyframes fadeout {
   0%   { opacity: 1; }
