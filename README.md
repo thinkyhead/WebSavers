@@ -10,7 +10,7 @@ There are currently no configuration dialogs or exposed options, but since there
 
 - **Matrix** is adapted from a common "Matrix Rain" HTML Canvas example project that appears in many places on the web. It has been slightly improved by adding a scanline overlay effect.
 - **Matrix3D** expands on **Matrix**, applying the basic "Matrix Rain" Canvas-based animation to the sides of a rotating cube, implemented in `THREE.js`.
-- **MatrixGrid** is a re-implementation of **Matrix** using CSS animations for a cleaner result with less overhead and no incomplete erase. This version creates a fixed grid of DIVs and produces the animation just by setting the `innerHTML` and manipulating the `opacity`, `display`, and `color` CSS attributes.
+- **MatrixGrid** is a re-implementation of **Matrix** using CSS animations for a cleaner result with less overhead and no incomplete erase. This version creates a fixed grid of DIVs and produces the animation just by setting the `innerHTML` and manipulating the `opacity`, `display`, and `color` CSS attributes. [Here's a demo!](https://www.thinkyhead.com/pub/MatrixGrid/index.html)
 - **Starfield** is a simple "Starfield" animation adapted from a [CodePen sketch](//codepen.io/nodws/pen/pejBNb), which itself is based on [demo code](//github.com/curran/HTML5Examples/tree/gh-pages/canvas/starfield) by @curran.
 - **Stringy** is a cool "3D Strings" animation adapted from a [CodePen sketch](//codepen.io/yashbhardwaj/pen/QWKKgb).
 
