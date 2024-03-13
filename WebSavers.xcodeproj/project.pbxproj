@@ -62,6 +62,18 @@
 		447E1C6A29D2C11700086131 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADE29D2C11600086131 /* index.html */; };
 		447E1C6B29D2C11700086131 /* three.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADF29D2C11600086131 /* three.min.js */; };
 		447E1DDB29D2C11700086131 /* matrix3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1C6829D2C11700086131 /* matrix3d.js */; };
+		5046BA092BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0A2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0B2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0C2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0D2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0E2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		5046BA0F2BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5046BA102BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5046BA142BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
@@ -158,6 +170,8 @@
 		447E1ADE29D2C11600086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		447E1ADF29D2C11600086131 /* three.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = three.min.js; sourceTree = "<group>"; };
 		447E1C6829D2C11700086131 /* matrix3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix3d.js; sourceTree = "<group>"; };
+		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
+		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D255AD30486D3F9007BF209 /* Matrix.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Matrix.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +277,8 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */,
+				5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */,
 				F50079790118B23001CA0E54 /* WebSaverView.h */,
 				F500797A0118B23001CA0E54 /* WebSaverView.m */,
 			);
@@ -377,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44231EA129DC0978009FFAF9 /* WebSaver_Prefix.pch in Headers */,
+				5046BA0D2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
 				44231EA229DC0978009FFAF9 /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1A6D29D2B3CF00086131 /* WebSaver_Prefix.pch in Headers */,
+				5046BA0A2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
 				447E1A6E29D2B3CF00086131 /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1A9029D2BB1700086131 /* WebSaver_Prefix.pch in Headers */,
+				5046BA092BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
 				447E1A9129D2BB1700086131 /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,7 +423,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1AC529D2C0E600086131 /* WebSaver_Prefix.pch in Headers */,
+				5046BA0C2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
 				447E1AC629D2C0E600086131 /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5006A8D72AF8EB8C00BDCBA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5006A8D82AF8EB8C00BDCBA3 /* WebSaver_Prefix.pch in Headers */,
+				5046BA0E2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
+				5006A8D92AF8EB8C00BDCBA3 /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */,
+				5046BA0B2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
 				8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +694,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44231EAA29DC0978009FFAF9 /* WebSaverView.m in Sources */,
+				5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1A7629D2B3CF00086131 /* WebSaverView.m in Sources */,
+				5046BA102BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1A9A29D2BB1700086131 /* WebSaverView.m in Sources */,
+				5046BA0F2BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +721,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				447E1ACF29D2C0E600086131 /* WebSaverView.m in Sources */,
+				5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5006A8E02AF8EB8C00BDCBA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5006A8E12AF8EB8C00BDCBA3 /* WebSaverView.m in Sources */,
+				5046BA142BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */,
+				5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
