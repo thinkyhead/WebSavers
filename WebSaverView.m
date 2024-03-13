@@ -87,6 +87,13 @@
         if (isPreview) [self scaleUnitSquareToSize:NSMakeSize( 0.25, 0.25 )];
 
 		[self addSubview:webView];
+        
+        [NSDistributedNotificationCenter.defaultCenter addObserver:self
+                                                          selector:@selector(screensaverWillStop:)
+                                                              name:@"com.apple.screensaver.willstop"
+                                                            object:nil];
+
+
 	}
 
     return self;
@@ -152,5 +159,15 @@
 - (void)animateOneFrame { }
 
 - (BOOL)hasConfigureSheet { return NO; }
+
+- (void)dealloc {
+  [NSDistributedNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)screensaverWillStop:(NSNotification *)notification {
+  if (@available(macOS 14.0, *)) {
+    exit(0);
+  }
+}
 
 @end

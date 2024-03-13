@@ -6,3 +6,6 @@
     - MatrixGrid: Optimize performance
     - MatrixGrid: Add random character change option
     - MatrixGrid: Add more timing options
+
+2024/03/13 v2.8
+   - Fix for missing animations on Sonoma
