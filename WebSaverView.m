@@ -23,6 +23,7 @@
 //#define DebugLog NSLog
 
 #import "WebSaverView.h"
+#import "WKWebViewPrivate.h"
 
 @implementation WebSaverView
 
@@ -74,6 +75,8 @@
 		[self setAnimationTimeInterval:0.5];
 
 		webView = [[WKWebView alloc] initWithFrame:frame];
+        // Sonoma ScreenSaverEngine view hierarchy occludes webview pausing animations and JS.
+        [webView wvss_setWindowOcclusionDetectionEnabled: NO];
 
         // Any user agent will do
         [webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
@@ -84,6 +87,13 @@
         if (isPreview) [self scaleUnitSquareToSize:NSMakeSize( 0.25, 0.25 )];
 
 		[self addSubview:webView];
+        
+        [NSDistributedNotificationCenter.defaultCenter addObserver:self
+                                                          selector:@selector(screensaverWillStop:)
+                                                              name:@"com.apple.screensaver.willstop"
+                                                            object:nil];
+
+
 	}
 
     return self;
@@ -149,5 +159,15 @@
 - (void)animateOneFrame { }
 
 - (BOOL)hasConfigureSheet { return NO; }
+
+- (void)dealloc {
+  [NSDistributedNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)screensaverWillStop:(NSNotification *)notification {
+  if (@available(macOS 14.0, *)) {
+    exit(0);
+  }
+}
 
 @end
