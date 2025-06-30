@@ -27,9 +27,9 @@
 @implementation WKWebView (Compat)
 
 - (void)wvss_setWindowOcclusionDetectionEnabled:(BOOL)enabled {
-  if ([self respondsToSelector:@selector(_setWindowOcclusionDetectionEnabled:)]) {
-    [self _setWindowOcclusionDetectionEnabled:enabled];
-  }
+	if ([self respondsToSelector:@selector(_setWindowOcclusionDetectionEnabled:)]) {
+		[self _setWindowOcclusionDetectionEnabled:enabled];
+	}
 }
 
 #pragma clang diagnostic pop
