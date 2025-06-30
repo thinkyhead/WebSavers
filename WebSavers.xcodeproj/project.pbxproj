@@ -742,7 +742,7 @@
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -762,7 +762,7 @@
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -864,7 +864,7 @@
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -884,7 +884,7 @@
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
