@@ -86,8 +86,6 @@
 			name:@"com.apple.screensaver.willstop"
 			object:nil
 		];
-
-
 	}
 
 	return self;
