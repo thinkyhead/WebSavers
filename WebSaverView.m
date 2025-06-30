@@ -26,71 +26,61 @@
 
 @implementation WebSaverView
 
-- (void)webView:(WKWebView *)sender didStartProvisionalLoadForFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didStartProvisionalLoadForFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didStartProvisionalLoadForFrame: %@", frame);
 }
 
-- (void)webView:(WKWebView *)sender didCommitLoadForFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didCommitLoadForFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didCommitLoadForFrame");
 }
 
-- (void)webView:(WKWebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didFailLoadWithError: %@", error);
 }
 
-- (void)webView:(WKWebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didFailProvisionalLoadWithError: %@", error);
 }
 
-- (void)webView:(WKWebView *)sender didFinishLoadForFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didFinishLoadForFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didFinishLoadForFrame");
 }
 
-- (void)webView:(WKWebView *)sender didReceiveIcon:(NSImage *)image forFrame:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender didReceiveIcon:(NSImage *)image forFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didReceiveIcon");
 }
 
-- (void)webView:(WKWebView *)sender serverRedirectedForDataSource:(WKWebView *)frame
-{
+- (void)webView:(WKWebView *)sender serverRedirectedForDataSource:(WKWebView *)frame {
 	DebugLog(@"webView:serverRedirectedForDataSource");
 }
 
-- (void)webView:(WKWebView *)sender didReceiveTitle:(NSString *)title forFrame:(WKWebView *)frame
-{
-    DebugLog(@"webView:didReceiveTitle: %@", title);
+- (void)webView:(WKWebView *)sender didReceiveTitle:(NSString *)title forFrame:(WKWebView *)frame {
+	DebugLog(@"webView:didReceiveTitle: %@", title);
 }
 
-- (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
-{
-    DebugLog(@"webView:initWithFrame isPreview:%d", isPreview);
-    self = [super initWithFrame:frame isPreview:isPreview];
-    if (self) {
+- (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview {
+	DebugLog(@"webView:initWithFrame isPreview:%d", isPreview);
+	self = [super initWithFrame:frame isPreview:isPreview];
+	if (self) {
 		[self setAnimationTimeInterval:0.5];
 
 		webView = [[WKWebView alloc] initWithFrame:frame];
 
-        // Any user agent will do
-        [webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
+		// Any user agent will do
+		[webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
 
-        // Prevent a white flash when first showing the view
-        [webView setValue: @NO forKey: @"drawsBackground"];
+		// Prevent a white flash when first showing the view
+		[webView setValue: @NO forKey: @"drawsBackground"];
 
-        if (isPreview) [self scaleUnitSquareToSize:NSMakeSize( 0.25, 0.25 )];
+		if (isPreview) [self scaleUnitSquareToSize:NSMakeSize( 0.25, 0.25 )];
 
 		[self addSubview:webView];
 	}
 
-    return self;
+	return self;
 }
 
-- (void)setFrame:(NSRect)frameRect
-{
+- (void)setFrame:(NSRect)frameRect {
 	DebugLog(@"NSView:setFrame");
 	//DebugLog(@"frameRect %d,%d %dx%d\n", frameRect.origin.x, frameRect.origin.y, frameRect.size.width, frameRect.size.height);
 	[super setFrame:frameRect];
@@ -98,51 +88,55 @@
 	[webView setFrameSize:[webView convertSize:frameRect.size fromView:nil]];
 }
 
-- (void)startAnimation
-{
+- (void)startAnimation {
 	DebugLog(@"webView:startAnimation");
 
-    [super startAnimation];
+	[super startAnimation];
 
-    [webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"index" ofType:@"html"]]]];
+	[webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"index" ofType:@"html"]]]];
 }
 
-- (void)stopAnimation
-{
+- (void)stopAnimation {
 	DebugLog(@"webView:stopAnimation");
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:"]]];
+	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:"]]];
 
-    [super stopAnimation];
+	[super stopAnimation];
 }
 
 - (void)doKeyUp:(NSTimer*)theTimer {
 	//DebugLog(@"doKeyUp");
-    [[NSApplication sharedApplication] sendEvent:[NSEvent keyEventWithType:NSEventTypeKeyUp
-		location:      NSMakePoint(1,1)
-		modifierFlags: 0
-		timestamp:     [[NSDate date] timeIntervalSinceReferenceDate]
-		windowNumber:  [[self window] windowNumber]
-		context:       [NSGraphicsContext currentContext]
-		characters:    [theTimer userInfo]
-		charactersIgnoringModifiers:[theTimer userInfo]
-		isARepeat:     NO
-		keyCode:       0]];
+	[ [NSApplication sharedApplication]
+		sendEvent:[NSEvent keyEventWithType:NSEventTypeKeyUp
+			location:      NSMakePoint(1,1)
+			modifierFlags: 0
+			timestamp:     [[NSDate date] timeIntervalSinceReferenceDate]
+			windowNumber:  [[self window] windowNumber]
+			context:       [NSGraphicsContext currentContext]
+			characters:    [theTimer userInfo]
+			charactersIgnoringModifiers:[theTimer userInfo]
+			isARepeat:     NO
+			keyCode:       0
+		]
+	];
 }
 
 
 - (void)doKeyDown:(NSTimer*)theTimer {
 	//DebugLog(@"doKeyDown");
-    [[NSApplication sharedApplication] sendEvent:[NSEvent keyEventWithType:NSEventTypeKeyDown
-		location:      NSMakePoint(1,1)
-		modifierFlags: 0
-		timestamp:     [[NSDate date] timeIntervalSinceReferenceDate]
-		windowNumber:  [[self window] windowNumber]
-		context:       [NSGraphicsContext currentContext]
-		characters:    [theTimer userInfo]
-		charactersIgnoringModifiers:[theTimer userInfo]
-		isARepeat:     NO
-		keyCode:      0]];
+	[ [NSApplication sharedApplication]
+		sendEvent: [NSEvent keyEventWithType:NSEventTypeKeyDown
+			location:      NSMakePoint(1,1)
+			modifierFlags: 0
+			timestamp:     [[NSDate date] timeIntervalSinceReferenceDate]
+			windowNumber:  [[self window] windowNumber]
+			context:       [NSGraphicsContext currentContext]
+			characters:    [theTimer userInfo]
+			charactersIgnoringModifiers:[theTimer userInfo]
+			isARepeat:     NO
+			keyCode:       0
+		]
+	];
 }
 
 

@@ -45,11 +45,11 @@
   }
 
   Trail = function(pos, t, color_f) {
-    this.pos={x:0,y:0,z:0};
-    this.start={x:0,y:0,z:0};
-    this.goal={x:0,y:0,z:0};
-    this.anchor_1={x:0,y:0,z:0};
-    this.anchor_2={x:0,y:0,z:0};
+    this.pos = { x:0,y:0,z:0};
+    this.start = {x:0,y:0,z:0};
+    this.goal = {x:0,y:0,z:0};
+    this.anchor_1 = {x:0,y:0,z:0};
+    this.anchor_2 = {x:0,y:0,z:0};
     this.start_time = 0;
     this.take_time = 1;
     this.vertexes = [];
@@ -64,34 +64,34 @@
 
   Trail.prototype.setNextGoal = function(t, target) {
     pointCopy(this.goal, this.start);
-    this.anchor_1.x = this.start.x+(this.start.x-this.anchor_2.x)*mu;
-    this.anchor_1.y = this.start.y+(this.start.y-this.anchor_2.y)*mu;
-    this.anchor_1.z = this.start.z+(this.start.z-this.anchor_2.z)*mu;
+    this.anchor_1.x = this.start.x + (this.start.x - this.anchor_2.x) * mu;
+    this.anchor_1.y = this.start.y + (this.start.y - this.anchor_2.y) * mu;
+    this.anchor_1.z = this.start.z + (this.start.z - this.anchor_2.z) * mu;
     if (target) {
-      this.anchor_2.x = (this.anchor_1.x+target.x)/2+myrand();
-      this.anchor_2.y = (this.anchor_1.y+target.y)/2+myrand();
-      this.anchor_2.z = (this.anchor_1.z+target.z)/2+myrand();
+      this.anchor_2.x = (this.anchor_1.x + target.x) / 2 + myrand();
+      this.anchor_2.y = (this.anchor_1.y + target.y) / 2 + myrand();
+      this.anchor_2.z = (this.anchor_1.z + target.z) / 2 + myrand();
       this.goal.x = target.x;
       this.goal.y = target.y;
       this.goal.z = target.z;
     }
     else {
-      this.anchor_2.x = this.anchor_1.x+myrand();
-      this.anchor_2.y = this.anchor_1.y+myrand();
-      this.anchor_2.z = this.anchor_1.z+myrand();
-      this.goal.x = this.anchor_2.x+myrand();
-      this.goal.y = this.anchor_2.y+myrand();
-      this.goal.z = this.anchor_2.z+myrand();
+      this.anchor_2.x = this.anchor_1.x + myrand();
+      this.anchor_2.y = this.anchor_1.y + myrand();
+      this.anchor_2.z = this.anchor_1.z + myrand();
+      this.goal.x = this.anchor_2.x + myrand();
+      this.goal.y = this.anchor_2.y + myrand();
+      this.goal.z = this.anchor_2.z + myrand();
     }
     this.start_time = t;
-    this.take_time = 200+Math.random()*200;
+    this.take_time = 200 + Math.random() * 200;
     this.vertexes.push(pointCopy(this.start, {x:0,y:0,z:0}));
     this.anchors_1.push(pointCopy(this.anchor_1, {x:0,y:0,z:0}));
     this.anchors_2.push(pointCopy(this.anchor_2, {x:0,y:0,z:0}));
     if (this.vertexes.length > VERTEX_MAX) {
-      this.vertexes.splice(0,this.vertexes.length-VERTEX_MAX);
-      this.anchors_1.splice(0,this.anchors_1.length-VERTEX_MAX);
-      this.anchors_2.splice(0,this.anchors_2.length-VERTEX_MAX);
+      this.vertexes.splice(0, this.vertexes.length - VERTEX_MAX);
+      this.anchors_1.splice(0, this.anchors_1.length - VERTEX_MAX);
+      this.anchors_2.splice(0, this.anchors_2.length - VERTEX_MAX);
     }
   };
 
