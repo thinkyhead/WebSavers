@@ -59,6 +59,7 @@ const colsize = fontsize + set.xgap, cols = Math.floor(w / colsize),
 
 // Create character cels within the container
 function init_matrix() {
+  const frag = document.createDocumentFragment();
   const bkgd = document.getElementById('cels');
   bkgd.style.background = colors.fill;
 
@@ -67,7 +68,7 @@ function init_matrix() {
     cel.style = `left:${x}px; top:${y}px; width:${w}px; height:${h}px; font-family:${f}; font-size:${s}px; animation-duration:${opts.fadetime}s`;
 
     cel.rand = () => {
-      cel.innerHTML = chars.charAt(rndint(chars.length));
+      cel.textContent = chars.charAt(rndint(chars.length));
       if (opts.flip) cel.classList = Math.random() < 0.5 ? ['flop'] : [];
     };
 
@@ -94,11 +95,14 @@ function init_matrix() {
     cels[c] = Array(rows);
     var y = roffs;
     for (let r = 0; r < rows; r++) {
-      cels[c][r] = new_cel(bkgd, x, y, colsize, rowsize, font, fontsize);
+      cels[c][r] = new_cel(frag, x, y, colsize, rowsize, font, fontsize);
       y += rowsize;
     }
     x += colsize;
   }
+
+  bkgd.appendChild(frag);
+
   return cels;
 }
 

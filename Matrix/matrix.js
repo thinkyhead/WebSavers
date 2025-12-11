@@ -84,6 +84,14 @@ function init_canvas(w, h, a, f, s) {
   //ctx.fillStyle = `rgba(0, 0, 0)`;
   //ctx.fillRect(0, 0, w, h);
 
+  const alpha = 1/30, compl = 1.0 - alpha;
+  ctx._eraseStyle = `rgba(${colors.fill}, ${alpha})`;
+
+  ctx.fillStyle = colors.tail;
+  ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = `rgba(${colors.fill}, ${compl})`;
+  ctx.fillRect(0, 0, w, h);
+
   return ctx;
 }
 
@@ -99,7 +107,7 @@ function init_overlay(ov, fill) {
 
   ctx.globalAlpha = oalpha;
   ctx.linewidth = 1;
-  ctx.strokeStyle = `rgb(${fill})`;
+  //ctx.strokeStyle = `rgb(${fill})`;
   ctx.strokeStyle = '#000';
   switch (ov) {
     case 3: // Diagonal lines
@@ -159,18 +167,14 @@ function draw() {
 
   // Black BG for the canvas
   // translucent BG to show trail
-  //ctx.globalCompositeOperation = 'multiply';
-  ctx.globalAlpha = 0.05;
-  ctx.fillStyle = `rgb(${colors.fill})`;
-  ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = ctx._eraseStyle;
+  ctx.fillRect(0,0,w,h);
 
-  //ctx.globalCompositeOperation = 'source-over';
-  ctx.globalAlpha = 1;
   ctx.fillStyle = colors.drop;
 
   var flip = false;
   for (var i = 0; i < drops.length; i++) {
-    const drop = drops[i];
+    let drop = drops[i];
     if (drop.cnt--) continue;
 
     // Moving down
@@ -217,4 +221,12 @@ function draw() {
   }
 }
 
-setInterval(draw, 1000/fps);
+const NATIVE_FPS = window.screen.refreshRate || 60;
+let bcount = Math.floor(fps / 2);
+function may_draw() {
+  bcount += fps;
+  if (bcount >= NATIVE_FPS) { draw(); bcount -= NATIVE_FPS; }
+  requestAnimationFrame(may_draw);
+}
+
+requestAnimationFrame(may_draw);

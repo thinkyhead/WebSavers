@@ -28,8 +28,12 @@ const chinese = "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄
 // A canvas for the Matrix animation
 const c2 = document.createElement('canvas'), ctx2 = c2.getContext('2d');
 c2.width = c2.height = size_2d;
-ctx2.fillStyle = '#000';
+
 ctx2.font = font_size + "px arial";
+
+ctx2.fillStyle = drop_color;
+ctx2.fillRect(0, 0, size_2d, size_2d);
+ctx2.fillStyle = `rgba(0,0,0,0.95)`;
 ctx2.fillRect(0, 0, size_2d, size_2d);
 
 // Column size, columns, rows
