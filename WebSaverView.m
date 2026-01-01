@@ -76,10 +76,13 @@
 		// Prevent a white flash when first showing the view
 		[webView setValue: @NO forKey: @"drawsBackground"];
 
+		// When shown in the System Settings panel reduce the size
 		if (isPreview) [self scaleUnitSquareToSize:NSMakeSize( 0.25, 0.25 )];
 
+		// Put the webView into the WebSaverView as a sub-view
 		[self addSubview:webView];
 
+		// Call screensaverWillStop on screensaver.willstop notification
 		[ NSDistributedNotificationCenter.defaultCenter
 			addObserver:self
 			selector:@selector(screensaverWillStop:)

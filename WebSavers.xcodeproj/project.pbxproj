@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,18 +62,40 @@
 		447E1C6A29D2C11700086131 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADE29D2C11600086131 /* index.html */; };
 		447E1C6B29D2C11700086131 /* three.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ADF29D2C11600086131 /* three.min.js */; };
 		447E1DDB29D2C11700086131 /* matrix3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 447E1C6829D2C11700086131 /* matrix3d.js */; };
+		448D6B212F05030B0050C47D /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		448D6B222F05030B0050C47D /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		448D6B232F05030B0050C47D /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		448D6B252F05030B0050C47D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		448D6B272F05030B0050C47D /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		448D6B2B2F05030B0050C47D /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		448D6B2C2F05030B0050C47D /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		448D6B2E2F05030B0050C47D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		448D6B2F2F05030B0050C47D /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		448D6B302F05030B0050C47D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		448D6B312F05030B0050C47D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		448D6B3B2F05038A0050C47D /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 448D6B392F05038A0050C47D /* index.html */; };
+		448D6B4D2F05F0880050C47D /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
+		448D6B4E2F05F0880050C47D /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
+		448D6B4F2F05F0880050C47D /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
+		448D6B512F05F0880050C47D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447E1ABD29D2BF2E00086131 /* InfoPlist.strings */; };
+		448D6B542F05F0880050C47D /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447E1AB529D2BE9200086131 /* License.txt */; };
+		448D6B562F05F0880050C47D /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		448D6B572F05F0880050C47D /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		448D6B592F05F0880050C47D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		448D6B5A2F05F0880050C47D /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		448D6B5B2F05F0880050C47D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		448D6B5C2F05F0880050C47D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
+		448D6B662F05F0CA0050C47D /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 448D6B642F05F0CA0050C47D /* index.html */; };
 		5046BA092BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0A2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0B2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0C2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0D2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
-		5046BA0E2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0F2BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA102BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
-		5046BA142BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
@@ -127,6 +149,28 @@
 			name = "Copy Doc Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		448D6B332F05030B0050C47D /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B5E2F05F0880050C47D /* Copy Doc Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Copy docs...";
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Doc Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		863E1E470FCBA9AF0013CEA7 /* Copy Doc Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,6 +214,10 @@
 		447E1ADE29D2C11600086131 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		447E1ADF29D2C11600086131 /* three.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = three.min.js; sourceTree = "<group>"; };
 		447E1C6829D2C11700086131 /* matrix3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix3d.js; sourceTree = "<group>"; };
+		448D6B372F05030B0050C47D /* VibeToroid.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VibeToroid.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		448D6B392F05038A0050C47D /* index.html */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; tabWidth = 2; };
+		448D6B622F05F0880050C47D /* VibeOrbit.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VibeOrbit.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		448D6B642F05F0CA0050C47D /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
@@ -224,6 +272,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		448D6B2D2F05030B0050C47D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B2E2F05030B0050C47D /* Cocoa.framework in Frameworks */,
+				448D6B2F2F05030B0050C47D /* ScreenSaver.framework in Frameworks */,
+				448D6B302F05030B0050C47D /* WebKit.framework in Frameworks */,
+				448D6B312F05030B0050C47D /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B582F05F0880050C47D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B592F05F0880050C47D /* Cocoa.framework in Frameworks */,
+				448D6B5A2F05F0880050C47D /* ScreenSaver.framework in Frameworks */,
+				448D6B5B2F05F0880050C47D /* WebKit.framework in Frameworks */,
+				448D6B5C2F05F0880050C47D /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D255ACD0486D3F9007BF209 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +340,8 @@
 				44231EB729DC0A17009FFAF9 /* MatrixGrid */,
 				447E1AA929D2BBD000086131 /* Starfield */,
 				447E1A8529D2B4E900086131 /* Stringy */,
+				448D6B652F05F0CA0050C47D /* VibeOrbit */,
+				448D6B3A2F05038A0050C47D /* VibeToroid */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -313,6 +385,8 @@
 				447E1AA729D2BB1700086131 /* Starfield.saver */,
 				447E1ADA29D2C0E600086131 /* Matrix3D.saver */,
 				44231EB529DC0978009FFAF9 /* MatrixGrid.saver */,
+				448D6B372F05030B0050C47D /* VibeToroid.saver */,
+				448D6B622F05F0880050C47D /* VibeOrbit.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,6 +450,22 @@
 			path = Matrix3D;
 			sourceTree = "<group>";
 		};
+		448D6B3A2F05038A0050C47D /* VibeToroid */ = {
+			isa = PBXGroup;
+			children = (
+				448D6B392F05038A0050C47D /* index.html */,
+			);
+			path = VibeToroid;
+			sourceTree = "<group>";
+		};
+		448D6B652F05F0CA0050C47D /* VibeOrbit */ = {
+			isa = PBXGroup;
+			children = (
+				448D6B642F05F0CA0050C47D /* index.html */,
+			);
+			path = VibeOrbit;
+			sourceTree = "<group>";
+		};
 		863E1E560FCBAA150013CEA7 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,13 +518,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5006A8D72AF8EB8C00BDCBA3 /* Headers */ = {
+		448D6B202F05030B0050C47D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5006A8D82AF8EB8C00BDCBA3 /* WebSaver_Prefix.pch in Headers */,
-				5046BA0E2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */,
-				5006A8D92AF8EB8C00BDCBA3 /* WebSaverView.h in Headers */,
+				448D6B212F05030B0050C47D /* WebSaver_Prefix.pch in Headers */,
+				448D6B222F05030B0050C47D /* WKWebViewPrivate.h in Headers */,
+				448D6B232F05030B0050C47D /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B4C2F05F0880050C47D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B4D2F05F0880050C47D /* WebSaver_Prefix.pch in Headers */,
+				448D6B4E2F05F0880050C47D /* WKWebViewPrivate.h in Headers */,
+				448D6B4F2F05F0880050C47D /* WebSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +635,48 @@
 			productReference = 447E1ADA29D2C0E600086131 /* Matrix3D.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
+		448D6B1F2F05030B0050C47D /* VibeToroid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 448D6B342F05030B0050C47D /* Build configuration list for PBXNativeTarget "VibeToroid" */;
+			buildPhases = (
+				448D6B202F05030B0050C47D /* Headers */,
+				448D6B242F05030B0050C47D /* Resources */,
+				448D6B2A2F05030B0050C47D /* Sources */,
+				448D6B2D2F05030B0050C47D /* Frameworks */,
+				448D6B322F05030B0050C47D /* Rez */,
+				448D6B332F05030B0050C47D /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VibeToroid;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 448D6B372F05030B0050C47D /* VibeToroid.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		448D6B4B2F05F0880050C47D /* VibeOrbit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 448D6B5F2F05F0880050C47D /* Build configuration list for PBXNativeTarget "VibeOrbit" */;
+			buildPhases = (
+				448D6B4C2F05F0880050C47D /* Headers */,
+				448D6B502F05F0880050C47D /* Resources */,
+				448D6B552F05F0880050C47D /* Sources */,
+				448D6B582F05F0880050C47D /* Frameworks */,
+				448D6B5D2F05F0880050C47D /* Rez */,
+				448D6B5E2F05F0880050C47D /* Copy Doc Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VibeOrbit;
+			productInstallPath = "$(HOME)/Library/Screen Savers";
+			productName = WebSaver;
+			productReference = 448D6B622F05F0880050C47D /* VibeOrbit.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8D255AC50486D3F9007BF209 /* Matrix */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "Matrix" */;
@@ -582,6 +724,8 @@
 				8D255AC50486D3F9007BF209 /* Matrix */,
 				447E1AC329D2C0E600086131 /* Matrix3D */,
 				44231E9F29DC0978009FFAF9 /* MatrixGrid */,
+				448D6B1F2F05030B0050C47D /* VibeToroid */,
+				448D6B4B2F05F0880050C47D /* VibeOrbit */,
 			);
 		};
 /* End PBXProject section */
@@ -592,10 +736,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				44231EA429DC0978009FFAF9 /* InfoPlist.strings in Resources */,
+				44231EBB29DC0A17009FFAF9 /* index.html in Resources */,
 				44231EBD29DC0A17009FFAF9 /* matrix.js in Resources */,
 				44231EBC29DC0A17009FFAF9 /* matrix.css in Resources */,
 				44231EA629DC0978009FFAF9 /* License.txt in Resources */,
-				44231EBB29DC0A17009FFAF9 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,9 +749,9 @@
 			files = (
 				447E1AC029D2BF2E00086131 /* InfoPlist.strings in Resources */,
 				447E1A8A29D2B4E900086131 /* index.html in Resources */,
-				447E1AB629D2BEA600086131 /* License.txt in Resources */,
-				447E1A8929D2B4E900086131 /* stringy.css in Resources */,
 				447E1A8B29D2B4E900086131 /* stringy.js in Resources */,
+				447E1A8929D2B4E900086131 /* stringy.css in Resources */,
+				447E1AB629D2BEA600086131 /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,9 +761,9 @@
 			files = (
 				447E1ABF29D2BF2E00086131 /* InfoPlist.strings in Resources */,
 				447E1AAD29D2BBD000086131 /* index.html in Resources */,
+				447E1AAF29D2BBD000086131 /* starfield.js in Resources */,
 				447E1AAE29D2BBD000086131 /* starfield.css in Resources */,
 				447E1AB329D2BE9200086131 /* License.txt in Resources */,
-				447E1AAF29D2BBD000086131 /* starfield.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,12 +771,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447E1DDB29D2C11700086131 /* matrix3d.js in Resources */,
-				447E1C6A29D2C11700086131 /* index.html in Resources */,
 				447E1AC929D2C0E600086131 /* InfoPlist.strings in Resources */,
-				447E1ACB29D2C0E600086131 /* License.txt in Resources */,
+				447E1C6A29D2C11700086131 /* index.html in Resources */,
+				447E1DDB29D2C11700086131 /* matrix3d.js in Resources */,
 				447E1C6929D2C11700086131 /* matrix3d.css in Resources */,
 				447E1C6B29D2C11700086131 /* three.min.js in Resources */,
+				447E1ACB29D2C0E600086131 /* License.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B242F05030B0050C47D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B252F05030B0050C47D /* InfoPlist.strings in Resources */,
+				448D6B3B2F05038A0050C47D /* index.html in Resources */,
+				448D6B272F05030B0050C47D /* License.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B502F05F0880050C47D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B662F05F0CA0050C47D /* index.html in Resources */,
+				448D6B512F05F0880050C47D /* InfoPlist.strings in Resources */,
+				448D6B542F05F0880050C47D /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,10 +804,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44231EC029DC0BA6009FFAF9 /* matrix.css in Resources */,
-				44231EBE29DC0B9F009FFAF9 /* matrix.js in Resources */,
-				44231EBF29DC0BA3009FFAF9 /* index.html in Resources */,
 				447E1AC129D2BF2E00086131 /* InfoPlist.strings in Resources */,
+				44231EBF29DC0BA3009FFAF9 /* index.html in Resources */,
+				44231EBE29DC0B9F009FFAF9 /* matrix.js in Resources */,
+				44231EC029DC0BA6009FFAF9 /* matrix.css in Resources */,
 				447E1AB729D2BEE700086131 /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +837,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		447E1AD529D2C0E600086131 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B322F05030B0050C47D /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B5D2F05F0880050C47D /* Rez */ = {
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -725,12 +903,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5006A8E02AF8EB8C00BDCBA3 /* Sources */ = {
+		448D6B2A2F05030B0050C47D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5006A8E12AF8EB8C00BDCBA3 /* WebSaverView.m in Sources */,
-				5046BA142BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				448D6B2B2F05030B0050C47D /* WebSaverView.m in Sources */,
+				448D6B2C2F05030B0050C47D /* WKWebViewPrivate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448D6B552F05F0880050C47D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448D6B562F05F0880050C47D /* WebSaverView.m in Sources */,
+				448D6B572F05F0880050C47D /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +1122,86 @@
 			};
 			name = Release;
 		};
+		448D6B352F05030B0050C47D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		448D6B362F05030B0050C47D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		448D6B602F05F0880050C47D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		448D6B612F05F0880050C47D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
 		EF7AD72E08BB986600CE4634 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1087,6 +1354,24 @@
 			buildConfigurations = (
 				447E1AD829D2C0E600086131 /* Debug */,
 				447E1AD929D2C0E600086131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		448D6B342F05030B0050C47D /* Build configuration list for PBXNativeTarget "VibeToroid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				448D6B352F05030B0050C47D /* Debug */,
+				448D6B362F05030B0050C47D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		448D6B5F2F05F0880050C47D /* Build configuration list for PBXNativeTarget "VibeOrbit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				448D6B602F05F0880050C47D /* Debug */,
+				448D6B612F05F0880050C47D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

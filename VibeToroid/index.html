@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>A Torus Amorus</title>
+  <style>
+    body{ margin: 0; overflow: hidden; background: #111; }
+  </style>
+  </head>
+  <body>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+        "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+    </script>
+    <script type="module">
+
+      import * as THREE from 'three';
+      import { OrbitControls } from 'OrbitControls';
+
+      const scene = new THREE.Scene();
+      const cam = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      cam.position.z = 5;
+      const renderer = new THREE.WebGLRenderer({ antialias:true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Torus knot geometry
+      const torus = new THREE.TorusKnotGeometry(1.2, 0.4, 200, 32);
+      const mat = new THREE.MeshBasicMaterial({ color:0xFFFFFF, wireframe:true });
+      const knot = new THREE.Mesh(torus, mat);
+      scene.add(knot);
+
+      // Particle system
+      const particleCount = 5000;
+      const positions = new Float32Array(particleCount * 3);
+      const sizes = new Float32Array(particleCount);
+
+      const tau = Math.PI * 2;
+      for (let i = 0; i < particleCount; i++) {
+        const a = Math.random() * tau;                    // a = RAD(0...360)
+        const r = (0.5 + Math.random() * 2);              // r =  0.5 ... 2.5
+        positions[i * 3]     = r * Math.cos(a);           // x
+        positions[i * 3 + 1] = r * Math.sin(a);           // y
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 4; // z = -2.0 ... 2.0
+        sizes[i] = Math.random() * 5 + 2;                 // 2 .. 7
+      }
+
+      const pcGeometry = new THREE.BufferGeometry();
+      pcGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      pcGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+      const pcMaterial = new THREE.ShaderMaterial({
+        uniforms: { color: { value: new THREE.Color(0xFF8800) } },
+        vertexShader:`
+          attribute float size;
+          void main() { gl_PointSize = size; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }
+        `,
+        fragmentShader:`
+          uniform vec3 color;
+          void main() { gl_FragColor = vec4(color,0.7); }
+        `,
+        transparent:true
+      });
+
+      const particles = new THREE.Points(pcGeometry, pcMaterial);
+      scene.add(particles);
+
+      // Animation loop
+      const kspeedx = (Math.random() * 0.0005 + 0.0005) * (Math.random() < 0.5 ? -1 : 1),
+            kspeedy = (Math.random() * 0.0010 + 0.0010) * (Math.random() < 0.5 ? -1 : 1),
+            pspeedy = (Math.random() * 0.0008 + 0.0008) * (Math.random() < 0.5 ? -1 : 1);
+      let t = 0;
+      function animate() {
+        t += 0.001;
+        knot.rotation.x += kspeedx;
+        knot.rotation.y += kspeedy;
+        particles.rotation.y += pspeedy;
+        pcMaterial.uniforms.color.value.setHSL((t % 1), 0.7, 0.5);
+        renderer.render(scene, cam);
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+    </script>
+  </body>
+</html>
