@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- Authored with gpt-oss-20b running as a helpful AI assistant -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solar System Screensaver</title>
+<style>
+body{margin:0;overflow:hidden;background:#000;color:#612;}
+h4{text-align:center;font-family:sans-serif;}
+</style>
+</head>
+<body>
+<h4>(Not to Scale)</h4>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+//import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ---------------- Scene, Camera, Renderer ---------------- */
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 500);
+camera.position.set(0, 60, 200);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.shadowMap.enabled = true;          // renderer must support shadows
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // nice soft edges
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+document.body.appendChild(renderer.domElement);
+
+/* ---------------- Sun ---------------- */
+const sunGeom = new THREE.SphereGeometry(10, 32, 32);
+const sunMat = new THREE.MeshBasicMaterial({ color: 0xFFFF40 });
+const sun = new THREE.Mesh(sunGeom, sunMat);
+sun.receiveShadow = false;
+sun.castShadow = false;
+scene.add(sun);
+
+/* ---------------- Lights ---------------- */
+const sunLight = new THREE.PointLight(0xFFFFFF, 2000, 500);
+sunLight.position.copy(sun.position);
+sunLight.castShadow = true;       // Sun light shoots shadows
+sunLight.shadow.mapSize.set(1024,1024); // higher resolution gives better quality
+sunLight.shadow.camera.near = 0.5;
+sunLight.shadow.camera.far = 400;
+scene.add(sunLight);
+
+// Add ambient light
+const ambient = new THREE.AmbientLight(0xFFFFFF, 0.15);   // low‑intensity white light
+scene.add(ambient);
+
+/* ---------------- Helper: Color from hue ---------------- */
+function hueToRGB(h) {
+  const c = 1, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = 0;
+  let r = 0, g = 0, b = 0;
+  if (h < 60) { r = c; g = x; }
+  else if (h < 120) { r = x; g = c; }
+  else if (h < 180) { r = 0; g = c; b = x; }
+  else if (h < 240) { r = 0; g = x; b = c; }
+  else if (h < 300) { r = x; g = 0; b = c; }
+  else { r = c; g = 0; b = x; }
+  return new THREE.Color((r + m), (g + m), (b + m));
+}
+
+function randomColor() {
+  // pick a random hue and convert to RGB
+  const h = Math.random() * 360;
+  return hueToRGB(h);
+}
+
+/* ---------------- Helper: Create planet ---------------- */
+function createPlanet({radius, distance, period, hue, angleOffs=0, hasRing=false, ringOpts=null}) {
+  const geom = new THREE.SphereGeometry(radius, 32, 32);
+  const mat = new THREE.MeshStandardMaterial({ color: hueToRGB(hue) });
+  //mat.emissive = 0x000000;
+  const mesh = new THREE.Mesh(geom, mat);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  mesh.position.set(distance, 0, 0);   // start at +X
+  scene.add(mesh);
+
+  // Orbit path
+  const orbit = new THREE.EllipseCurve(
+    0, 0,          // ax, aY
+    distance, distance,   // xRadius, yRadius
+    0, 2 * Math.PI,  // startAngle, endAngle
+    false,           // clockwise
+    0                // rotation
+  );
+  const points = orbit.getPoints(100);
+  const orbitGeom = new THREE.BufferGeometry().setFromPoints(points.map(p => new THREE.Vector3(p.x, 0, p.y)));
+  const orbitLine = new THREE.Line(orbitGeom, new THREE.LineBasicMaterial({ color: 0x112211 }));
+  scene.add(orbitLine);
+
+  // Store orbital data
+  const speed = (2 * Math.PI) / period; // radians per ms
+  const data = { mesh, distance, speed, orbit, angleOffs };
+
+  // Optional planetary ring
+  if (hasRing && ringOpts) {
+    const ringGeom = new THREE.RingGeometry(ringOpts.inner, ringOpts.outer, 64);
+    const ringMat = new THREE.MeshStandardMaterial({
+      color: ringOpts.color, side: THREE.DoubleSide, transparent: true, opacity: 0.6
+    });
+    const ring = new THREE.Mesh(ringGeom, ringMat);
+    ring.castShadow = true;
+    ring.receiveShadow = true;
+    ring.rotation.x = Math.PI / 2; // lie in XZ plane
+    mesh.add(ring);
+  }
+
+  return data;
+}
+
+/* ---------------- Planets ---------------- */
+const planets = [];
+
+// Example distances (scaled for visual clarity)
+const baseDistance = 40;
+const spacing = 14;
+const planetConfigs = [
+  { radius: 2.00, period:  32000, hue:   0 }, // 120s
+  { radius: 1.50, period:  40000, hue:  60 }, //  80s
+  { radius: 4.00, period:  48000, hue: 120 }, // 200s
+  { radius: 3.50, period:  60000, hue: 180, hasRing:true, ringOpts:{ inner:4.50, outer: 6.00, color: 0xD8B371 } }, // 300s
+  { radius: 2.50, period:  80000, hue: 240 }, //  50s
+  { radius: 2.50, period: -120000, hue: 300 }  // 150s
+];
+
+planetConfigs.forEach((cfg, idx) => {
+  const planet = createPlanet({
+    radius: cfg.radius,
+    distance: baseDistance + idx * spacing,
+    period: cfg.period,
+    hue: cfg.hue,
+    angleOffs: Math.random() * Math.PI * 2,
+    hasRing: cfg.hasRing,
+    ringOpts: cfg.ringOpts
+  });
+  planets.push(planet);
+});
+
+/* ---------------- Asteroid Belt ---------------- */
+const asteroidGroup = new THREE.Group();
+for (let i = 0; i < 400; i++) {
+  const size = Math.random() * 0.3 + 0.1;
+  const geom = new THREE.SphereGeometry(size, 6, 6);
+  const mat = new THREE.MeshBasicMaterial({ color: 0x223355 });
+  const asteroid = new THREE.Mesh(geom, mat);
+  asteroid.receiveShadow = false;
+  asteroid.castShadow = false;
+  const angle = Math.random() * Math.PI * 2;
+  const dist = Math.random() * 30 + baseDistance + spacing * 1.5;
+  asteroid.position.set(
+     Math.sin(angle) * dist,    // X
+    (Math.random() - 0.5) * 5,  // Y (tiny offset)
+     Math.cos(angle) * dist     // Z
+  );
+  asteroidGroup.add(asteroid);
+}
+scene.add(asteroidGroup);
+
+/* ---------------- Camera Controls (optional) ---------------- */
+//const controls = new OrbitControls(camera, renderer.domElement);
+//controls.enableZoom = false;
+//controls.enablePan = false;
+
+/* ---------------- Animation Loop ---------------- */
+const camTimeOffs = Math.random() * 1000;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const now = Date.now();
+
+  // Sun spin
+  //sun.rotation.y += 0.0003;
+
+  // Planet orbits
+  planets.forEach(p => {
+    const angle = (p.angleOffs + now * p.speed) % (2 * Math.PI);
+    p.mesh.position.set(
+      Math.cos(angle) * p.distance,
+      0,
+      Math.sin(angle) * p.distance
+    );
+    // Optional self‑rotation
+    //p.mesh.rotation.y += 0.01;
+  });
+
+  // Slow camera spin around the system
+  const camAngle = camTimeOffs + now * 0.0001;
+  camera.position.x = Math.cos(camAngle) * 100;
+  camera.position.y = Math.sin(camAngle) * 200;
+  camera.lookAt(scene.position);
+
+  renderer.render(scene, camera);
+}
+animate();
+
+/* ---------------- Handle Resize ---------------- */
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
