@@ -10,18 +10,18 @@ function rndint(n) { return Math.floor(Math.random() * n); }
 
 const opts = {
   fixed_col   : 0       , // Use a fixed number of columns (0 = default size)
-  theme       : 0       , // 0: Green, 1: Amber, 2: Light, 3: Atari 800
+  theme       : 3       , // 0: Green, 1: Amber, 2: Light, 3: Atari 800
   alpha       : true    , // Mix in Roman alphabet?
   punctuation : false   , // Mix in Punctuation?
-  overlay     : 1       , // 0: none, 1: scanlines, 2: shadowmask
+  overlay     : 0       , // 0: none, 1: scanlines, 2: shadowmask
   oalpha      : 0       , // (0 < n <= 1) Overlay Alpha or 0 for default
   flip        : true    , // Draw flipped characters?
-  change      : 10      , // Character randomization per frame (0 = none)
+  change      : 4       , // Character randomization per frame (0 = none)
   fps         : 30      , // (Hz) Maximum drop advance frequency
   minspeed    : 0.2     , // (0 < n <= 1) Minimum drop speed
   maxspeed    : 1.0     , // (0 < n <= 1) Maximum drop speed
-  respawn     : 6       , // (screens) Random respawn range (minus 5 rows)
-  fadetime    : 5       , // (s) Duration of the fade animation
+  respawn     : 2       , // (screens) Random respawn range (minus 5 rows)
+  fadetime    : 3       , // (s) Duration of the fade animation
 };
 
 function get_colors(t) {
@@ -29,20 +29,21 @@ function get_colors(t) {
     default: return { drop:"#FFF", tail:"#0F0", fill:"#000" };    // Green
     case 1:  return { drop:"#FFF", tail:"#FA0", fill:"#000" };    // Amber
     case 2:  return { drop:"#000", tail:"#0A0", fill:"#FFF" };    // Light
-    case 3:  return { drop:"#FF0", tail:"#EEF", fill:"#6A6AEE" }; // Atari
+    case 3:  return { drop:"#FF0", tail:"#CCD", fill:"#4A4ABE" }; // Atari
   }
 }
 const colors = get_colors(opts.theme), dotail = colors.drop != colors.tail;
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+      atascii = "",
+      atasciis = opts.theme == 3 ? atascii : '',
       puncts = opts.punctuation ? '!@#$%^&*-+{}[]|\\/<>?:;\'"|' : '',
       alphas = opts.alpha ? alphabet : '',
-      alphanum = { chr:alphabet + puncts, size:22, xgap:2, ygap:2, flop:2 },
+      alphanum = { chr:alphabet + puncts + atasciis, size:22, xgap:2, ygap:2, flop:2 },
       chinese = { chr:"田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑", size:24, xgap:4, ygap:4, flop:2 },
       katakana = { chr:alphas + puncts + "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ", size:24, xgap:2, ygap:2, flop:2 },
       katakana2 = { chr:alphas + puncts + "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン", size:22, xgap:6, ygap:4, flop:2 },
       set = opts.theme == 3 ? alphanum : katakana2,
-      font = opts.theme == 3 ? 'Atari Classic' : 'arial',
       chars = set.chr;
 
 // Globals for window size
@@ -61,11 +62,19 @@ const colsize = fontsize + set.xgap, cols = Math.floor(w / colsize),
 function init_matrix() {
   const frag = document.createDocumentFragment();
   const bkgd = document.getElementById('cels');
+  if (opts.theme == 3) bkgd.setAttribute('class', 'atari');
+  const docstyle = document.documentElement.style;
+  docstyle.setProperty('--cel-fade-time', `${opts.fadetime}s`);
+  docstyle.setProperty('--cel-font-size', `${fontsize}px`);
+  docstyle.setProperty('--cel-width', `${colsize}px`);
+  docstyle.setProperty('--cel-height', `${rowsize}px`);
   bkgd.style.background = colors.fill;
 
-  function new_cel(d, x, y, w, h, f, s) {
+  function new_cel(d, x, y) {
     const cel = document.createElement('div');
-    cel.style = `left:${x}px; top:${y}px; width:${w}px; height:${h}px; font-family:${f}; font-size:${s}px; animation-duration:${opts.fadetime}s`;
+    //cel.style = `left:${x}px; top:${y}px;`;
+    cel.style.left = `${x}px`;
+    cel.style.top = `${y}px`;
 
     cel.rand = () => {
       cel.textContent = chars.charAt(rndint(chars.length));
@@ -95,7 +104,7 @@ function init_matrix() {
     cels[c] = Array(rows);
     var y = roffs;
     for (let r = 0; r < rows; r++) {
-      cels[c][r] = new_cel(frag, x, y, colsize, rowsize, font, fontsize);
+      cels[c][r] = new_cel(frag, x, y);
       y += rowsize;
     }
     x += colsize;

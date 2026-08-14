@@ -21,6 +21,15 @@ body { background: black; }
   text-align: center;
   vertical-align: middle;
   animation-name: fadeout;
+  animation-duration: var(--cel-fade-time);
+  font-family: arial;
+  font-size: var(--cel-font-size);
+  width: var(--cel-width);
+  height: var(--cel-width);
+}
+
+#cels.atari div {
+  font-family: "Atari Classic","EightBit Atari";
 }
 
 .flop { transform: rotate(180deg); }
