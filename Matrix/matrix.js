@@ -42,12 +42,12 @@
 
 function rndint(n) { return Math.floor(Math.random() * n); }
 
-const fixed_col = 0,  // Use a fixed number of columns or 0 for the default font size
-      theme = 0,      // 0: Green, 1: Amber, 2: Light, 3: Atari 800
-      overlay = 1,    // 0: none, 1: scanlines, 2: shadowmask
-      oalpha = overlay == 1 ? 0.8 : 0.5,
-      flipping = false,
-      fps = 30;
+let fixed_col = 0,  // Use a fixed number of columns or 0 for the default font size
+    theme = 0,      // 0: Green, 1: Amber, 2: Light, 3: Atari 800
+    overlay = 1,    // 0: none, 1: scanlines, 2: shadowmask
+    oalpha = overlay == 1 ? 0.8 : 0.5,
+    flipping = false,
+    fps = 30;
 
 function get_colors(t) {
   switch (t) {
@@ -57,16 +57,13 @@ function get_colors(t) {
     case 3:  return { drop:"#FF0", tail:"#EEF", fill:"106, 106, 238" }; // Atari
   }
 }
-const colors = get_colors(theme), dotail = colors.drop != colors.fill;
+let colors, dotail, set, chars, font, ctx, w, h, colsize, rowsize, columns, coffs, rows, drops;
 
 const chinese = { chr:"田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑", size:24, xgap:0, ygap:0, drat:12 },
       alphanum = { chr:"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", size:22, xgap:2, ygap:2, drat:11 },
       katakana = { chr:"ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", size:24, xgap:2, ygap:2, drat:12 },
       katakana2 = { chr:"アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", size:20, xgap:6, ygap:4, drat:1000 },
-      thinkycs = { chr:"TtHhIiNnKkYyEeAaDd1347", size:18, xgap:2, ygap:2, drat:9 },
-      set = theme == 3 ? alphanum : (rndint(200) ? katakana2 : thinkycs),
-      chars = set.chr,
-      font = theme == 3 ? 'Atari Classic' : 'arial';
+      thinkycs = { chr:"TtHhIiNnKkYyEeAaDd1347", size:18, xgap:2, ygap:2, drat:9 };
 
 // Init the main canvas and context
 function init_canvas(w, h, a, f, s) {
@@ -138,28 +135,36 @@ function init_overlay(ov, fill) {
   }
 }
 
-// Get a 2D context for the canvas
-const w = window.innerWidth, h = window.innerHeight;
-if (fixed_col) set.size = w / fixed_col;
+// (Re)initialize the display using the current settings
+function start() {
+  colors = get_colors(theme); dotail = colors.drop != colors.fill;
+  set = theme == 3 ? alphanum : (rndint(200) ? katakana2 : thinkycs);
+  chars = set.chr;
+  font = theme == 3 ? 'Atari Classic' : 'arial';
 
-const ctx = init_canvas(w, h, 1, font, set.size);
-init_overlay(overlay, colors.fill);
+  // Get a 2D context for the canvas
+  w = window.innerWidth; h = window.innerHeight;
+  if (fixed_col) set.size = w / fixed_col;
 
-// Column size and number of columns
-const colsize = set.size + set.xgap,
-      rowsize = set.size + set.ygap,
-      columns = Math.floor(w / colsize),
-      coffs = (set.xgap + set.size) / 2 + Math.floor((w - columns * colsize) / 2),
-      rows = h / rowsize;
+  ctx = init_canvas(w, h, 1, font, set.size);
+  init_overlay(overlay, colors.fill);
+
+  // Column size and number of columns
+  colsize = set.size + set.xgap;
+  rowsize = set.size + set.ygap;
+  columns = Math.floor(w / colsize);
+  coffs = (set.xgap + set.size) / 2 + Math.floor((w - columns * colsize) / 2);
+  rows = h / rowsize;
+
+  // Init all drops at the top of the screen
+  drops = [];
+  for (var x = 0; x < columns; x++) drops.push(newdrop());
+}
 
 function newdrop() {
   const intvl = 1 + rndint(4);
   return { y:-5 - rndint(rows), int:intvl, cnt:intvl, char: { chr:false, flip:false, y:0 } };
 }
-
-// Init all drops at the top of the screen
-var drops = [];
-for (var x = 0; x < columns; x++) drops.push(newdrop());
 
 // Draw the characters
 function draw() {
@@ -230,3 +235,17 @@ function may_draw() {
 }
 
 requestAnimationFrame(may_draw);
+start();
+
+// Apply new settings and restart the display
+window.applySettings = (settings) => {
+  if (!settings) return;
+  if ('theme' in settings)    theme = Math.max(0, Math.min(3, settings.theme|0));
+  if ('overlay' in settings)  overlay = Math.max(0, Math.min(2, settings.overlay|0));
+  if ('flip' in settings)     flipping = !!settings.flip;
+  else if ('flipping' in settings) flipping = !!settings.flipping;
+  if ('fps' in settings)      fps = Math.max(5, Math.min(60, settings.fps|0));
+  oalpha = overlay == 1 ? 0.8 : 0.5;
+  bcount = 0; // Reset the frame counter for the new FPS
+  start();
+};

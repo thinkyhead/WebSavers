@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053571DF3BF47842D4845291 /* StarfieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C57D05604D7D0D21E7FB3197 /* StarfieldView.m */; };
 		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		2C8259E79421558197448881 /* VibeSpheresView.m in Sources */ = {isa = PBXBuildFile; fileRef = B736CB9609A0CE87E8DF2319 /* VibeSpheresView.m */; };
 		441C357A2F4BD888003F0FBE /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		441C357B2F4BD888003F0FBE /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		441C357C2F4BD888003F0FBE /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
@@ -120,12 +122,20 @@
 		5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		587863A2499B8A272202C1DC /* Matrix3DView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF216EF9DAB092B0C77CF1 /* Matrix3DView.m */; };
+		5970F1BF4BE56AF6635A56C6 /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACF937D99436ED4746142E7 /* MatrixView.m */; };
+		677E3CB977C95A9D99B1BBCE /* VibeOrbitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22225719EEF632E0DA2DC780 /* VibeOrbitView.m */; };
 		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
 		8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
 		8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		957E8AB4550AAC0CD4FB2709 /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACF937D99436ED4746142E7 /* MatrixView.m */; };
+		AF04AADC5830CE0671708033 /* VibeToroidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6058E333FC9DBAFB3C499C60 /* VibeToroidView.m */; };
+		B04B02AD0269A5EBC11112E5 /* VibeSolarSystemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0037CFC826C37ABA70B06D /* VibeSolarSystemView.m */; };
+		DBC1A2A3BD29338F8A198CD3 /* StringyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABFA77BE2E123A4FEDB9EE /* StringyView.m */; };
+		F698BF13C29864D11E114214 /* MatrixGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F3394F9B778046E7C8A6B /* MatrixGridView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -231,10 +241,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05ABFA77BE2E123A4FEDB9EE /* StringyView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = StringyView.m; sourceTree = "<group>"; };
 		06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = /System/Library/Frameworks/ScreenSaver.framework; sourceTree = "<absolute>"; };
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		0ACF937D99436ED4746142E7 /* MatrixView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MatrixView.m; sourceTree = "<group>"; };
+		0CAF216EF9DAB092B0C77CF1 /* Matrix3DView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Matrix3DView.m; sourceTree = "<group>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		22225719EEF632E0DA2DC780 /* VibeOrbitView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VibeOrbitView.m; sourceTree = "<group>"; };
 		289EE80009F47CE000C096EC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaver_Prefix.pch; sourceTree = "<group>"; };
 		440CBCD12F4D1ECF001A9834 /* Starfield.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Starfield.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,10 +285,15 @@
 		448D6B642F05F0CA0050C47D /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
+		6058E333FC9DBAFB3C499C60 /* VibeToroidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VibeToroidView.m; sourceTree = "<group>"; };
+		7F7F3394F9B778046E7C8A6B /* MatrixGridView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MatrixGridView.m; sourceTree = "<group>"; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B736CB9609A0CE87E8DF2319 /* VibeSpheresView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VibeSpheresView.m; sourceTree = "<group>"; };
+		C57D05604D7D0D21E7FB3197 /* StarfieldView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = StarfieldView.m; sourceTree = "<group>"; };
 		F50079790118B23001CA0E54 /* WebSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaverView.h; sourceTree = "<group>"; };
 		F500797A0118B23001CA0E54 /* WebSaverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSaverView.m; sourceTree = "<group>"; };
+		FA0037CFC826C37ABA70B06D /* VibeSolarSystemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VibeSolarSystemView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +404,15 @@
 			children = (
 				863E1E560FCBAA150013CEA7 /* Documents */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
+				447E1A6429D2B34F00086131 /* Matrix */,
+				447E1ADC29D2C11600086131 /* Matrix3D */,
+				44231EB729DC0A17009FFAF9 /* MatrixGrid */,
+				447E1AA929D2BBD000086131 /* Starfield */,
+				447E1A8529D2B4E900086131 /* Stringy */,
+				448D6B652F05F0CA0050C47D /* VibeOrbit */,
+				441C35912F4BD943003F0FBE /* VibeSolarSystem */,
+				441C35AC2F4BDDA7003F0FBE /* VibeSpheres */,
+				44A2736930361B330071F959 /* VibeToroid */,
 				32DBCFA70370C4F300C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
@@ -407,15 +435,6 @@
 			children = (
 				8D255AD20486D3F9007BF209 /* Info.plist */,
 				447E1ABD29D2BF2E00086131 /* InfoPlist.strings */,
-				447E1A6429D2B34F00086131 /* Matrix */,
-				447E1ADC29D2C11600086131 /* Matrix3D */,
-				44231EB729DC0A17009FFAF9 /* MatrixGrid */,
-				447E1AA929D2BBD000086131 /* Starfield */,
-				447E1A8529D2B4E900086131 /* Stringy */,
-				448D6B652F05F0CA0050C47D /* VibeOrbit */,
-				441C35912F4BD943003F0FBE /* VibeSolarSystem */,
-				441C35AC2F4BDDA7003F0FBE /* VibeSpheres */,
-				448D6B3A2F05038A0050C47D /* VibeToroid */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -478,6 +497,7 @@
 		441C35912F4BD943003F0FBE /* VibeSolarSystem */ = {
 			isa = PBXGroup;
 			children = (
+				FA0037CFC826C37ABA70B06D /* VibeSolarSystemView.m */,
 				441C35902F4BD943003F0FBE /* index.html */,
 			);
 			path = VibeSolarSystem;
@@ -486,6 +506,7 @@
 		441C35AC2F4BDDA7003F0FBE /* VibeSpheres */ = {
 			isa = PBXGroup;
 			children = (
+				B736CB9609A0CE87E8DF2319 /* VibeSpheresView.m */,
 				441C35AB2F4BDDA7003F0FBE /* index.html */,
 			);
 			path = VibeSpheres;
@@ -494,6 +515,7 @@
 		44231EB729DC0A17009FFAF9 /* MatrixGrid */ = {
 			isa = PBXGroup;
 			children = (
+				7F7F3394F9B778046E7C8A6B /* MatrixGridView.m */,
 				44231EB829DC0A17009FFAF9 /* index.html */,
 				44231EB929DC0A17009FFAF9 /* matrix.css */,
 				44231EBA29DC0A17009FFAF9 /* matrix.js */,
@@ -504,6 +526,7 @@
 		447E1A6429D2B34F00086131 /* Matrix */ = {
 			isa = PBXGroup;
 			children = (
+				0ACF937D99436ED4746142E7 /* MatrixView.m */,
 				447E1A6529D2B34F00086131 /* index.html */,
 				447E1A6629D2B34F00086131 /* matrix.css */,
 				447E1A6729D2B34F00086131 /* matrix.js */,
@@ -514,6 +537,7 @@
 		447E1A8529D2B4E900086131 /* Stringy */ = {
 			isa = PBXGroup;
 			children = (
+				05ABFA77BE2E123A4FEDB9EE /* StringyView.m */,
 				447E1A8729D2B4E900086131 /* index.html */,
 				447E1A8629D2B4E900086131 /* stringy.css */,
 				447E1A8829D2B4E900086131 /* stringy.js */,
@@ -524,6 +548,7 @@
 		447E1AA929D2BBD000086131 /* Starfield */ = {
 			isa = PBXGroup;
 			children = (
+				C57D05604D7D0D21E7FB3197 /* StarfieldView.m */,
 				447E1AAA29D2BBD000086131 /* index.html */,
 				447E1AAB29D2BBD000086131 /* starfield.css */,
 				447E1AAC29D2BBD000086131 /* starfield.js */,
@@ -534,6 +559,7 @@
 		447E1ADC29D2C11600086131 /* Matrix3D */ = {
 			isa = PBXGroup;
 			children = (
+				0CAF216EF9DAB092B0C77CF1 /* Matrix3DView.m */,
 				447E1ADE29D2C11600086131 /* index.html */,
 				447E1ADD29D2C11600086131 /* matrix3d.css */,
 				447E1C6829D2C11700086131 /* matrix3d.js */,
@@ -542,20 +568,22 @@
 			path = Matrix3D;
 			sourceTree = "<group>";
 		};
-		448D6B3A2F05038A0050C47D /* VibeToroid */ = {
-			isa = PBXGroup;
-			children = (
-				448D6B392F05038A0050C47D /* index.html */,
-			);
-			path = VibeToroid;
-			sourceTree = "<group>";
-		};
 		448D6B652F05F0CA0050C47D /* VibeOrbit */ = {
 			isa = PBXGroup;
 			children = (
+				22225719EEF632E0DA2DC780 /* VibeOrbitView.m */,
 				448D6B642F05F0CA0050C47D /* index.html */,
 			);
 			path = VibeOrbit;
+			sourceTree = "<group>";
+		};
+		44A2736930361B330071F959 /* VibeToroid */ = {
+			isa = PBXGroup;
+			children = (
+				6058E333FC9DBAFB3C499C60 /* VibeToroidView.m */,
+				448D6B392F05038A0050C47D /* index.html */,
+			);
+			path = VibeToroid;
 			sourceTree = "<group>";
 		};
 		863E1E560FCBAA150013CEA7 /* Documents */ = {
@@ -1063,6 +1091,7 @@
 			files = (
 				441C35822F4BD888003F0FBE /* WebSaverView.m in Sources */,
 				441C35832F4BD888003F0FBE /* WKWebViewPrivate.m in Sources */,
+				B04B02AD0269A5EBC11112E5 /* VibeSolarSystemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1101,7 @@
 			files = (
 				441C359D2F4BDD45003F0FBE /* WebSaverView.m in Sources */,
 				441C359E2F4BDD45003F0FBE /* WKWebViewPrivate.m in Sources */,
+				2C8259E79421558197448881 /* VibeSpheresView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,6 +1111,8 @@
 			files = (
 				44231EAA29DC0978009FFAF9 /* WebSaverView.m in Sources */,
 				5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				F698BF13C29864D11E114214 /* MatrixGridView.m in Sources */,
+				957E8AB4550AAC0CD4FB2709 /* MatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1122,7 @@
 			files = (
 				447E1A7629D2B3CF00086131 /* WebSaverView.m in Sources */,
 				5046BA102BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				DBC1A2A3BD29338F8A198CD3 /* StringyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1132,7 @@
 			files = (
 				447E1A9A29D2BB1700086131 /* WebSaverView.m in Sources */,
 				5046BA0F2BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				053571DF3BF47842D4845291 /* StarfieldView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,6 +1142,7 @@
 			files = (
 				447E1ACF29D2C0E600086131 /* WebSaverView.m in Sources */,
 				5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				587863A2499B8A272202C1DC /* Matrix3DView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1152,7 @@
 			files = (
 				448D6B2B2F05030B0050C47D /* WebSaverView.m in Sources */,
 				448D6B2C2F05030B0050C47D /* WKWebViewPrivate.m in Sources */,
+				AF04AADC5830CE0671708033 /* VibeToroidView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1162,7 @@
 			files = (
 				448D6B562F05F0880050C47D /* WebSaverView.m in Sources */,
 				448D6B572F05F0880050C47D /* WKWebViewPrivate.m in Sources */,
+				677E3CB977C95A9D99B1BBCE /* VibeOrbitView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1135,6 +1172,7 @@
 			files = (
 				8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */,
 				5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */,
+				5970F1BF4BE56AF6635A56C6 /* MatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,6 +1223,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSolarSystemView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1206,6 +1245,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSolarSystemView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1227,6 +1267,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSpheresView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1248,6 +1289,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSpheresView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1269,6 +1311,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = MatrixGridView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1290,6 +1333,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = MatrixGridView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1311,6 +1355,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StringyView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1332,6 +1377,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StringyView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1354,6 +1400,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StarfieldView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1376,6 +1423,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StarfieldView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1397,6 +1445,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = Matrix3DView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1418,6 +1467,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = Matrix3DView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1439,6 +1489,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeToroidView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1460,6 +1511,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeToroidView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1481,6 +1533,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeOrbitView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1502,6 +1555,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeOrbitView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1523,6 +1577,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
 				PRODUCT_NAME = Matrix;
+				WEBSAVER_CLASS = MatrixView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1544,6 +1599,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
 				PRODUCT_NAME = Matrix;
+				WEBSAVER_CLASS = MatrixView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
