@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D6771DE72BCFB50C4C02A10 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3513EF680691918BAE3F59F /* ScreenSaver.framework */; };
+		24204640149E593AE77358CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EF22D5245EC526118ACA1C /* Cocoa.framework */; };
 		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
 		441C357A2F4BD888003F0FBE /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		441C357B2F4BD888003F0FBE /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
@@ -120,12 +122,19 @@
 		5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		5E2C212946B4AE0CBB8CFA06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BF33C56D5CD368E1A82D0E /* Foundation.framework */; };
+		634090D7C6BA61B05E62E65A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190E882A8B93C0B0A878CE43 /* AppKit.framework */; };
 		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
 		8D255ACC0486D3F9007BF209 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
 		8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
+		8E721B94D54E3335B71B5F6B /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		BA8B46C754AF41B0C498358B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D5FB68FB410EC1FAE27B2B8 /* index.html */; };
+		D85FA557F2BDDB69B0AA5E0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3535A65C2CFFB73CF24F694 /* WebKit.framework */; };
+		DA06A6A88C8E0BE807824A24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDCE55FAECECE6D40205516 /* Cocoa.framework */; };
+		E3531B1FA6DB7A7B8C25CD32 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -235,7 +244,9 @@
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		190E882A8B93C0B0A878CE43 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppKit.framework; sourceTree = SDKROOT; };
 		289EE80009F47CE000C096EC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		2D5FB68FB410EC1FAE27B2B8 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; path = index.html; sourceTree = "<group>"; };
 		32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaver_Prefix.pch; sourceTree = "<group>"; };
 		440CBCD12F4D1ECF001A9834 /* Starfield.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Starfield.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		440CBCD22F4D1ECF001A9834 /* Stringy.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Stringy.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +284,13 @@
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = HermesBoard.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BDCE55FAECECE6D40205516 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cocoa.framework; sourceTree = SDKROOT; };
+		A3513EF680691918BAE3F59F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScreenSaver.framework; sourceTree = SDKROOT; };
+		A3EF22D5245EC526118ACA1C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		C9DF00BA1B51A90B00417BE0 /* HermesBoard.saver */ = {isa = PBXFileReference; includeInIndex = 1; path = HermesBoard.saver; sourceTree = "<group>"; };
+		D8BF33C56D5CD368E1A82D0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Foundation.framework; sourceTree = SDKROOT; };
+		E3535A65C2CFFB73CF24F694 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = SDKROOT; };
 		F50079790118B23001CA0E54 /* WebSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaverView.h; sourceTree = "<group>"; };
 		F500797A0118B23001CA0E54 /* WebSaverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSaverView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -377,10 +395,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A6447BFCEB0B1BEBDC7F189F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24204640149E593AE77358CE /* Cocoa.framework in Frameworks */,
+				DA06A6A88C8E0BE807824A24 /* Cocoa.framework in Frameworks */,
+				D85FA557F2BDDB69B0AA5E0A /* WebKit.framework in Frameworks */,
+				1D6771DE72BCFB50C4C02A10 /* ScreenSaver.framework in Frameworks */,
+				5E2C212946B4AE0CBB8CFA06 /* Foundation.framework in Frameworks */,
+				634090D7C6BA61B05E62E65A /* AppKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* WebSaver */ = {
+		089C166AFE841209C02AAC07 = {
 			isa = PBXGroup;
 			children = (
 				863E1E560FCBAA150013CEA7 /* Documents */,
@@ -389,6 +420,7 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
+				A35CD280FE03AE53E07FD18D /* Frameworks */,
 			);
 			name = WebSaver;
 			sourceTree = "<group>";
@@ -416,6 +448,7 @@
 				441C35912F4BD943003F0FBE /* VibeSolarSystem */,
 				441C35AC2F4BDDA7003F0FBE /* VibeSpheres */,
 				448D6B3A2F05038A0050C47D /* VibeToroid */,
+				14FBC897EECBC58832BFE293 /* HermesBoard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -451,6 +484,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		14FBC897EECBC58832BFE293 /* HermesBoard */ = {
+			isa = PBXGroup;
+			children = (
+				2D5FB68FB410EC1FAE27B2B8 /* index.html */,
+			);
+			name = HermesBoard;
+			path = HermesBoard;
+			sourceTree = "<group>";
+		};
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +505,8 @@
 				440CBCD72F4D1ECF001A9834 /* VibeOrbit.saver */,
 				440CBCD82F4D1ECF001A9834 /* VibeSolarSystem.saver */,
 				440CBCD92F4D1ECF001A9834 /* VibeSpheres.saver */,
+				9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */,
+				C9DF00BA1B51A90B00417BE0 /* HermesBoard.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -567,6 +611,27 @@
 			name = Documents;
 			sourceTree = "<group>";
 		};
+		9C0D19C1FA3A362CB3F71987 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				A3EF22D5245EC526118ACA1C /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		A35CD280FE03AE53E07FD18D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C0D19C1FA3A362CB3F71987 /* OS X */,
+				9BDCE55FAECECE6D40205516 /* Cocoa.framework */,
+				E3535A65C2CFFB73CF24F694 /* WebKit.framework */,
+				A3513EF680691918BAE3F59F /* ScreenSaver.framework */,
+				D8BF33C56D5CD368E1A82D0E /* Foundation.framework */,
+				190E882A8B93C0B0A878CE43 /* AppKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -647,6 +712,13 @@
 				448D6B4D2F05F0880050C47D /* WebSaver_Prefix.pch in Headers */,
 				448D6B4E2F05F0880050C47D /* WKWebViewPrivate.h in Headers */,
 				448D6B4F2F05F0880050C47D /* WebSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56B42E3FFBBFDB2DB95446C5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +903,24 @@
 			productReference = 440CBCD72F4D1ECF001A9834 /* VibeOrbit.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
+		8A2BB21381BC9E8B6A493D60 /* HermesBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EB810838F3D80A23F7B5BB7 /* Build configuration list for PBXNativeTarget "HermesBoard" */;
+			buildPhases = (
+				6DA2C317B9D60F40D402268F /* Sources */,
+				A6447BFCEB0B1BEBDC7F189F /* Frameworks */,
+				A4004E2B8AA57E8B0C30C666 /* Resources */,
+				56B42E3FFBBFDB2DB95446C5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HermesBoard;
+			productName = HermesBoard;
+			productReference = 9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8D255AC50486D3F9007BF209 /* Matrix */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "Matrix" */;
@@ -869,7 +959,8 @@
 				en,
 				Base,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* WebSaver */;
+			mainGroup = 089C166AFE841209C02AAC07;
+			productRefGroup = 19C28FB8FE9D52D311CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -882,6 +973,7 @@
 				448D6B4B2F05F0880050C47D /* VibeOrbit */,
 				441C35782F4BD888003F0FBE /* VibeSolarSystem */,
 				441C35932F4BDD45003F0FBE /* VibeSpheres */,
+				8A2BB21381BC9E8B6A493D60 /* HermesBoard */,
 			);
 		};
 /* End PBXProject section */
@@ -985,6 +1077,14 @@
 				44231EBE29DC0B9F009FFAF9 /* matrix.js in Resources */,
 				44231EC029DC0BA6009FFAF9 /* matrix.css in Resources */,
 				447E1AB729D2BEE700086131 /* License.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4004E2B8AA57E8B0C30C666 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA8B46C754AF41B0C498358B /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,6 +1229,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DA2C317B9D60F40D402268F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E721B94D54E3335B71B5F6B /* WKWebViewPrivate.m in Sources */,
+				E3531B1FA6DB7A7B8C25CD32 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D255ACB0486D3F9007BF209 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1168,6 +1277,31 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		39DC94F96F77F2AB8FC67228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=HermesBoardView";
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Marlin/src,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HermesBoard;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.HermesBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = Marlin/src;
+				WEBSAVER_CLASS = HermesBoardView;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
 		441C358C2F4BD888003F0FBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1180,13 +1314,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Solar System Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
-				WEBSAVER_CLASS = VibeSolarSystemView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSolarSystemView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1203,13 +1337,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Solar System Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
-				WEBSAVER_CLASS = VibeSolarSystemView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSolarSystemView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1226,13 +1360,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Spheres Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
-				WEBSAVER_CLASS = VibeSpheresView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSpheresView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1249,13 +1383,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Spheres Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
-				WEBSAVER_CLASS = VibeSpheresView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeSpheresView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1272,13 +1406,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix Grid";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
-				WEBSAVER_CLASS = MatrixGridView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = MatrixGridView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1295,13 +1429,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix Grid";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
-				WEBSAVER_CLASS = MatrixGridView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = MatrixGridView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1318,13 +1452,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stringy;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
-				WEBSAVER_CLASS = StringyView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StringyView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1341,13 +1475,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stringy;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
-				WEBSAVER_CLASS = StringyView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StringyView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1365,13 +1499,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Starfield;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
-				WEBSAVER_CLASS = StarfieldView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StarfieldView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1389,13 +1523,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Starfield;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
-				WEBSAVER_CLASS = StarfieldView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = StarfieldView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1412,13 +1546,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix 3D";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
-				WEBSAVER_CLASS = Matrix3DView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = Matrix3DView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1435,13 +1569,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix 3D";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
-				WEBSAVER_CLASS = Matrix3DView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = Matrix3DView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1458,13 +1592,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Toroid Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
-				WEBSAVER_CLASS = VibeToroidView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeToroidView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1481,13 +1615,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Toroid Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
-				WEBSAVER_CLASS = VibeToroidView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeToroidView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1504,13 +1638,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Orbital Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
-				WEBSAVER_CLASS = VibeOrbitView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeOrbitView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1527,13 +1661,38 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Orbital Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
-				WEBSAVER_CLASS = VibeOrbitView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEBSAVER_CLASS = VibeOrbitView;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		9A15669B8F1CB23FC11D2962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=HermesBoardView";
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Marlin/src,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HermesBoard;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.HermesBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = Marlin/src;
+				WEBSAVER_CLASS = HermesBoardView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1550,13 +1709,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Matrix;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
-				WEBSAVER_CLASS = MatrixView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = Matrix;
+				WEBSAVER_CLASS = MatrixView;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
 			};
@@ -1573,13 +1732,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Matrix;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
-				WEBSAVER_CLASS = MatrixView;
-				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = Matrix;
+				WEBSAVER_CLASS = MatrixView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -1664,6 +1823,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0EB810838F3D80A23F7B5BB7 /* Build configuration list for PBXNativeTarget "HermesBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A15669B8F1CB23FC11D2962 /* Release */,
+				39DC94F96F77F2AB8FC67228 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		441C358B2F4BD888003F0FBE /* Build configuration list for PBXNativeTarget "VibeSolarSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
