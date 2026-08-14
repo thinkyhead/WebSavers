@@ -24,6 +24,24 @@ const opts = {
   fadetime    : 3       , // (s) Duration of the fade animation
 };
 
+// Merge URL query parameters into opts so the view can be configured
+(function applyURLParams() {
+  const params = new URLSearchParams(window.location.search);
+  for (const key of Object.keys(opts)) {
+    if (!params.has(key)) continue;
+    const val = params.get(key);
+    switch (typeof opts[key]) {
+      case 'boolean':
+        opts[key] = /^(1|true|yes|on)$/i.test(val);
+        break;
+      case 'number':
+        const num = parseFloat(val);
+        if (!isNaN(num)) opts[key] = num;
+        break;
+    }
+  }
+})();
+
 function get_colors(t) {
   switch (t) {
     default: return { drop:"#FFF", tail:"#0F0", fill:"#000" };    // Green
@@ -32,47 +50,49 @@ function get_colors(t) {
     case 3:  return { drop:"#FF0", tail:"#CCD", fill:"#4A4ABE" }; // Atari
   }
 }
-const colors = get_colors(opts.theme), dotail = colors.drop != colors.tail;
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-      atascii = "",
-      atasciis = opts.theme == 3 ? atascii : '',
-      puncts = opts.punctuation ? '!@#$%^&*-+{}[]|\\/<>?:;\'"|' : '',
-      alphas = opts.alpha ? alphabet : '',
-      alphanum = { chr:alphabet + puncts + atasciis, size:22, xgap:2, ygap:2, flop:2 },
-      chinese = { chr:"田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑", size:24, xgap:4, ygap:4, flop:2 },
-      katakana = { chr:alphas + puncts + "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ", size:24, xgap:2, ygap:2, flop:2 },
-      katakana2 = { chr:alphas + puncts + "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン", size:22, xgap:6, ygap:4, flop:2 },
-      set = opts.theme == 3 ? alphanum : katakana2,
-      chars = set.chr;
+      atascii = "";
 
 // Globals for window size
 const w = window.innerWidth, h = window.innerHeight;
 
-// Get fontsize from the set or based on columns
-const fontsize = opts.fixed_col ? w / opts.fixed_col : set.size;
+// Dynamic values that update with opts
+let colors, chars, set, colsize, cols, rowsize, rows, coffs, roffs,
+    minfps, maxfps, cels, drops, updateTimer;
 
-// Column size and number of columns
-const colsize = fontsize + set.xgap, cols = Math.floor(w / colsize),
-      rowsize = fontsize + set.ygap, rows = Math.ceil(h / rowsize),
-      coffs = Math.floor((w - cols * colsize) / 2),
-      roffs = -set.ygap / 2;
+function getChars() {
+  const atasciis = opts.theme == 3 ? atascii : '';
+  const puncts = opts.punctuation ? '!@#$%^&*-+{}[]|\\/<>?:;\'"|' : '';
+  const alphas = opts.alpha ? alphabet : '';
+  const alphanum = { chr:alphabet + puncts + atasciis, size:22, xgap:2, ygap:2, flop:2 };
+  const katakana = { chr:alphas + puncts + "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ", size:24, xgap:2, ygap:2, flop:2 };
+  const katakana2 = { chr:alphas + puncts + "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン", size:22, xgap:6, ygap:4, flop:2 };
+  set = opts.theme == 3 ? alphanum : katakana2;
+  chars = set.chr;
+  colsize = set.size + set.xgap;
+  cols = Math.floor(w / colsize);
+  rowsize = set.size + set.ygap;
+  rows = Math.ceil(h / rowsize);
+  coffs = Math.floor((w - cols * colsize) / 2);
+  roffs = -set.ygap / 2;
+  minfps = Math.floor(opts.fps * opts.minspeed);
+  maxfps = Math.max(minfps, Math.floor(opts.fps * opts.maxspeed));
+}
 
-// Create character cels within the container
 function init_matrix() {
   const frag = document.createDocumentFragment();
   const bkgd = document.getElementById('cels');
-  if (opts.theme == 3) bkgd.setAttribute('class', 'atari');
+  if (opts.theme == 3) bkgd.setAttribute('class', 'atari'); else bkgd.removeAttribute('class');
   const docstyle = document.documentElement.style;
   docstyle.setProperty('--cel-fade-time', `${opts.fadetime}s`);
-  docstyle.setProperty('--cel-font-size', `${fontsize}px`);
+  docstyle.setProperty('--cel-font-size', `${set.size}px`);
   docstyle.setProperty('--cel-width', `${colsize}px`);
   docstyle.setProperty('--cel-height', `${rowsize}px`);
   bkgd.style.background = colors.fill;
 
   function new_cel(d, x, y) {
     const cel = document.createElement('div');
-    //cel.style = `left:${x}px; top:${y}px;`;
     cel.style.left = `${x}px`;
     cel.style.top = `${y}px`;
 
@@ -83,8 +103,6 @@ function init_matrix() {
 
     cel.start = () => {
       cel.style.display = 'none';
-      // Use a timeout so the js loop gets called beforehand
-      // and has a chance to see that the style display became 'none'
       setTimeout(() => {
         if (cel.timer) clearTimeout(cel.timer);
         cel.rand();
@@ -98,38 +116,32 @@ function init_matrix() {
     return cel;
   }
 
-  let cels = Array(cols);
+  let celsArray = Array(cols);
   let x = coffs;
   for (let c = 0; c < cols; c++) {
-    cels[c] = Array(rows);
+    celsArray[c] = Array(rows);
     var y = roffs;
     for (let r = 0; r < rows; r++) {
-      cels[c][r] = new_cel(frag, x, y);
+      celsArray[c][r] = new_cel(frag, x, y);
       y += rowsize;
     }
     x += colsize;
   }
 
   bkgd.appendChild(frag);
-
-  return cels;
+  return celsArray;
 }
 
 // Draw or hide the overlay
 function init_overlay(ov, w, h, fill) {
   if (!ov) return;
-
   const o = document.getElementById("overlay");
   o.setAttribute('style', 'display: block;');
-
   const ctx = o.getContext("2d");
-
   o.width = w; o.height = h;
   ctx.clearRect(0, 0, w, h);
-
   ctx.globalAlpha = opts.oalpha ? opts.oalpha : (ov == 1 ? 0.8 : 0.6);
   ctx.linewidth = 1;
-  ctx.strokeStyle = `rgb(${fill})`;
   ctx.strokeStyle = '#000';
   switch (ov) {
     case 3: // Diagonal lines
@@ -160,21 +172,13 @@ function init_overlay(ov, w, h, fill) {
   }
 }
 
-init_overlay(opts.overlay, w, h, colors.fill);
-const cels = init_matrix();
-
 // Init a new or existing drop
-const minfps = Math.floor(opts.fps * opts.minspeed), maxfps = Math.max(minfps, Math.floor(opts.fps * opts.maxspeed));
 function initdrop(drop) {
   drop.y = -rndint(rows * opts.respawn) - 5;
   drop.int = minfps + rndint(maxfps - minfps);
   drop.cnt = 0;
   return drop;
 }
-
-// Create an array of drops, one per column
-var drops = [];
-for (var x = 0; x < cols; x++) drops.push(initdrop({}));
 
 // Randomly change some characters
 function random_change() {
@@ -198,7 +202,7 @@ function update() {
     drop.cnt += opts.fps;
     const y = ++drop.y;
     if (y < 0) continue;
-    if (dotail && y > 0) cels[i][y-1].style.color = colors.tail;
+    if (y > 0) cels[i][y-1].style.color = colors.tail;
     if (y >= rows)
       initdrop(drops[i]);
     else
@@ -206,4 +210,36 @@ function update() {
   }
 }
 
-setInterval(update, 1000 / opts.fps);
+function init() {
+  // Clear any existing timer
+  if (updateTimer) clearInterval(updateTimer);
+  updateTimer = null;
+  // Clear existing cels
+  const celsDiv = document.getElementById('cels');
+  if (celsDiv) celsDiv.innerHTML = '';
+  // Clear existing overlay
+  const overlay = document.getElementById("overlay");
+  if (overlay) overlay.setAttribute('style', 'display: none;');
+
+  colors = get_colors(opts.theme);
+  getChars();
+
+  init_overlay(opts.overlay, w, h, colors.fill);
+  cels = init_matrix();
+
+  drops = [];
+  for (var x = 0; x < cols; x++) drops.push(initdrop({}));
+
+  updateTimer = setInterval(update, 1000 / opts.fps);
+}
+
+// Apply settings injected by the config sheet (called after page load)
+window.applySettings = function(settings) {
+  for (const key of Object.keys(settings)) {
+    if (key in opts) opts[key] = settings[key];
+  }
+  init();
+};
+
+// Start the animation
+init();

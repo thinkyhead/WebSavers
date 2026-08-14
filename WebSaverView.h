@@ -31,8 +31,29 @@
   #define WEBSAVER_CLASS WebSaverView
 #endif
 
-@interface WEBSAVER_CLASS : ScreenSaverView 
+@interface WEBSAVER_CLASS : ScreenSaverView <WKNavigationDelegate>
 {
     WKWebView *webView;
+    NSWindow *configSheet;
+    NSPopUpButton *themePopup;
+    NSButton *alphaCheckbox;
+    NSButton *punctuationCheckbox;
+    NSPopUpButton *overlayPopup;
+    NSButton *flipCheckbox;
+    NSSlider *changeSlider;
+    NSTextField *changeLabel;
+    NSSlider *fpsSlider;
+    NSTextField *fpsLabel;
+    NSSlider *minSpeedSlider;
+    NSTextField *minSpeedLabel;
+    NSSlider *maxSpeedSlider;
+    NSTextField *maxSpeedLabel;
+    NSSlider *fadeSlider;
+    NSTextField *fadeLabel;
 }
+
+- (IBAction)configCancel:(id)sender;
+- (IBAction)configOK:(id)sender;
+- (IBAction)sliderChanged:(id)sender;
+
 @end
