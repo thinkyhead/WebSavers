@@ -566,7 +566,14 @@
 }
 
 - (ScreenSaverDefaults*)defaults {
-    NSString *module = [NSString stringWithFormat:@"com.thinkyhead.saver.%@", NSStringFromClass([self class])];
+    // Key settings per-display so each screen has independent settings
+    // Get the display ID from the screen containing this view's window
+    CGDirectDisplayID displayID = 0;
+    NSScreen *screen = [[self window] screen];
+    if (screen) {
+        displayID = [[[screen deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
+    }
+    NSString *module = [NSString stringWithFormat:@"com.thinkyhead.saver.%@.%u", NSStringFromClass([self class]), displayID];
     return [ScreenSaverDefaults defaultsForModuleWithName:module];
 }
 
