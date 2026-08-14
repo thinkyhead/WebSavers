@@ -1184,6 +1184,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Solar System Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
+				WEBSAVER_CLASS = VibeSolarSystemView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1205,6 +1207,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Solar System Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSolarSystem;
+				WEBSAVER_CLASS = VibeSolarSystemView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1226,6 +1230,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Spheres Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
+				WEBSAVER_CLASS = VibeSpheresView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1247,6 +1253,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Spheres Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeSpheres;
+				WEBSAVER_CLASS = VibeSpheresView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1268,6 +1276,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix Grid";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
+				WEBSAVER_CLASS = MatrixGridView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1289,6 +1299,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix Grid";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.MatrixGrid;
+				WEBSAVER_CLASS = MatrixGridView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1310,6 +1322,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Stringy;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
+				WEBSAVER_CLASS = StringyView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1331,6 +1345,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Stringy;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Stringy;
+				WEBSAVER_CLASS = StringyView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1353,6 +1369,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Starfield;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
+				WEBSAVER_CLASS = StarfieldView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1375,6 +1393,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Starfield;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Starfield;
+				WEBSAVER_CLASS = StarfieldView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1396,6 +1416,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix 3D";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
+				WEBSAVER_CLASS = Matrix3DView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1417,6 +1439,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Matrix 3D";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix3D;
+				WEBSAVER_CLASS = Matrix3DView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1438,6 +1462,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Toroid Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				WEBSAVER_CLASS = VibeToroidView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1459,6 +1485,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Toroid Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeToroid;
+				WEBSAVER_CLASS = VibeToroidView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1480,6 +1508,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Orbital Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
+				WEBSAVER_CLASS = VibeOrbitView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1501,6 +1531,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Orbital Vibe";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.VibeOrbit;
+				WEBSAVER_CLASS = VibeOrbitView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -1522,6 +1554,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Matrix;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				WEBSAVER_CLASS = MatrixView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = Matrix;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -1543,6 +1577,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Matrix;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.Matrix;
+				WEBSAVER_CLASS = MatrixView;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=$(WEBSAVER_CLASS)";
 				PRODUCT_NAME = Matrix;
 				WRAPPER_EXTENSION = saver;
 			};

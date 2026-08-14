@@ -22,7 +22,16 @@
 #import <ScreenSaver/ScreenSaver.h>
 #import <WebKit/WebKit.h>
 
-@interface WebSaverView : ScreenSaverView 
+// Each saver target compiles this view under its own class name via the
+// WEBSAVER_CLASS build setting (e.g. MatrixView, StarfieldView). Giving every
+// bundle a distinct principal class prevents Objective-C class shadowing when
+// ScreenSaverEngine loads multiple saver bundles into the same process, which
+// otherwise causes the wrong saver to be instantiated on selection.
+#ifndef WEBSAVER_CLASS
+  #define WEBSAVER_CLASS WebSaverView
+#endif
+
+@interface WEBSAVER_CLASS : ScreenSaverView 
 {
     WKWebView *webView;
 }

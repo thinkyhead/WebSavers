@@ -25,7 +25,7 @@
 #import "WebSaverView.h"
 #import "WKWebViewPrivate.h"
 
-@implementation WebSaverView
+@implementation WEBSAVER_CLASS
 
 - (void)webView:(WKWebView *)sender didStartProvisionalLoadForFrame:(WKWebView *)frame {
 	DebugLog(@"webView:didStartProvisionalLoadForFrame: %@", frame);
