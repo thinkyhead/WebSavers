@@ -120,11 +120,9 @@
 #pragma mark - Config Sheet
 
 - (BOOL)hasConfigureSheet {
-    // All savers except the Vibe series expose options
-    NSString *cls = NSStringFromClass([self class]);
-    BOOL result = ![cls hasPrefix:@"Vibe"];
-    MGLog(@"hasConfigureSheet returning %@ for class:%@", result ? @"YES" : @"NO", cls);
-    return result;
+    // All savers expose options
+    MGLog(@"hasConfigureSheet returning YES for class:%@", NSStringFromClass([self class]));
+    return YES;
 }
 
 - (NSWindow*)configureSheet {
@@ -146,12 +144,18 @@
     CGFloat width = 380, height = 440;
     if ([cls isEqualToString:@"StarfieldView"] || [cls isEqualToString:@"StringyView"]) height = 280;
     if ([cls isEqualToString:@"Matrix3DView"]) height = 320;
+    if ([cls isEqualToString:@"VibeToroidView"]) height = 320;
+    if ([cls isEqualToString:@"VibeOrbitView"]) height = 300;
+    if ([cls isEqualToString:@"VibeSpheresView"]) height = 320;
+    if ([cls isEqualToString:@"HermesBoardView"]) height = 200;
 
     configSheet = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height)
                                              styleMask:NSWindowStyleMaskTitled
                                                backing:NSBackingStoreBuffered
                                                  defer:NO];
-    [configSheet setTitle:[cls stringByReplacingOccurrencesOfString:@"View" withString:@""]];
+    NSString *title = [cls stringByReplacingOccurrencesOfString:@"View" withString:@""];
+    if (![cls isEqualToString:@"HermesBoardView"]) title = [title stringByAppendingString:@" Settings"];
+    [configSheet setTitle:title];
 
     NSView *content = [configSheet contentView];
     CGFloat y = height - 30;
@@ -311,6 +315,122 @@
         [content addSubview:overlayPopup];
         y -= 45;
     }
+    else if ([cls isEqualToString:@"VibeToroidView"]) {
+        // Shape
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Shape:" alignment:NSTextAlignmentRight]];
+        shapePopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(125, y - 3, 240, 25) pullsDown:NO];
+        [shapePopup addItemsWithTitles:@[@"Trefoil (2,3)", @"Cinquefoil (3,5)", @"Twisted (5,7)", @"Loose (2,5)", @"Complex (3,4)", @"Branching (4,7)", @"Loose (2,7)", @"Tight (5,9)", @"Turbine (3,7)"]];
+        [content addSubview:shapePopup];
+        y -= 35;
+
+        // Morph interval
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Morph every:" alignment:NSTextAlignmentRight]];
+        morphIntervalSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [morphIntervalSlider setMinValue:2]; [morphIntervalSlider setMaxValue:20]; [morphIntervalSlider setNumberOfTickMarks:19];
+        [morphIntervalSlider setTarget:self]; [morphIntervalSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:morphIntervalSlider];
+        morphIntervalLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:morphIntervalLabel];
+        y -= 32;
+
+        // Particle count
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Particles:" alignment:NSTextAlignmentRight]];
+        particleCountSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [particleCountSlider setMinValue:1000]; [particleCountSlider setMaxValue:10000]; [particleCountSlider setNumberOfTickMarks:10];
+        [particleCountSlider setTarget:self]; [particleCountSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:particleCountSlider];
+        particleCountLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:particleCountLabel];
+        y -= 32;
+
+        // Speed
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Speed:" alignment:NSTextAlignmentRight]];
+        speedSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [speedSlider setMinValue:1]; [speedSlider setMaxValue:20]; [speedSlider setNumberOfTickMarks:20];
+        [speedSlider setTarget:self]; [speedSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:speedSlider];
+        speedLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:speedLabel];
+        y -= 45;
+    }
+    else if ([cls isEqualToString:@"VibeOrbitView"]) {
+        // Sphere count
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Spheres:" alignment:NSTextAlignmentRight]];
+        countSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [countSlider setMinValue:50]; [countSlider setMaxValue:500]; [countSlider setNumberOfTickMarks:10];
+        [countSlider setTarget:self]; [countSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:countSlider];
+        countLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:countLabel];
+        y -= 32;
+
+        // Spread
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Spread:" alignment:NSTextAlignmentRight]];
+        spreadSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [spreadSlider setMinValue:5]; [spreadSlider setMaxValue:20]; [spreadSlider setNumberOfTickMarks:16];
+        [spreadSlider setTarget:self]; [spreadSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:spreadSlider];
+        spreadLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:spreadLabel];
+        y -= 32;
+
+        // Speed
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Speed:" alignment:NSTextAlignmentRight]];
+        speedSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [speedSlider setMinValue:1]; [speedSlider setMaxValue:20]; [speedSlider setNumberOfTickMarks:20];
+        [speedSlider setTarget:self]; [speedSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:speedSlider];
+        speedLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:speedLabel];
+        y -= 45;
+    }
+    else if ([cls isEqualToString:@"VibeSpheresView"]) {
+        // Sphere count
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Spheres:" alignment:NSTextAlignmentRight]];
+        countSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [countSlider setMinValue:50]; [countSlider setMaxValue:500]; [countSlider setNumberOfTickMarks:10];
+        [countSlider setTarget:self]; [countSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:countSlider];
+        countLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:countLabel];
+        y -= 32;
+
+        // Star count
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Stars:" alignment:NSTextAlignmentRight]];
+        starFieldSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [starFieldSlider setMinValue:500]; [starFieldSlider setMaxValue:8000]; [starFieldSlider setNumberOfTickMarks:16];
+        [starFieldSlider setTarget:self]; [starFieldSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:starFieldSlider];
+        starFieldLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:starFieldLabel];
+        y -= 32;
+
+        // Speed
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Speed:" alignment:NSTextAlignmentRight]];
+        speedSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [speedSlider setMinValue:1]; [speedSlider setMaxValue:20]; [speedSlider setNumberOfTickMarks:20];
+        [speedSlider setTarget:self]; [speedSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:speedSlider];
+        speedLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:speedLabel];
+        y -= 32;
+
+        // Color cycle
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Color cycle:" alignment:NSTextAlignmentRight]];
+        colorCycleSlider = [[NSSlider alloc] initWithFrame:NSMakeRect(125, y - 3, 160, 20)];
+        [colorCycleSlider setMinValue:1]; [colorCycleSlider setMaxValue:20]; [colorCycleSlider setNumberOfTickMarks:20];
+        [colorCycleSlider setTarget:self]; [colorCycleSlider setAction:@selector(sliderChanged:)];
+        [content addSubview:colorCycleSlider];
+        colorCycleLabel = [self valueLabelAt:NSMakeRect(290, y, 70, 20)];
+        [content addSubview:colorCycleLabel];
+        y -= 45;
+    }
+    else if ([cls isEqualToString:@"HermesBoardView"]) {
+        NSTextField *info = [self labelAt:NSMakeRect(10, y + 20, 360, 40) text:@"HermesBoard is driven by a Hermes skill.\nUse the hermes-board skill to push data." alignment:NSTextAlignmentCenter];
+        [info setFont:[NSFont systemFontOfSize:13]];
+        [info setTextColor:[NSColor secondaryLabelColor]];
+        [content addSubview:info];
+    }
 
     // OK button
     NSButton *okButton = [[NSButton alloc] initWithFrame:NSMakeRect(290, 10, 75, 28)];
@@ -371,6 +491,12 @@
     if (trailCountSlider) [trailCountLabel setStringValue:[NSString stringWithFormat:@"%ld", [trailCountSlider integerValue]]];
     if (trailLengthSlider) [trailLengthLabel setStringValue:[NSString stringWithFormat:@"%ld", [trailLengthSlider integerValue]]];
     if (fontSizeSlider) [fontSizeLabel setStringValue:[NSString stringWithFormat:@"%ld", [fontSizeSlider integerValue]]];
+    if (countSlider) [countLabel setStringValue:[NSString stringWithFormat:@"%ld", [countSlider integerValue]]];
+    if (spreadSlider) [spreadLabel setStringValue:[NSString stringWithFormat:@"%ld", [spreadSlider integerValue]]];
+    if (starFieldSlider) [starFieldLabel setStringValue:[NSString stringWithFormat:@"%ld", [starFieldSlider integerValue]]];
+    if (colorCycleSlider) [colorCycleLabel setStringValue:[NSString stringWithFormat:@"%.1f", [colorCycleSlider floatValue]]];
+    if (particleCountSlider) [particleCountLabel setStringValue:[NSString stringWithFormat:@"%ld", [particleCountSlider integerValue]]];
+    if (morphIntervalSlider) [morphIntervalLabel setStringValue:[NSString stringWithFormat:@"%ld s", [morphIntervalSlider integerValue]]];
 }
 
 - (void)loadDefaultsIntoSheet {
@@ -413,6 +539,26 @@
         [colorPopup selectItemAtIndex:[defaults integerForKey:@"color"]];
         [fontSizeSlider setIntegerValue:[defaults integerForKey:@"fontSize"]];
         [overlayPopup selectItemAtIndex:[defaults integerForKey:@"overlay"]];
+    }
+    else if ([cls isEqualToString:@"VibeToroidView"]) {
+        [defaults registerDefaults:@{@"shape":@0, @"particleCount":@5000, @"speed":@10, @"morphInterval":@8}];
+        [shapePopup selectItemAtIndex:[defaults integerForKey:@"shape"]];
+        [particleCountSlider setIntegerValue:[defaults integerForKey:@"particleCount"]];
+        [speedSlider setIntegerValue:[defaults integerForKey:@"speed"]];
+        [morphIntervalSlider setIntegerValue:[defaults integerForKey:@"morphInterval"]];
+    }
+    else if ([cls isEqualToString:@"VibeOrbitView"]) {
+        [defaults registerDefaults:@{@"count":@200, @"speed":@10, @"spread":@10}];
+        [countSlider setIntegerValue:[defaults integerForKey:@"count"]];
+        [speedSlider setIntegerValue:[defaults integerForKey:@"speed"]];
+        [spreadSlider setIntegerValue:[defaults integerForKey:@"spread"]];
+    }
+    else if ([cls isEqualToString:@"VibeSpheresView"]) {
+        [defaults registerDefaults:@{@"sphereCount":@200, @"starCount":@3000, @"speed":@5, @"colorCycle":@5}];
+        [countSlider setIntegerValue:[defaults integerForKey:@"sphereCount"]];
+        [starFieldSlider setIntegerValue:[defaults integerForKey:@"starCount"]];
+        [speedSlider setIntegerValue:[defaults integerForKey:@"speed"]];
+        [colorCycleSlider setIntegerValue:[defaults integerForKey:@"colorCycle"]];
     }
 
     [self updateValueLabels];
@@ -479,6 +625,29 @@
             [defaults integerForKey:@"fontSize"],
             [defaults integerForKey:@"overlay"]];
     }
+    else if ([cls isEqualToString:@"VibeToroidView"]) {
+        js = [NSString stringWithFormat:
+            @"if (window.applySettings) applySettings({shapeIndex:%ld, particles:%ld, speed:%ld, morphInterval:%ld});",
+            [defaults integerForKey:@"shape"],
+            [defaults integerForKey:@"particleCount"],
+            [defaults integerForKey:@"speed"],
+            [defaults integerForKey:@"morphInterval"]];
+    }
+    else if ([cls isEqualToString:@"VibeOrbitView"]) {
+        js = [NSString stringWithFormat:
+            @"if (window.applySettings) applySettings({count:%ld, speed:%ld, spread:%ld});",
+            [defaults integerForKey:@"count"],
+            [defaults integerForKey:@"speed"],
+            [defaults integerForKey:@"spread"]];
+    }
+    else if ([cls isEqualToString:@"VibeSpheresView"]) {
+        js = [NSString stringWithFormat:
+            @"if (window.applySettings) applySettings({sphereCount:%ld, starCount:%ld, speed:%ld, colorCycle:%ld});",
+            [defaults integerForKey:@"sphereCount"],
+            [defaults integerForKey:@"starCount"],
+            [defaults integerForKey:@"speed"],
+            [defaults integerForKey:@"colorCycle"]];
+    }
 
     if (js) {
         [webView evaluateJavaScript:js completionHandler:nil];
@@ -534,6 +703,23 @@
         [defaults setInteger:[fontSizeSlider integerValue] forKey:@"fontSize"];
         [defaults setInteger:[overlayPopup indexOfSelectedItem] forKey:@"overlay"];
     }
+    else if ([cls isEqualToString:@"VibeToroidView"]) {
+        [defaults setInteger:[shapePopup indexOfSelectedItem] forKey:@"shape"];
+        [defaults setInteger:[particleCountSlider integerValue] forKey:@"particleCount"];
+        [defaults setInteger:[speedSlider integerValue] forKey:@"speed"];
+        [defaults setInteger:[morphIntervalSlider integerValue] forKey:@"morphInterval"];
+    }
+    else if ([cls isEqualToString:@"VibeOrbitView"]) {
+        [defaults setInteger:[countSlider integerValue] forKey:@"count"];
+        [defaults setInteger:[speedSlider integerValue] forKey:@"speed"];
+        [defaults setInteger:[spreadSlider integerValue] forKey:@"spread"];
+    }
+    else if ([cls isEqualToString:@"VibeSpheresView"]) {
+        [defaults setInteger:[countSlider integerValue] forKey:@"sphereCount"];
+        [defaults setInteger:[starFieldSlider integerValue] forKey:@"starCount"];
+        [defaults setInteger:[speedSlider integerValue] forKey:@"speed"];
+        [defaults setInteger:[colorCycleSlider integerValue] forKey:@"colorCycle"];
+    }
 
     [defaults synchronize];
     [self loadIndexWithConfig:YES];
@@ -571,6 +757,19 @@
     colorPopup = nil;
     fontSizeSlider = nil;
     fontSizeLabel = nil;
+    countSlider = nil;
+    countLabel = nil;
+    spreadSlider = nil;
+    spreadLabel = nil;
+    starFieldSlider = nil;
+    starFieldLabel = nil;
+    colorCycleSlider = nil;
+    colorCycleLabel = nil;
+    shapePopup = nil;
+    particleCountSlider = nil;
+    particleCountLabel = nil;
+    morphIntervalSlider = nil;
+    morphIntervalLabel = nil;
 }
 
 - (void)dealloc {

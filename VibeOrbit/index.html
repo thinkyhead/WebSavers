@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
     <title>Orbital Glow</title>
-    <style>body{ margin: 0; overflow: hidden; background: #111; }</style>
+  <style>body{ margin: 0; overflow: hidden; background: #111; }</style>
   </head>
   <body>
     <script type="importmap">
@@ -27,24 +27,32 @@
       document.body.appendChild(renderer.domElement);
 
       /* ---- spheres ---- */
-      const count = 200;
+      let count = 200;
+      let cameraSpeed = 0.2;
+      let spread = 10;
+
       const geometry = new THREE.SphereGeometry(0.5, 16, 16);
       const materialBase = new THREE.MeshBasicMaterial({transparent:true, opacity:0.8, blending:THREE.AdditiveBlending});
       const spheres = [];
 
-      for (let i = 0; i < count; i++) {
-        const hue = Math.random() * 360;                   // Random hue
-        const color = new THREE.Color(`hsl(${hue}, 70%, 60%)`);
-        const mat = materialBase.clone(); mat.color = color;
-        const mesh = new THREE.Mesh(geometry, mat);
-        mesh.userData = {
-           phase: Math.random() * Math.PI *  2,            // Random starting phase
-           offsetX: (Math.random() - 0.5) * 20,            // Spread in X
-           offsetZ: (Math.random() - 0.5) * 20,            // Spread in Z
-        };
-        scene.add(mesh);
-        spheres.push(mesh);
+      function buildSpheres() {
+        spheres.forEach(s => scene.remove(s));
+        spheres.length = 0;
+        for (let i = 0; i < count; i++) {
+          const hue = Math.random() * 360;
+          const color = new THREE.Color(`hsl(${hue}, 70%, 60%)`);
+          const mat = materialBase.clone(); mat.color = color;
+          const mesh = new THREE.Mesh(geometry, mat);
+          mesh.userData = {
+             phase: Math.random() * Math.PI * 2,
+             offsetX: (Math.random() - 0.5) * 20,
+             offsetZ: (Math.random() - 0.5) * 20,
+          };
+          scene.add(mesh);
+          spheres.push(mesh);
+        }
       }
+      buildSpheres();
 
       // animation
       let time = Math.random() * 10000;
@@ -52,24 +60,35 @@
         time += 0.01;
         const radius = 15;
 
-        // rotate camera around origin
-        camera.position.x = Math.cos(time * 0.2) * radius;
-        camera.position.z = Math.sin(time * 0.2) * radius;
+        camera.position.x = Math.cos(time * cameraSpeed) * radius;
+        camera.position.z = Math.sin(time * cameraSpeed) * radius;
         camera.lookAt(0,0,0);
 
         spheres.forEach((s,i) => {
           const t = time + s.userData.phase;
-          s.position.x = Math.sin(t) * 10 + (i % 10) * 1.5;
+          s.position.x = Math.sin(t) * spread + (i % 10) * 1.5;
           s.position.y = Math.cos(t * 0.5) * 5;
-          s.position.z = Math.sin(t * 0.3) * 10;
+          s.position.z = Math.sin(t * 0.3) * spread;
           s.scale.setScalar(1 + 0.5 * Math.sin(t * 3));
         });
 
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
       }
-
       animate();
+
+      window.applySettings = function(settings) {
+        if (settings.count !== undefined) {
+          count = Math.max(50, Math.min(500, settings.count | 0));
+          buildSpheres();
+        }
+        if (settings.speed !== undefined) {
+          cameraSpeed = (settings.speed / 10) * 0.4;
+        }
+        if (settings.spread !== undefined) {
+          spread = Math.max(5, Math.min(20, settings.spread | 0));
+        }
+      };
 
     </script>
   </body>

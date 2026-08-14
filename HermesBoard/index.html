@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HermesBoard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    overflow: hidden;
+    background: #0a0a0f;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+    color: #e0e0e0;
+  }
+
+  /* Animated background grid */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,100,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,100,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridscroll 20s linear infinite;
+  }
+  @keyframes gridscroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+
+  /* Glow overlay */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(0,200,80,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Dashboard layout */
+  #dashboard {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+  }
+
+  .panel {
+    background: rgba(15, 20, 15, 0.85);
+    border: 1px solid rgba(0, 255, 100, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow:
+      0 0 20px rgba(0, 255, 100, 0.05),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    transition: border-color 0.3s;
+  }
+  .panel:hover { border-color: rgba(0, 255, 100, 0.3); }
+
+  .panel-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(0, 255, 100, 0.7);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .panel-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #0f0;
+    box-shadow: 0 0 8px #0f0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Clock panel */
+  .clock-panel {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 12px 20px;
+  }
+  .clock-time {
+    font-size: 48px;
+    font-weight: 200;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(0,255,100,0.3);
+  }
+  .clock-date {
+    font-size: 14px;
+    color: rgba(0,255,100,0.5);
+    letter-spacing: 2px;
+  }
+
+  /* Stats panel */
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(0,255,100,0.08);
+    font-size: 13px;
+  }
+  .stat-row:last-child { border: none; }
+  .stat-label { color: rgba(255,255,255,0.5); }
+  .stat-value { color: #0f0; font-variant-numeric: tabular-nums; }
+
+  /* Message feed */
+  .message-feed {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .message-list {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    max-height: 100%;
+  }
+  .message {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,255,100,0.06);
+    font-size: 12px;
+    line-height: 1.4;
+    animation: fadein 0.4s ease;
+  }
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .message .from {
+    color: rgba(0,255,100,0.8);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .message .time {
+    color: rgba(255,255,255,0.3);
+    float: right;
+    font-size: 10px;
+  }
+
+  /* Alerts panel */
+  .alert {
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    border-left: 3px solid;
+    background: rgba(0,0,0,0.3);
+  }
+  .alert.info { border-color: #3b82f6; }
+  .alert.warn { border-color: #f59e0b; }
+  .alert.error { border-color: #ef4444; }
+  .alert.success { border-color: #10b981; }
+
+  /* Bottom status bar */
+  #status-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(0,255,100,0.1);
+  }
+  #status-bar .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #0f0;
+    box-shadow: 0 0 6px #0f0;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  #status-bar .status-offline { background: #f00; box-shadow: 0 0 6px #f00; }
+
+  .empty-state {
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div id="dashboard">
+    <div class="panel clock-panel">
+      <div class="clock-time" id="clock-time">--:--:--</div>
+      <div class="clock-date" id="clock-date">Loading...</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span> Status</div>
+      <div id="stats-panel">
+        <div class="empty-state">No data</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span> Messages</div>
+      <div class="message-feed">
+        <div class="message-list" id="messages-panel">
+          <div class="empty-state">No messages</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span> Alerts</div>
+      <div id="alerts-panel">
+        <div class="empty-state">No alerts</div>
+      </div>
+    </div>
+
+    <div id="status-bar">
+      <div><span class="status-dot" id="status-dot"></span><span id="status-text">Waiting for feed...</span></div>
+      <div id="last-update">--</div>
+    </div>
+  </div>
+
+<script>
+"use strict";
+
+const FEED_URL = "file:///Users/thinkyhead/Library/Application%20Support/WebSavers/HermesBoard/feed.json";
+
+let lastFeedMtime = null;
+
+function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+function updateClock() {
+  const d = new Date();
+  document.getElementById('clock-time').textContent =
+    pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+  document.getElementById('clock-date').textContent =
+    d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function renderStats(stats) {
+  const el = document.getElementById('stats-panel');
+  if (!stats || Object.keys(stats).length === 0) {
+    el.innerHTML = '<div class="empty-state">No data</div>';
+    return;
+  }
+  el.innerHTML = Object.entries(stats).map(([k, v]) =>
+    `<div class="stat-row"><span class="stat-label">${k}</span><span class="stat-value">${v}</span></div>`
+  ).join('');
+}
+
+function renderMessages(messages) {
+  const el = document.getElementById('messages-panel');
+  if (!messages || messages.length === 0) {
+    el.innerHTML = '<div class="empty-state">No messages</div>';
+    return;
+  }
+  const recent = messages.slice(-8).reverse();
+  el.innerHTML = recent.map(m => {
+    const t = m.time || '';
+    const f = escapeHtml(m.from || 'System');
+    const txt = escapeHtml(m.text || m.message || '');
+    return `<div class="message"><span class="from">${f}</span>${txt}<span class="time">${t}</span></div>`;
+  }).join('');
+}
+
+function renderAlerts(alerts) {
+  const el = document.getElementById('alerts-panel');
+  if (!alerts || alerts.length === 0) {
+    el.innerHTML = '<div class="empty-state">No alerts</div>';
+    return;
+  }
+  el.innerHTML = alerts.slice(0, 5).map(a => {
+    const level = a.level || 'info';
+    const txt = escapeHtml(a.text || a.message || '');
+    return `<div class="alert ${level}">${txt}</div>`;
+  }).join('');
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+async function checkFeed() {
+  try {
+    const resp = await fetch(FEED_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) return;
+    const data = await resp.json();
+
+    if (data.stats) renderStats(data.stats);
+    if (data.messages) renderMessages(data.messages);
+    if (data.alerts) renderAlerts(data.alerts);
+
+    document.getElementById('status-dot').classList.remove('status-offline');
+    document.getElementById('status-text').textContent = 'Connected';
+    document.getElementById('last-update').textContent =
+      'Updated ' + new Date().toLocaleTimeString();
+  } catch (e) {
+    document.getElementById('status-dot').classList.add('status-offline');
+    document.getElementById('status-text').textContent = 'Offline — no feed file';
+  }
+}
+
+// Fallback demo data if no feed file
+function showDemo() {
+  renderStats({
+    'CPU': '12%',
+    'Memory': '4.2 GB',
+    'Uptime': '3d 14h',
+    'Active Agents': '2',
+    'Tasks Queued': '5'
+  });
+  renderMessages([
+    { from: 'Hermes', text: 'Build complete — all savers installed', time: '16:02' },
+    { from: 'Hermes', text: 'Matrix3D: Options sheet added', time: '15:48' },
+    { from: 'Hermes', text: 'Starfield config: star count 6000', time: '15:30' },
+    { from: 'System', text: 'HermesBoard saver initialized', time: '15:00' }
+  ]);
+  renderAlerts([
+    { level: 'success', text: 'All 9 screensavers build successfully' },
+    { level: 'info', text: 'HermesBoard waiting for live feed...' }
+  ]);
+}
+
+// Start
+showDemo();
+updateClock();
+setInterval(updateClock, 1000);
+setInterval(checkFeed, 3000);
+checkFeed();
+</script>
+</body>
+</html>

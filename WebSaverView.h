@@ -64,6 +64,25 @@
     NSPopUpButton *colorPopup;
     NSSlider *fontSizeSlider;
     NSTextField *fontSizeLabel;
+
+    // VibeOrbit / VibeSpheres
+    NSSlider *countSlider;
+    NSTextField *countLabel;
+    NSSlider *spreadSlider;
+    NSTextField *spreadLabel;
+
+    // VibeSpheres
+    NSSlider *starFieldSlider;
+    NSTextField *starFieldLabel;
+    NSSlider *colorCycleSlider;
+    NSTextField *colorCycleLabel;
+
+    // VibeToroid
+    NSPopUpButton *shapePopup;
+    NSSlider *particleCountSlider;
+    NSTextField *particleCountLabel;
+    NSSlider *morphIntervalSlider;
+    NSTextField *morphIntervalLabel;
 }
 
 - (IBAction)configCancel:(id)sender;
