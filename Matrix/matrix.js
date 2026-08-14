@@ -45,18 +45,9 @@ function rndint(n) { return Math.floor(Math.random() * n); }
 let fixed_col = 0,  // Use a fixed number of columns or 0 for the default font size
     theme = 0,      // 0: Green, 1: Amber, 2: Light, 3: Atari 800
     overlay = 1,    // 0: none, 1: scanlines, 2: shadowmask
+    oalpha = overlay == 1 ? 0.8 : 0.5,
     flipping = false,
     fps = 30;
-
-window.applySettings = function(settings) {
-  if (settings.theme !== undefined) theme = settings.theme | 0;
-  if (settings.overlay !== undefined) overlay = settings.overlay | 0;
-  if (settings.flip !== undefined) flipping = !!settings.flip;
-  if (settings.fps !== undefined) fps = settings.fps | 0;
-  oalpha = overlay == 1 ? 0.8 : 0.5;
-  // Re-initialize colors and display
-  if (typeof init === 'function') init();
-};
 
 function get_colors(t) {
   switch (t) {
@@ -251,7 +242,8 @@ window.applySettings = (settings) => {
   if (!settings) return;
   if ('theme' in settings)    theme = Math.max(0, Math.min(3, settings.theme|0));
   if ('overlay' in settings)  overlay = Math.max(0, Math.min(2, settings.overlay|0));
-  if ('flipping' in settings) flipping = !!settings.flipping;
+  if ('flip' in settings)     flipping = !!settings.flip;
+  else if ('flipping' in settings) flipping = !!settings.flipping;
   if ('fps' in settings)      fps = Math.max(5, Math.min(60, settings.fps|0));
   oalpha = overlay == 1 ? 0.8 : 0.5;
   bcount = 0; // Reset the frame counter for the new FPS
