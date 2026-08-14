@@ -22,11 +22,6 @@
 #import <ScreenSaver/ScreenSaver.h>
 #import <WebKit/WebKit.h>
 
-// Each saver target compiles this view under its own class name via the
-// WEBSAVER_CLASS build setting (e.g. MatrixView, StarfieldView). Giving every
-// bundle a distinct principal class prevents Objective-C class shadowing when
-// ScreenSaverEngine loads multiple saver bundles into the same process, which
-// otherwise causes the wrong saver to be instantiated on selection.
 #ifndef WEBSAVER_CLASS
   #define WEBSAVER_CLASS WebSaverView
 #endif
@@ -35,6 +30,8 @@
 {
     WKWebView *webView;
     NSWindow *configSheet;
+
+    // Matrix / MatrixGrid
     NSPopUpButton *themePopup;
     NSButton *alphaCheckbox;
     NSButton *punctuationCheckbox;
@@ -50,6 +47,23 @@
     NSTextField *maxSpeedLabel;
     NSSlider *fadeSlider;
     NSTextField *fadeLabel;
+
+    // Starfield
+    NSSlider *starCountSlider;
+    NSTextField *starCountLabel;
+    NSSlider *speedSlider;
+    NSTextField *speedLabel;
+
+    // Stringy
+    NSSlider *trailCountSlider;
+    NSTextField *trailCountLabel;
+    NSSlider *trailLengthSlider;
+    NSTextField *trailLengthLabel;
+
+    // Matrix3D
+    NSPopUpButton *colorPopup;
+    NSSlider *fontSizeSlider;
+    NSTextField *fontSizeLabel;
 }
 
 - (IBAction)configCancel:(id)sender;

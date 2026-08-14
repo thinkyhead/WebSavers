@@ -213,48 +213,71 @@
 
   var myrand = bmRandom(0, 20);
   var trails = [];
+  var intervalId;
   var i;
   var time_now = new Date().getTime();
   var time_pre = time_now;
   var camera = { x:0, y:0, z:-200 };
-  for (i = 0; i < N; i++)
-    trails.push(new Trail({ x:myrand(), y:myrand(), z:myrand() }, time_now, function(a,z) { return "#FFFFFF"; }));
 
-  for (i = 0; i < N; i++) {
-    switch (i % 3) {
-      case 0:
-        trails[i].color_f = function(ctx, a, dz) {
-          var b = dz < 10 ? 0 : a * F / dz;
-          b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
-          ctx.strokeStyle = "rgba(255," + Math.floor(255 * a) + ",0," + b + ")";
-          ctx.lineWidth = F / dz;
-          ctx.lineCap = b > 0.8 ? "round" : "butt";
-        };
-        break;
-      case 1:
-        trails[i].color_f = function(ctx, a, dz) {
-          var b = dz < 10 ? 0 : a * F / dz;
-          b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
-          ctx.strokeStyle = "rgba(0,255," + Math.floor(255 * a) + "," + b + ")";
-          ctx.lineWidth = F / dz;
-          ctx.lineCap = b > 0.8 ? "round" : "butt";
-        };
-        break;
-      default:
-        trails[i].color_f = function(ctx, a, dz) {
-          var b = dz < 10 ? 0 : a * F / dz;
-          b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
-          ctx.strokeStyle = "rgba(" + Math.floor(255 * a) + ",0,255," + b + ")";
-          ctx.lineWidth = F / dz;
-          ctx.lineCap = b > 0.8 ? "round" : "butt";
-        };
-        break;
+  function initTrails() {
+    trails = [];
+    time_now = new Date().getTime();
+    time_pre = time_now;
+    for (i = 0; i < N; i++)
+      trails.push(new Trail({ x:myrand(), y:myrand(), z:myrand() }, time_now, function(a,z) { return "#FFFFFF"; }));
+
+    for (i = 0; i < N; i++) {
+      switch (i % 3) {
+        case 0:
+          trails[i].color_f = function(ctx, a, dz) {
+            var b = dz < 10 ? 0 : a * F / dz;
+            b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
+            ctx.strokeStyle = "rgba(255," + Math.floor(255 * a) + ",0," + b + ")";
+            ctx.lineWidth = F / dz;
+            ctx.lineCap = b > 0.8 ? "round" : "butt";
+          };
+          break;
+        case 1:
+          trails[i].color_f = function(ctx, a, dz) {
+            var b = dz < 10 ? 0 : a * F / dz;
+            b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
+            ctx.strokeStyle = "rgba(0,255," + Math.floor(255 * a) + "," + b + ")";
+            ctx.lineWidth = F / dz;
+            ctx.lineCap = b > 0.8 ? "round" : "butt";
+          };
+          break;
+        default:
+          trails[i].color_f = function(ctx, a, dz) {
+            var b = dz < 10 ? 0 : a * F / dz;
+            b = (b > 1 ? 1 : b) * (dz < 30 ? (dz - 10) / 20 : 1);
+            ctx.strokeStyle = "rgba(" + Math.floor(255 * a) + ",0,255," + b + ")";
+            ctx.lineWidth = F / dz;
+            ctx.lineCap = b > 0.8 ? "round" : "butt";
+          };
+          break;
+      }
     }
   }
+
+  function start() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(function() { updateScene(); drawScene(ctx); }, 1000 / FPS);
+  }
+
+  w.applySettings = function(settings) {
+    if (settings.fps !== undefined) FPS = settings.fps;
+    if (settings.trailCount !== undefined) N = settings.trailCount;
+    if (settings.trailLength !== undefined) VERTEX_MAX = settings.trailLength;
+    if (settings.quality !== undefined) TRAIL_QUALITY = settings.quality;
+    initTrails();
+    start();
+  };
+
+  initTrails();
 
   canvas.width = w.innerWidth;
   canvas.height = w.innerHeight;
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  setInterval(function() { updateScene(); drawScene(ctx); }, 1000 / FPS);
+  start();
 
 })(document, window);

@@ -30,7 +30,7 @@ function initializeStars() {
   c.setAttribute('class', 'ready');
 }
 
-const starSpeed = rndint(5) + 5;
+let starSpeed = rndint(5) + 5;
 function moveStars() {
   for (var i = 0; i < numStars; i++) {
     var star = stars[i];
@@ -58,3 +58,14 @@ function executeFrame() {
 
 initializeStars();
 executeFrame();
+
+window.applySettings = function(settings) {
+  if (settings.starCount !== undefined) {
+    numStars = Math.max(2000, Math.min(10000, settings.starCount | 0));
+  }
+  if (settings.speed !== undefined) {
+    starSpeed = Math.max(1, Math.min(10, settings.speed | 0));
+  }
+  stars = [];
+  initializeStars();
+};
