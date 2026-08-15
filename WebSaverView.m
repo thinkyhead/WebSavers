@@ -426,10 +426,29 @@
         y -= 45;
     }
     else if ([cls isEqualToString:@"HermesBoardView"]) {
-        NSTextField *info = [self labelAt:NSMakeRect(10, y + 20, 360, 40) text:@"HermesBoard is driven by a Hermes skill.\nUse the hermes-board skill to push data." alignment:NSTextAlignmentCenter];
-        [info setFont:[NSFont systemFontOfSize:13]];
-        [info setTextColor:[NSColor secondaryLabelColor]];
-        [content addSubview:info];
+        // Clock toggle
+        clockCheckbox = [self checkboxAt:NSMakeRect(125, y, 240, 20) title:@"Show clock"];
+        [content addSubview:clockCheckbox];
+        y -= 28;
+
+        // Clock position
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Clock position:" alignment:NSTextAlignmentRight]];
+        clockPositionPopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(125, y - 3, 240, 25) pullsDown:NO];
+        [clockPositionPopup addItemsWithTitles:@[@"Top", @"Bottom"]];
+        [content addSubview:clockPositionPopup];
+        y -= 35;
+
+        // Show seconds
+        secondsCheckbox = [self checkboxAt:NSMakeRect(125, y, 240, 20) title:@"Show seconds"];
+        [content addSubview:secondsCheckbox];
+        y -= 35;
+
+        // Image display
+        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Image panel:" alignment:NSTextAlignmentRight]];
+        imagePopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(125, y - 3, 240, 25) pullsDown:NO];
+        [imagePopup addItemsWithTitles:@[@"None", @"Stats", @"Messages", @"Alerts"]];
+        [content addSubview:imagePopup];
+        y -= 45;
     }
 
     // OK button
@@ -560,6 +579,13 @@
         [speedSlider setIntegerValue:[defaults integerForKey:@"speed"]];
         [colorCycleSlider setIntegerValue:[defaults integerForKey:@"colorCycle"]];
     }
+    else if ([cls isEqualToString:@"HermesBoardView"]) {
+        [defaults registerDefaults:@{@"clock":@YES, @"clockPosition":@0, @"seconds":@YES, @"image":@NO}];
+        [clockCheckbox setState:[defaults boolForKey:@"clock"] ? NSControlStateValueOn : NSControlStateValueOff];
+        [clockPositionPopup selectItemAtIndex:[defaults integerForKey:@"clockPosition"]];
+        [secondsCheckbox setState:[defaults boolForKey:@"seconds"] ? NSControlStateValueOn : NSControlStateValueOff];
+        [imagePopup setState:[defaults boolForKey:@"image"] ? NSControlStateValueOn : NSControlStateValueOff];
+    }
 
     [self updateValueLabels];
     MGLog(@"  defaults loaded for %@", cls);
@@ -655,6 +681,14 @@
             [defaults integerForKey:@"speed"],
             [defaults integerForKey:@"colorCycle"]];
     }
+    else if ([cls isEqualToString:@"HermesBoardView"]) {
+        js = [NSString stringWithFormat:
+            @"if (window.applySettings) applySettings({clock:%@, clockPosition:%ld, seconds:%@, imagePanel:%ld});",
+            [defaults boolForKey:@"clock"] ? @"true" : @"false",
+            [defaults integerForKey:@"clockPosition"],
+            [defaults boolForKey:@"seconds"] ? @"true" : @"false",
+            [defaults integerForKey:@"imagePanel"]];
+    }
 
     if (js) {
         [webView evaluateJavaScript:js completionHandler:nil];
@@ -727,6 +761,12 @@
         [defaults setInteger:[speedSlider integerValue] forKey:@"speed"];
         [defaults setInteger:[colorCycleSlider integerValue] forKey:@"colorCycle"];
     }
+    else if ([cls isEqualToString:@"HermesBoardView"]) {
+        [defaults setBool:[clockCheckbox state] == NSControlStateValueOn forKey:@"clock"];
+        [defaults setInteger:[clockPositionPopup indexOfSelectedItem] forKey:@"clockPosition"];
+        [defaults setBool:[secondsCheckbox state] == NSControlStateValueOn forKey:@"seconds"];
+        [defaults setInteger:[imagePopup indexOfSelectedItem] forKey:@"imagePanel"];
+    }
 
     [defaults synchronize];
     [self loadIndexWithConfig:YES];
@@ -777,6 +817,12 @@
     particleCountLabel = nil;
     morphIntervalSlider = nil;
     morphIntervalLabel = nil;
+
+    // HermesBoard
+    clockCheckbox = nil;
+    clockPositionPopup = nil;
+    secondsCheckbox = nil;
+    imagePopup = nil;
 }
 
 - (void)dealloc {

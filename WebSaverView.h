@@ -83,6 +83,12 @@
     NSTextField *particleCountLabel;
     NSSlider *morphIntervalSlider;
     NSTextField *morphIntervalLabel;
+
+    // HermesBoard
+    NSButton *clockCheckbox;
+    NSPopUpButton *clockPositionPopup;
+    NSButton *secondsCheckbox;
+    NSPopUpButton *imagePopup;
 }
 
 - (IBAction)configCancel:(id)sender;
