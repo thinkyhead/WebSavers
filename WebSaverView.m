@@ -886,18 +886,12 @@
 
 - (void)screensaverWillStop:(NSNotification *)notification {
     MGLog(@"screensaverWillStop: isPreview=%d", self.isPreview);
-    // Never terminate when hosted inside System Settings: the settings app
-    // owns our lifecycle, and killing it leaves a stale reference so the
-    // Options sheet stops appearing (the original Preview bug and the
-    // "exit panel -> re-enter -> no sheet" case are the same failure).
+    // Only exit the real (full-screen) screensaver run. Never kill the process
+    // during preview — System Settings / the Wallpaper settings host owns our
+    // lifecycle and killing it leaves a stale reference (Options sheet dies,
+    // or the host crashes). isPreview is the reliable discriminator; a
+    // hardcoded host-name blacklist is fragile (names change per macOS version).
     if (self.isPreview) return;
-    NSString *host = NSProcessInfo.processInfo.processName;
-    if ([host containsString:@"System Settings"] ||
-        [host containsString:@"SystemPreferences"] ||
-        [host containsString:@"System Preferences"]) {
-        MGLog(@"  hosted by %@ — not exiting", host);
-        return;
-    }
     if (@available(macOS 14.0, *)) {
         MGLog(@"  calling exit(0) for real screensaver stop");
         exit(0);
