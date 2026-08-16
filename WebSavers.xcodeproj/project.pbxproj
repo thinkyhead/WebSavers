@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041CFF887D52F34314DF8999 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EF22D5245EC526118ACA1C /* Cocoa.framework */; };
+		1125D9B6089430A91C8CAE18 /* p5.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DFC112B6AA5E9DE975B6AC13 /* p5.min.js */; };
+		14B9B709F571B3BF0CB3206A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80656D5404FAB836206216B /* Foundation.framework */; };
 		1D6771DE72BCFB50C4C02A10 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3513EF680691918BAE3F59F /* ScreenSaver.framework */; };
 		24204640149E593AE77358CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EF22D5245EC526118ACA1C /* Cocoa.framework */; };
+		2724FBF58263C9A915F6CFE6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16640193329DC4C795DD5277 /* IOKit.framework */; };
 		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
 		4311D5152F9D4BD0A80EA28D /* hermesboard.js in Resources */ = {isa = PBXBuildFile; fileRef = 8E661A0A780B1810D2A01CF7 /* hermesboard.js */; };
 		441C357A2F4BD888003F0FBE /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
@@ -113,6 +117,7 @@
 		448D6B5B2F05F0880050C47D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
 		448D6B5C2F05F0880050C47D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		448D6B662F05F0CA0050C47D /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 448D6B642F05F0CA0050C47D /* index.html */; };
+		4942DFAFB144D507B40B46F8 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C421887668ED6CADE3305F /* ScreenSaver.framework */; };
 		5046BA092BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0A2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		5046BA0B2BA1FE6400811EB7 /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
@@ -123,6 +128,7 @@
 		5046BA112BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA122BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		52248152741A4E0172E7C716 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
 		5E2C212946B4AE0CBB8CFA06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BF33C56D5CD368E1A82D0E /* Foundation.framework */; };
 		634090D7C6BA61B05E62E65A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190E882A8B93C0B0A878CE43 /* AppKit.framework */; };
 		6ED2313AEAE32FA3307430CD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F30454FC5CF837CD7D31E /* IOKit.framework */; };
@@ -133,11 +139,16 @@
 		8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
 		8E721B94D54E3335B71B5F6B /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
+		B4B86C22417A050EEDDF71C8 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 5E15D355E2AEEAD7A8F00A80 /* index.html */; };
 		BA8B46C754AF41B0C498358B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D5FB68FB410EC1FAE27B2B8 /* index.html */; };
+		D49B9CCEBDBFA19D45D5BF59 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3677C72FF317C0E65B5574 /* WebKit.framework */; };
 		D85FA557F2BDDB69B0AA5E0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3535A65C2CFFB73CF24F694 /* WebKit.framework */; };
 		DA06A6A88C8E0BE807824A24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDCE55FAECECE6D40205516 /* Cocoa.framework */; };
 		DFA70F1F33A0AEF6C0D1121C /* hermesboard.css in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F4D8515AADEF351874EF2 /* hermesboard.css */; };
 		E3531B1FA6DB7A7B8C25CD32 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		EDCC02047C1B3946121FD819 /* p5alert.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B770D78B82C7622651B2FE9 /* p5alert.css */; };
+		F7B9E261A554D9D9DE57C515 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7F54D1807905B0B42DFA9C /* AppKit.framework */; };
+		F9B8EEBF2163CC5EB8B943A4 /* p5alert.js in Resources */ = {isa = PBXBuildFile; fileRef = E3450FB38C23E88E802EFDF7 /* p5alert.js */; };
 		FFA553D95B752CA690782A2F /* gauge.min.js in Resources */ = {isa = PBXBuildFile; fileRef = F9A523BA9279E17B82235340 /* gauge.min.js */; };
 /* End PBXBuildFile section */
 
@@ -248,8 +259,11 @@
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		16640193329DC4C795DD5277 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		190E882A8B93C0B0A878CE43 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppKit.framework; sourceTree = SDKROOT; };
+		1E7F54D1807905B0B42DFA9C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		289EE80009F47CE000C096EC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		2C835C08E3D9E37D0358F42B /* P5Alert.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = P5Alert.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5FB68FB410EC1FAE27B2B8 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; path = index.html; sourceTree = "<group>"; };
 		32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaver_Prefix.pch; sourceTree = "<group>"; };
 		440CBCD12F4D1ECF001A9834 /* Starfield.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Starfield.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,23 +298,35 @@
 		447E1C6829D2C11700086131 /* matrix3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = matrix3d.js; sourceTree = "<group>"; };
 		448D6B392F05038A0050C47D /* index.html */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; tabWidth = 2; };
 		448D6B642F05F0CA0050C47D /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		4D79F92232B578E95BB136FC /* P5Alert.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = P5Alert.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
+		5E15D355E2AEEAD7A8F00A80 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = P5Alert/index.html; sourceTree = "<group>"; };
 		5F6F4D8515AADEF351874EF2 /* hermesboard.css */ = {isa = PBXFileReference; includeInIndex = 1; path = hermesboard.css; sourceTree = "<group>"; };
+		6C0CA1AB6445B481CB4272CC /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = P5Alert/index.html; sourceTree = "<group>"; };
 		837F30454FC5CF837CD7D31E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = SDKROOT; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8E661A0A780B1810D2A01CF7 /* hermesboard.js */ = {isa = PBXFileReference; includeInIndex = 1; path = hermesboard.js; sourceTree = "<group>"; };
+		98C421887668ED6CADE3305F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/ScreenSaver.framework; sourceTree = DEVELOPER_DIR; };
 		9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = HermesBoard.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B770D78B82C7622651B2FE9 /* p5alert.css */ = {isa = PBXFileReference; includeInIndex = 1; name = p5alert.css; path = P5Alert/p5alert.css; sourceTree = "<group>"; };
 		9BDCE55FAECECE6D40205516 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cocoa.framework; sourceTree = SDKROOT; };
 		A3513EF680691918BAE3F59F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScreenSaver.framework; sourceTree = SDKROOT; };
 		A3EF22D5245EC526118ACA1C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		AD3677C72FF317C0E65B5574 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		C9DF00BA1B51A90B00417BE0 /* HermesBoard.saver */ = {isa = PBXFileReference; includeInIndex = 1; path = HermesBoard.saver; sourceTree = "<group>"; };
+		D322897EA4CA0A50F32A387B /* p5.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = p5.min.js; path = P5Alert/p5.min.js; sourceTree = "<group>"; };
 		D8BF33C56D5CD368E1A82D0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Foundation.framework; sourceTree = SDKROOT; };
+		DFC112B6AA5E9DE975B6AC13 /* p5.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = p5.min.js; path = P5Alert/p5.min.js; sourceTree = "<group>"; };
+		E2AAA3490D535D5D64A4E4C4 /* P5Alert.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = P5Alert.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3450FB38C23E88E802EFDF7 /* p5alert.js */ = {isa = PBXFileReference; includeInIndex = 1; name = p5alert.js; path = P5Alert/p5alert.js; sourceTree = "<group>"; };
 		E3535A65C2CFFB73CF24F694 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = SDKROOT; };
 		F50079790118B23001CA0E54 /* WebSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaverView.h; sourceTree = "<group>"; };
 		F500797A0118B23001CA0E54 /* WebSaverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSaverView.m; sourceTree = "<group>"; };
+		F80656D5404FAB836206216B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F9A523BA9279E17B82235340 /* gauge.min.js */ = {isa = PBXFileReference; includeInIndex = 1; path = gauge.min.js; sourceTree = "<group>"; };
+		FDF4837269EA6DFDEE011EAD /* p5alert.js */ = {isa = PBXFileReference; includeInIndex = 1; name = p5alert.js; path = P5Alert/p5alert.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +429,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		998B1174330B55B0673C0267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				041CFF887D52F34314DF8999 /* Cocoa.framework in Frameworks */,
+				4942DFAFB144D507B40B46F8 /* ScreenSaver.framework in Frameworks */,
+				D49B9CCEBDBFA19D45D5BF59 /* WebKit.framework in Frameworks */,
+				14B9B709F571B3BF0CB3206A /* Foundation.framework in Frameworks */,
+				F7B9E261A554D9D9DE57C515 /* AppKit.framework in Frameworks */,
+				2724FBF58263C9A915F6CFE6 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6447BFCEB0B1BEBDC7F189F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,6 +459,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06DD2C552B614B01FF89EE59 /* P5Alert */ = {
+			isa = PBXGroup;
+			children = (
+				6C0CA1AB6445B481CB4272CC /* index.html */,
+				FDF4837269EA6DFDEE011EAD /* p5alert.js */,
+				D322897EA4CA0A50F32A387B /* p5.min.js */,
+				9B770D78B82C7622651B2FE9 /* p5alert.css */,
+			);
+			name = P5Alert;
+			sourceTree = "<group>";
+		};
 		089C166AFE841209C02AAC07 = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +508,8 @@
 				441C35AC2F4BDDA7003F0FBE /* VibeSpheres */,
 				448D6B3A2F05038A0050C47D /* VibeToroid */,
 				14FBC897EECBC58832BFE293 /* HermesBoard */,
+				06DD2C552B614B01FF89EE59 /* P5Alert */,
+				4351899A87F08A605BE45976 /* P5Alert */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -519,6 +571,9 @@
 				440CBCD92F4D1ECF001A9834 /* VibeSpheres.saver */,
 				9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */,
 				C9DF00BA1B51A90B00417BE0 /* HermesBoard.saver */,
+				4D79F92232B578E95BB136FC /* P5Alert.bundle */,
+				E2AAA3490D535D5D64A4E4C4 /* P5Alert.bundle */,
+				2C835C08E3D9E37D0358F42B /* P5Alert.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -529,6 +584,16 @@
 				32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		4351899A87F08A605BE45976 /* P5Alert */ = {
+			isa = PBXGroup;
+			children = (
+				5E15D355E2AEEAD7A8F00A80 /* index.html */,
+				E3450FB38C23E88E802EFDF7 /* p5alert.js */,
+				DFC112B6AA5E9DE975B6AC13 /* p5.min.js */,
+			);
+			name = P5Alert;
 			sourceTree = "<group>";
 		};
 		441C35912F4BD943003F0FBE /* VibeSolarSystem */ = {
@@ -627,6 +692,11 @@
 			isa = PBXGroup;
 			children = (
 				A3EF22D5245EC526118ACA1C /* Cocoa.framework */,
+				98C421887668ED6CADE3305F /* ScreenSaver.framework */,
+				AD3677C72FF317C0E65B5574 /* WebKit.framework */,
+				F80656D5404FAB836206216B /* Foundation.framework */,
+				1E7F54D1807905B0B42DFA9C /* AppKit.framework */,
+				16640193329DC4C795DD5277 /* IOKit.framework */,
 			);
 			name = "OS X";
 			sourceTree = "<group>";
@@ -955,6 +1025,23 @@
 			productReference = 440CBCD32F4D1ECF001A9834 /* Matrix.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
+		A987878CEFF0AAFB7E4B6171 /* P5Alert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD395BAD80A0DF8C775E1A21 /* Build configuration list for PBXNativeTarget "P5Alert" */;
+			buildPhases = (
+				58A8A7657C829297BCA36D25 /* Sources */,
+				998B1174330B55B0673C0267 /* Frameworks */,
+				2A20089C6E87921837ECF3A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = P5Alert;
+			productName = P5Alert;
+			productReference = 2C835C08E3D9E37D0358F42B /* P5Alert.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -987,11 +1074,23 @@
 				441C35782F4BD888003F0FBE /* VibeSolarSystem */,
 				441C35932F4BDD45003F0FBE /* VibeSpheres */,
 				8A2BB21381BC9E8B6A493D60 /* HermesBoard */,
+				A987878CEFF0AAFB7E4B6171 /* P5Alert */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A20089C6E87921837ECF3A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4B86C22417A050EEDDF71C8 /* index.html in Resources */,
+				F9B8EEBF2163CC5EB8B943A4 /* p5alert.js in Resources */,
+				1125D9B6089430A91C8CAE18 /* p5.min.js in Resources */,
+				EDCC02047C1B3946121FD819 /* p5alert.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		441C357D2F4BD888003F0FBE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1245,6 +1344,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		58A8A7657C829297BCA36D25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52248152741A4E0172E7C716 /* WebSaverView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DA2C317B9D60F40D402268F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1314,6 +1421,27 @@
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = Marlin/src;
 				WEBSAVER_CLASS = HermesBoardView;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		3AFD9D165CBF16A8FD2F7356 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=P5AlertView";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = P5Alert;
+				INFOPLIST_KEY_NSPrincipalClass = P5AlertView;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.P5Alert;
+				PRODUCT_NAME = P5Alert;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -1688,6 +1816,27 @@
 			};
 			name = Release;
 		};
+		8D39028EC2FCF1DFE519D885 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=P5AlertView";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = P5Alert;
+				INFOPLIST_KEY_NSPrincipalClass = P5AlertView;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkyhead.saver.P5Alert;
+				PRODUCT_NAME = P5Alert;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
 		9A15669B8F1CB23FC11D2962 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1916,6 +2065,15 @@
 			buildConfigurations = (
 				448D6B602F05F0880050C47D /* Debug */,
 				448D6B612F05F0880050C47D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD395BAD80A0DF8C775E1A21 /* Build configuration list for PBXNativeTarget "P5Alert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D39028EC2FCF1DFE519D885 /* Release */,
+				3AFD9D165CBF16A8FD2F7356 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
