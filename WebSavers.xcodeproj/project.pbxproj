@@ -1442,6 +1442,7 @@
 				PRODUCT_NAME = P5Alert;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				WEBSAVER_CLASS = P5AlertView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -1833,6 +1834,7 @@
 				PRODUCT_NAME = P5Alert;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				WEBSAVER_CLASS = P5AlertView;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
