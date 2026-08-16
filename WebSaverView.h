@@ -89,6 +89,10 @@
     NSPopUpButton *clockPositionPopup;
     NSButton *secondsCheckbox;
     NSButton *imageCheckbox;
+
+    NSTimer *statsTimer;
+    host_cpu_load_info_data_t prevCpuLoad;
+    bool hasPrevCpu;
 }
 
 - (IBAction)configCancel:(id)sender;

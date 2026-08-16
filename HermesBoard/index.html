@@ -359,6 +359,19 @@ async function checkFeed() {
   }
 }
 
+// HermesBoard: receive live system stats from ObjC
+window.applySystemStats = function(stats) {
+  const statsPanel = document.getElementById('stats-panel');
+  // Build or update stat rows for live system data
+  const liveStats = {
+    'CPU': stats.cpu.toFixed(1) + '%',
+    'Memory': (stats.memory / (1024*1024*1024)).toFixed(1) + ' GB',
+    'Temperature': stats.temperature.toFixed(0) + '°C'
+  };
+  // Preserve any non-system stats from feed, override system ones
+  renderStats(liveStats);
+};
+
 window.applySettings = function(s) {
   if (s.clock !== undefined) showClock = s.clock;
   if (s.clockPosition !== undefined) clockTop = !s.clockPosition;

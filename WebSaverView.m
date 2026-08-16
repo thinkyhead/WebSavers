@@ -23,6 +23,9 @@
 
 #import "WebSaverView.h"
 #import "WKWebViewPrivate.h"
+#include <mach/mach.h>
+#include <mach/mach_host.h>
+#include <IOKit/IOKitLib.h>
 
 @implementation WEBSAVER_CLASS
 
@@ -74,13 +77,79 @@
     MGLog(@"startAnimation class:%@", NSStringFromClass([self class]));
     [super startAnimation];
     [self loadIndexWithConfig:YES];
+
+    // HermesBoard: gather live system stats and push to JS every 2s
+    if ([NSStringFromClass([self class]) isEqualToString:@"HermesBoardView"]) {
+        statsTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                      target:self
+                                                    selector:@selector(pushSystemStats)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    }
 }
 
 - (void)stopAnimation {
     MGLog(@"stopAnimation class:%@", NSStringFromClass([self class]));
+    [statsTimer invalidate];
+    statsTimer = nil;
     [webView stopLoading];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:"]]];
     [super stopAnimation];
+}
+
+- (void)pushSystemStats {
+    // CPU usage based on tick deltas
+    double cpuUsage = 0;
+    host_cpu_load_info_data_t cpuLoad;
+    mach_msg_type_number_t count = HOST_CPU_LOAD_INFO_COUNT;
+    if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, (host_info_t)&cpuLoad, &count) == KERN_SUCCESS) {
+        if (hasPrevCpu) {
+            natural_t prevTotal = prevCpuLoad.cpu_ticks[CPU_STATE_USER] + prevCpuLoad.cpu_ticks[CPU_STATE_SYSTEM] + prevCpuLoad.cpu_ticks[CPU_STATE_IDLE] + prevCpuLoad.cpu_ticks[CPU_STATE_NICE];
+            natural_t total = cpuLoad.cpu_ticks[CPU_STATE_USER] + cpuLoad.cpu_ticks[CPU_STATE_SYSTEM] + cpuLoad.cpu_ticks[CPU_STATE_IDLE] + cpuLoad.cpu_ticks[CPU_STATE_NICE];
+            natural_t delta = total - prevTotal;
+            if (delta > 0) {
+                natural_t used = (cpuLoad.cpu_ticks[CPU_STATE_USER] - prevCpuLoad.cpu_ticks[CPU_STATE_USER]) +
+                                 (cpuLoad.cpu_ticks[CPU_STATE_SYSTEM] - prevCpuLoad.cpu_ticks[CPU_STATE_SYSTEM]);
+                cpuUsage = 100.0 * used / delta;
+            }
+        }
+        prevCpuLoad = cpuLoad;
+        hasPrevCpu = true;
+    }
+
+    // Memory used (active + wired + compressed)
+    int64_t memUsed = 0;
+    vm_size_t pageSize;
+    host_page_size(mach_host_self(), &pageSize);
+    vm_statistics64_data_t vmStats;
+    mach_msg_type_number_t vmCount = HOST_VM_INFO64_COUNT;
+    if (host_statistics64(mach_host_self(), HOST_VM_INFO64, (host_info_t)&vmStats, &vmCount) == KERN_SUCCESS) {
+        memUsed = (int64_t)(vmStats.active_count + vmStats.wire_count + vmStats.compressor_page_count) * pageSize;
+    }
+
+    // Thermal via IOKit (TC0D = CPU die temp)
+    double temp = 0;
+    io_service_t platformExpert = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("AppleSMC"));
+    if (platformExpert) {
+        CFTypeRef key = CFStringCreateWithCString(kCFAllocatorDefault, "TC0D", kCFStringEncodingUTF8);
+        CFTypeRef val = IORegistryEntryCreateCFProperty(platformExpert, key, kCFAllocatorDefault, 0);
+        if (val) {
+            if (CFGetTypeID(val) == CFDataGetTypeID()) {
+                const uint8_t *data = CFDataGetBytePtr((CFDataRef)val);
+                if (CFDataGetLength((CFDataRef)val) >= 2) {
+                    temp = (data[0] * 256 + data[1]) / 256.0;
+                }
+            }
+            CFRelease(val);
+        }
+        CFRelease(key);
+        IOObjectRelease(platformExpert);
+    }
+
+    NSString *js = [NSString stringWithFormat:
+        @"if (window.applySystemStats) applySystemStats({cpu: %.1f, memory: %lld, temperature: %.1f});",
+        cpuUsage, memUsed, temp];
+    [webView evaluateJavaScript:js completionHandler:nil];
 }
 
 - (void)doKeyUp:(NSTimer*)theTimer {
