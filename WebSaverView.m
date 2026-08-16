@@ -202,16 +202,19 @@
 }
 
 - (NSWindow*)configureSheet {
-    MGLog(@"configureSheet called (existing configSheet=%p)", configSheet);
+    MGLog(@"configureSheet called (existing configSheet=%p, isVisible=%d)", configSheet, configSheet ? [configSheet isVisible] : -1);
     // The system retains the window we return (readonly, strong property)
     // and re-presents it each time Options is clicked. Build it ONCE and
     // return the same window every call; just refresh the control values
     // from the saved settings. Nilling/rebuilding breaks re-presentation.
     if (!configSheet) {
+        MGLog(@"  building config sheet for %@", [self saverName]);
         [self buildConfigSheet];
     }
     [self loadDefaultsIntoSheet];
-    MGLog(@"  returning configSheet=%p, parentWindow=%p", configSheet, [configSheet parentWindow]);
+    MGLog(@"  returning configSheet=%p, parentWindow=%p, isSheet=%d",
+          configSheet, [configSheet parentWindow],
+          configSheet ? [configSheet isSheet] : -1);
     return configSheet;
 }
 
@@ -796,7 +799,7 @@
 }
 
 - (IBAction)configCancel:(id)sender {
-    MGLog(@"configCancel: configSheet=%p", configSheet);
+    MGLog(@"configCancel: configSheet=%p, isVisible=%d, isSheet=%d", configSheet, [configSheet isVisible], [configSheet isSheet]);
     [[NSApplication sharedApplication] endSheet:configSheet];
     // Keep configSheet retained (the system owns it via the readonly strong
     // configureSheet property). We re-present the same window next time, so
@@ -871,6 +874,7 @@
     [defaults synchronize];
     [self loadIndexWithConfig:YES];
 
+    MGLog(@"configOK: ending sheet configSheet=%p, isVisible=%d, isSheet=%d", configSheet, [configSheet isVisible], [configSheet isSheet]);
     [[NSApplication sharedApplication] endSheet:configSheet];
     // Keep configSheet retained (the system owns it via the readonly strong
     // configureSheet property). We re-present the same window next time, so
