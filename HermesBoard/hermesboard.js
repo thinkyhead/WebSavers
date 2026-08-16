@@ -106,7 +106,7 @@ function buildGauge(id, title, opts) {
     colorNeedleCircleInner: '#fff',
     colorNeedleShadowUp: 'rgba(0,0,0,0)',
     colorNeedleShadowDown: 'rgba(0,0,0,0)',
-    colorValueBox: 'rgba(10,18,40,0)',
+    colorValueBox: 'rgba(10,18,40,0.2)',       // dark navy 20% translucent value box
     colorValueText: '#f2e28a',                 // yellow value text
     valueBox: true,
     fontValue: 'Menlo',
