@@ -3,111 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>HermesBoard</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { overflow: hidden; background: #05050a; font-family: 'SF Mono', 'Menlo', monospace; color: #a0a0a0; }
-
-  #bg-canvas { position: fixed; inset: 0; z-index: 0; opacity: 0.4; }
-  .bg-grid {
-    position: fixed; inset: 0; z-index: 1; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(0,255,100,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,100,0.015) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  #dashboard {
-    position: relative; z-index: 2;
-    width: 100%; height: 100vh;
-    padding: 14px;
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  #dashboard.clock-bottom { flex-direction: column-reverse; }
-
-  /* Clock */
-  .clock-panel { text-align: center; padding: 4px; order: 0; }
-  .clock-time {
-    font-size: 34px; font-weight: 200; letter-spacing: 2px; color: #fff;
-    text-shadow: 0 0 20px rgba(0,255,100,0.2); font-variant-numeric: tabular-nums;
-  }
-  .clock-date { font-size: 11px; color: rgba(0,255,100,0.3); letter-spacing: 2px; }
-  .clock-panel.hidden { display: none; }
-
-  /* Stats table */
-  .stats-panel { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; order: 1; }
-  .stats-panel::-webkit-scrollbar { width: 3px; }
-  .stats-panel::-webkit-scrollbar-thumb { background: rgba(0,255,100,0.15); }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: 120px 1fr 90px;
-    align-items: center; gap: 10px;
-    padding: 4px 8px;
-    background: rgba(10, 15, 12, 0.5);
-    border: 1px solid rgba(0,255,100,0.05);
-    border-radius: 4px;
-    transition: background 0.3s;
-  }
-  .stat-row.alert-warn { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
-  .stat-row.alert-error { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
-  .stat-label { font-size: 11px; color: rgba(255,255,255,0.45); text-align: right; text-transform: uppercase; letter-spacing: 0.5px; }
-  .stat-value { font-size: 13px; color: #0f0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
-  .stat-viz { height: 24px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-
-  /* Viz types */
-  .viz-particles { position: absolute; inset: 0; }
-  .viz-particles .dot { position: absolute; width: 3px; height: 3px; background: #0f0; border-radius: 50%; box-shadow: 0 0 3px #0f0; }
-  .viz-meter { width: 100%; height: 100%; }
-  .viz-meter svg { width: 100%; height: 100%; }
-  .viz-bar { width: 100%; padding: 0 4px; }
-  .viz-bar-fill { height: 5px; background: linear-gradient(90deg, #0f0, #0f8); border-radius: 3px; box-shadow: 0 0 5px rgba(0,255,100,0.4); transition: width 0.5s ease; }
-  .viz-wave { width: 100%; height: 100%; }
-  .viz-wave svg { width: 100%; height: 100%; }
-
-  /* Messages */
-  .messages-panel {
-    max-height: 80px; overflow-y: auto; order: 2;
-    display: flex; flex-direction: column; gap: 2px;
-    padding: 6px 8px;
-    background: rgba(10, 15, 12, 0.4);
-    border: 1px solid rgba(0,255,100,0.05); border-radius: 4px;
-  }
-  .message { font-size: 11px; line-height: 1.3; padding: 2px 0; border-bottom: 1px solid rgba(0,255,100,0.04); }
-  .message:last-child { border-bottom: none; }
-  .message .from { color: rgba(0,255,100,0.7); font-weight: 600; margin-right: 4px; }
-  .message .time { color: rgba(255,255,255,0.2); float: right; font-size: 9px; }
-
-  /* Alerts */
-  .alerts-panel {
-    max-height: 60px; overflow-y: auto; order: 3;
-    display: flex; gap: 4px; flex-wrap: wrap;
-    padding: 4px 6px;
-    background: rgba(10, 15, 12, 0.4);
-    border: 1px solid rgba(0,255,100,0.05); border-radius: 4px;
-  }
-  .alert { font-size: 9px; padding: 2px 6px; border-radius: 3px; border-left: 2px solid; white-space: nowrap; }
-  .alert.info { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
-  .alert.warn { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
-  .alert.error { border-color: #ef4444; background: rgba(239,68,68,0.06); }
-  .alert.success { border-color: #10b981; background: rgba(16,185,129,0.06); }
-
-  /* Image */
-  .image-panel {
-    flex: 1; display: flex; align-items: center; justify-content: center; order: 4;
-    background: rgba(10, 15, 12, 0.4);
-    border: 1px solid rgba(0,255,100,0.05); border-radius: 4px; padding: 8px;
-    min-height: 80px;
-  }
-  .image-panel img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
-  .image-placeholder { color: rgba(255,255,255,0.15); font-size: 10px; }
-
-  /* Status bar */
-  #status-bar { display: flex; justify-content: space-between; padding: 4px 6px; font-size: 9px; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(0,255,100,0.06); order: 5; }
-  .status-dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #0f0; box-shadow: 0 0 3px #0f0; margin-right: 4px; vertical-align: middle; }
-  .status-offline { background: #f00; box-shadow: 0 0 3px #f00; }
-
-  .empty-state { color: rgba(255,255,255,0.15); font-size: 11px; text-align: center; padding: 20px; }
-</style>
+<link rel="stylesheet" href="hermesboard.css">
 </head>
 <body>
   <canvas id="bg-canvas"></canvas>
@@ -119,19 +15,30 @@
       <div class="clock-date" id="clock-date">Loading...</div>
     </div>
 
-    <div class="stats-panel" id="stats-panel">
-      <div class="empty-state">Waiting for data...</div>
+    <div class="main-grid">
+      <!-- Column 1: Gauges -->
+      <div class="gauges-col" id="gauges-col">
+        <div class="empty-state">Waiting for data...</div>
+      </div>
+
+      <!-- Column 2: Messages -->
+      <div class="msg-col">
+        <div class="col-title">Messages</div>
+        <div class="col-body" id="messages-body">
+          <div class="empty-state">No messages</div>
+        </div>
+      </div>
+
+      <!-- Column 3: Alerts -->
+      <div class="alert-col">
+        <div class="col-title">Alerts</div>
+        <div class="col-body" id="alerts-body">
+          <div class="empty-state">No alerts</div>
+        </div>
+      </div>
     </div>
 
-    <div class="messages-panel" id="messages-panel" style="display:none">
-      <div class="empty-state">No messages</div>
-    </div>
-
-    <div class="alerts-panel" id="alerts-panel" style="display:none">
-      <div class="empty-state">No alerts</div>
-    </div>
-
-    <div class="image-panel" id="image-panel" style="display:none">
+    <div class="image-panel" id="image-panel">
       <img id="board-image" src="" alt="">
     </div>
 
@@ -141,339 +48,11 @@
     </div>
   </div>
 
+<!-- canvas-gauges (vendored) -->
+<script src="gauge.min.js"></script>
 <!-- THREE.js -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-<script>
-"use strict";
-
-// ─── Settings (defaults mirror ObjC ScreenSaverDefaults) ───
-let showClock = true, clockTop = true, showSeconds = true, showImage = false;
-
-// ─── THREE.js background atoms ───
-const canvas = document.getElementById('bg-canvas');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 30;
-
-scene.add(new THREE.AmbientLight(0x00ff66, 0.25));
-const pl = new THREE.PointLight(0x00ff66, 1.2, 80); pl.position.set(10, 10, 20); scene.add(pl);
-const pl2 = new THREE.PointLight(0x0088ff, 0.6, 60); pl2.position.set(-15, -10, 15); scene.add(pl2);
-
-class Atom {
-  constructor(i) {
-    this.index = i;
-    this.baseRotSpeed = 0.003 + Math.random() * 0.006;
-    this.rotS = new THREE.Vector3(
-      (Math.random()-0.5) * this.baseRotSpeed,
-      (Math.random()-0.5) * this.baseRotSpeed,
-      (Math.random()-0.5) * this.baseRotSpeed
-    );
-    this.baseOrbitSpeed = 0.3 + Math.random() * 0.8;
-    this.spd = this.baseOrbitSpeed;
-    this.pos = new THREE.Vector3((Math.random()-0.5)*40, (Math.random()-0.5)*25, (Math.random()-0.5)*20);
-    this.rad = 0.7 + Math.random() * 1.0;
-    this.phase = Math.random() * Math.PI * 2;
-    this.intensity = 0;
-
-    const ng = new THREE.IcosahedronGeometry(0.35, 0);
-    const nm = new THREE.MeshBasicMaterial({ color: Math.random()>0.5 ? 0x00ff66 : 0x0088ff, wireframe: true, transparent: true, opacity: 0.7 });
-    this.nuc = new THREE.Mesh(ng, nm);
-    this.nuc.position.copy(this.pos);
-    scene.add(this.nuc);
-
-    const eg = new THREE.SphereGeometry(0.1, 6, 6);
-    const em = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    this.elec = new THREE.Mesh(eg, em);
-    scene.add(this.elec);
-  }
-  setIntensity(val) { this.intensity = Math.min(1, val); }
-  update(t) {
-    const boost = 1 + this.intensity * 4;
-    this.nuc.rotation.x += this.rotS.x * boost;
-    this.nuc.rotation.y += this.rotS.y * boost;
-    this.nuc.material.opacity = 0.5 + this.intensity * 0.5;
-    this.nuc.scale.setScalar(1 + this.intensity * 0.3);
-    const a = t * this.spd * boost + this.phase;
-    this.elec.position.set(
-      this.pos.x + Math.cos(a) * this.rad,
-      this.pos.y + Math.sin(a) * this.rad,
-      this.pos.z + Math.sin(a * 0.7) * 0.3
-    );
-    this.elec.material.color.setHex(this.intensity > 0.5 ? 0xff4444 : 0xffffff);
-  }
-}
-const atoms = [];
-for (let i = 0; i < 20; i++) atoms.push(new Atom(i));
-
-const pg = new THREE.BufferGeometry();
-const pp = new Float32Array(100 * 3);
-for (let i = 0; i < 100; i++) {
-  pp[i*3] = (Math.random()-0.5)*60;
-  pp[i*3+1] = (Math.random()-0.5)*40;
-  pp[i*3+2] = (Math.random()-0.5)*30 - 10;
-}
-pg.setAttribute('position', new THREE.BufferAttribute(pp, 3));
-scene.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0x00ff44, size: 0.05, transparent: true, opacity: 0.25 })));
-
-function animate(time) {
-  requestAnimationFrame(animate);
-  atoms.forEach(a => a.update(time * 0.001));
-  renderer.render(scene, camera);
-}
-animate(0);
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// ─── Clock ───
-function pad(n) { return n < 10 ? '0' + n : '' + n; }
-function updateClock() {
-  const d = new Date();
-  const secs = showSeconds ? ':' + pad(d.getSeconds()) : '';
-  document.getElementById('clock-time').textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + secs;
-  document.getElementById('clock-date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-}
-function layoutClock() {
-  document.getElementById('clock-panel').classList.toggle('hidden', !showClock);
-  document.getElementById('dashboard').classList.toggle('clock-bottom', !clockTop);
-}
-
-// ─── Visualization factories ───
-
-function vizParticles(count) {
-  const box = document.createElement('div');
-  box.className = 'viz-particles';
-  count = Math.max(1, Math.min(60, Math.floor(count)));
-  for (let i = 0; i < count; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    dot.style.left = (Math.random() * 92 + 4) + '%';
-    dot.style.top = (Math.random() * 70 + 15) + '%';
-    dot.dataset.vx = (Math.random() - 0.5) * 0.6;
-    dot.dataset.vy = (Math.random() - 0.5) * 0.6;
-    box.appendChild(dot);
-  }
-  return box;
-}
-
-function vizMeter(pct) {
-  const wrap = document.createElement('div');
-  wrap.className = 'viz-meter';
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('viewBox', '0 0 100 24');
-  const bg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  bg.setAttribute('d', 'M 5 19 A 15 15 0 0 1 95 19');
-  bg.setAttribute('fill', 'none'); bg.setAttribute('stroke', 'rgba(0,255,100,0.12)'); bg.setAttribute('stroke-width', '2');
-  svg.appendChild(bg);
-  const angle = Math.PI * (1 - Math.min(100, pct) / 100);
-  const x = 50 + 15 * Math.cos(angle), y = 19 - 15 * Math.sin(angle);
-  const val = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  val.setAttribute('d', `M 5 19 A 15 15 0 ${pct > 50 ? 1 : 0} 1 ${x.toFixed(1)} ${y.toFixed(1)}`);
-  val.setAttribute('fill', 'none'); val.setAttribute('stroke', '#0f0'); val.setAttribute('stroke-width', '2');
-  val.setAttribute('stroke-linecap', 'round');
-  svg.appendChild(val);
-  const need = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-  const nx = 50 + 12 * Math.cos(angle), ny = 19 - 12 * Math.sin(angle);
-  need.setAttribute('x1', '50'); need.setAttribute('y1', '19');
-  need.setAttribute('x2', nx.toFixed(1)); need.setAttribute('y2', ny.toFixed(1));
-  need.setAttribute('stroke', '#fff'); need.setAttribute('stroke-width', '1');
-  svg.appendChild(need);
-  wrap.appendChild(svg);
-  return wrap;
-}
-
-function vizBar(val, max) {
-  const wrap = document.createElement('div');
-  wrap.className = 'viz-bar';
-  const fill = document.createElement('div');
-  fill.className = 'viz-bar-fill';
-  fill.style.width = Math.min(100, (val / max) * 100) + '%';
-  wrap.appendChild(fill);
-  return wrap;
-}
-
-function vizWave(amp) {
-  const wrap = document.createElement('div');
-  wrap.className = 'viz-wave';
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('viewBox', '0 0 100 24'); svg.setAttribute('preserveAspectRatio', 'none');
-  let d = 'M 0 12';
-  for (let x = 0; x <= 100; x += 2) {
-    d += ` L ${x} ${(12 + Math.sin(x * 0.3 + amp) * amp * 5).toFixed(1)}`;
-  }
-  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('d', d); path.setAttribute('fill', 'none');
-  path.setAttribute('stroke', '#0f0'); path.setAttribute('stroke-width', '1.2');
-  svg.appendChild(path);
-  wrap.appendChild(svg);
-  return wrap;
-}
-
-function animateParticles() {
-  document.querySelectorAll('.viz-particles').forEach(box => {
-    const w = box.clientWidth || 160, h = box.clientHeight || 24;
-    for (const dot of box.children) {
-      let x = parseFloat(dot.style.left) / 100 * w;
-      let y = parseFloat(dot.style.top) / 100 * h;
-      let vx = parseFloat(dot.dataset.vx), vy = parseFloat(dot.dataset.vy);
-      x += vx; y += vy;
-      if (x < 1 || x > w-1) { vx = -vx; x = Math.max(1, Math.min(w-1, x)); }
-      if (y < 1 || y > h-1) { vy = -vy; y = Math.max(1, Math.min(h-1, y)); }
-      dot.style.left = (x / w * 100) + '%';
-      dot.style.top = (y / h * 100) + '%';
-      dot.dataset.vx = vx; dot.dataset.vy = vy;
-    }
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-// Auto-pick the best visualization for each stat
-function makeViz(title, value) {
-  const t = title.toLowerCase();
-  const num = parseFloat(String(value).replace(/[^0-9.-]/g, '')) || 0;
-  if (t.includes('%') || t.includes('usage') || t.includes('cpu') || t.includes('memory') || t.includes('disk') || t.includes('battery') || t.includes('load') || t.includes('temp')) {
-    return vizMeter(num);
-  }
-  if (Number.isInteger(num) && num > 0 && num <= 60) return vizParticles(num);
-  if (num >= 100) return vizBar(num, num * 1.5);
-  return vizWave(num);
-}
-
-// ─── Rendering ───
-function renderStats(stats) {
-  const el = document.getElementById('stats-panel');
-  if (!stats || Object.keys(stats).length === 0) {
-    el.innerHTML = '<div class="empty-state">No data</div>';
-    return;
-  }
-  el.innerHTML = '';
-  let atomIdx = 0;
-  for (const [key, val] of Object.entries(stats)) {
-    const row = document.createElement('div');
-    row.className = 'stat-row';
-    const num = parseFloat(String(val).replace(/[^0-9.-]/g, '')) || 0;
-    const t = key.toLowerCase();
-    if ((t.includes('cpu') || t.includes('memory') || t.includes('disk') || t.includes('load')) && num > 80) {
-      row.classList.add('alert-error');
-      if (atoms[atomIdx % atoms.length]) atoms[atomIdx % atoms.length].setIntensity(1);
-    } else if ((t.includes('cpu') || t.includes('memory') || t.includes('disk')) && num > 60) {
-      row.classList.add('alert-warn');
-      if (atoms[atomIdx % atoms.length]) atoms[atomIdx % atoms.length].setIntensity(0.6);
-    }
-    atomIdx++;
-
-    const label = document.createElement('span');
-    label.className = 'stat-label';
-    label.textContent = key;
-    const viz = document.createElement('span');
-    viz.className = 'stat-viz';
-    viz.appendChild(makeViz(key, val));
-    const value = document.createElement('span');
-    value.className = 'stat-value';
-    value.textContent = val;
-    row.appendChild(label);
-    row.appendChild(viz);
-    row.appendChild(value);
-    el.appendChild(row);
-  }
-}
-
-function renderMessages(messages) {
-  const el = document.getElementById('messages-panel');
-  if (!messages || messages.length === 0) { el.style.display = 'none'; return; }
-  el.style.display = 'flex';
-  el.innerHTML = messages.slice(-5).reverse().map(m => {
-    const t = m.time || '';
-    const f = escapeHtml(m.from || 'System');
-    const txt = escapeHtml(m.text || m.message || '');
-    return `<div class="message"><span class="from">${f}</span>${txt}<span class="time">${t}</span></div>`;
-  }).join('');
-}
-
-function renderAlerts(alerts) {
-  const el = document.getElementById('alerts-panel');
-  if (!alerts || alerts.length === 0) { el.style.display = 'none'; return; }
-  el.style.display = 'flex';
-  el.innerHTML = alerts.slice(0, 4).map(a => {
-    const level = a.level || 'info';
-    return `<div class="alert ${level}">${escapeHtml((a.text || a.message || '').substring(0, 40))}</div>`;
-  }).join('');
-}
-
-function renderImage() {
-  const panel = document.getElementById('image-panel');
-  const img = document.getElementById('board-image');
-  if (!showImage) { panel.style.display = 'none'; return; }
-  panel.style.display = 'flex';
-  img.src = IMAGE_URL + '?t=' + Date.now();
-  img.onerror = () => { panel.innerHTML = '<div class="image-placeholder">No image</div>'; };
-}
-
-function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-// ─── Feed polling ───
-const FEED_URL = "file://" + (window.HOME || "/Users/thinkyhead") + "/Library/Application%20Support/WebSavers/HermesBoard/feed.json";
-const IMAGE_URL = "file://" + (window.HOME || "/Users/thinkyhead") + "/Library/Application%20Support/WebSavers/HermesBoard/image.png";
-
-// Single merged source of truth: feed stats + live ObjC stats
-let feedStats = {};
-let liveStats = {};
-
-async function checkFeed() {
-  try {
-    const resp = await fetch(FEED_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!resp.ok) return;
-    const data = await resp.json();
-    feedStats = data.stats || {};
-    renderStats(Object.assign({}, liveStats, feedStats));
-    if (data.messages) renderMessages(data.messages);
-    if (data.alerts) renderAlerts(data.alerts);
-    document.getElementById('status-dot').classList.remove('status-offline');
-    document.getElementById('status-text').textContent = 'Connected';
-    document.getElementById('last-update').textContent = 'Updated ' + new Date().toLocaleTimeString();
-  } catch (e) {
-    document.getElementById('status-dot').classList.add('status-offline');
-    document.getElementById('status-text').textContent = 'Offline';
-  }
-}
-
-// ─── Live system stats from ObjC ───
-window.applySystemStats = function(stats) {
-  liveStats = {
-    'CPU': stats.cpu.toFixed(1) + '%',
-    'Memory': (stats.memory / (1024*1024*1024)).toFixed(1) + ' GB',
-    'Temperature': stats.temperature.toFixed(0) + '°C'
-  };
-  renderStats(Object.assign({}, liveStats, feedStats));
-};
-
-// ─── Settings from ObjC ───
-window.applySettings = function(s) {
-  if (s.clock !== undefined) showClock = s.clock;
-  if (s.clockPosition !== undefined) clockTop = !s.clockPosition; // 0=top, 1=bottom
-  if (s.seconds !== undefined) showSeconds = s.seconds;
-  if (s.image !== undefined) showImage = s.image;
-  layoutClock();
-  updateClock();
-  renderImage();
-};
-
-// ─── Init ───
-layoutClock();
-updateClock();
-setInterval(updateClock, 1000);
-setInterval(checkFeed, 3000);
-checkFeed();
-renderImage();
-</script>
+<!-- HermesBoard logic -->
+<script src="hermesboard.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@
 		1D6771DE72BCFB50C4C02A10 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3513EF680691918BAE3F59F /* ScreenSaver.framework */; };
 		24204640149E593AE77358CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EF22D5245EC526118ACA1C /* Cocoa.framework */; };
 		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		4311D5152F9D4BD0A80EA28D /* hermesboard.js in Resources */ = {isa = PBXBuildFile; fileRef = 8E661A0A780B1810D2A01CF7 /* hermesboard.js */; };
 		441C357A2F4BD888003F0FBE /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		441C357B2F4BD888003F0FBE /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
 		441C357C2F4BD888003F0FBE /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
@@ -135,7 +136,9 @@
 		BA8B46C754AF41B0C498358B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D5FB68FB410EC1FAE27B2B8 /* index.html */; };
 		D85FA557F2BDDB69B0AA5E0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3535A65C2CFFB73CF24F694 /* WebKit.framework */; };
 		DA06A6A88C8E0BE807824A24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDCE55FAECECE6D40205516 /* Cocoa.framework */; };
+		DFA70F1F33A0AEF6C0D1121C /* hermesboard.css in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F4D8515AADEF351874EF2 /* hermesboard.css */; };
 		E3531B1FA6DB7A7B8C25CD32 /* WebSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F500797A0118B23001CA0E54 /* WebSaverView.m */; };
+		FFA553D95B752CA690782A2F /* gauge.min.js in Resources */ = {isa = PBXBuildFile; fileRef = F9A523BA9279E17B82235340 /* gauge.min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -283,9 +286,11 @@
 		448D6B642F05F0CA0050C47D /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
+		5F6F4D8515AADEF351874EF2 /* hermesboard.css */ = {isa = PBXFileReference; includeInIndex = 1; path = hermesboard.css; sourceTree = "<group>"; };
 		837F30454FC5CF837CD7D31E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = SDKROOT; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8E661A0A780B1810D2A01CF7 /* hermesboard.js */ = {isa = PBXFileReference; includeInIndex = 1; path = hermesboard.js; sourceTree = "<group>"; };
 		9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = HermesBoard.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDCE55FAECECE6D40205516 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cocoa.framework; sourceTree = SDKROOT; };
 		A3513EF680691918BAE3F59F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScreenSaver.framework; sourceTree = SDKROOT; };
@@ -295,6 +300,7 @@
 		E3535A65C2CFFB73CF24F694 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = SDKROOT; };
 		F50079790118B23001CA0E54 /* WebSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSaverView.h; sourceTree = "<group>"; };
 		F500797A0118B23001CA0E54 /* WebSaverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSaverView.m; sourceTree = "<group>"; };
+		F9A523BA9279E17B82235340 /* gauge.min.js */ = {isa = PBXFileReference; includeInIndex = 1; path = gauge.min.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,6 +497,9 @@
 			isa = PBXGroup;
 			children = (
 				2D5FB68FB410EC1FAE27B2B8 /* index.html */,
+				F9A523BA9279E17B82235340 /* gauge.min.js */,
+				5F6F4D8515AADEF351874EF2 /* hermesboard.css */,
+				8E661A0A780B1810D2A01CF7 /* hermesboard.js */,
 			);
 			name = HermesBoard;
 			path = HermesBoard;
@@ -1089,6 +1098,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA8B46C754AF41B0C498358B /* index.html in Resources */,
+				FFA553D95B752CA690782A2F /* gauge.min.js in Resources */,
+				DFA70F1F33A0AEF6C0D1121C /* hermesboard.css in Resources */,
+				4311D5152F9D4BD0A80EA28D /* hermesboard.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
