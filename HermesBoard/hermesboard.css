@@ -48,6 +48,36 @@ body { overflow: hidden; background: #05050a; font-family: 'SF Mono', 'Menlo', m
 .gauge-card .gauge-title { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,255,100,0.5); margin-top: 2px; }
 .gauge-card canvas { width: 100%; height: auto; }
 
+/* Memory horizontal stacked bar */
+.mem-card { padding: 8px; gap: 6px; }
+.mem-bar {
+  width: 100%; height: 14px;
+  display: flex; gap: 2px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,255,100,0.1);
+  border-radius: 3px; overflow: hidden;
+}
+.mem-seg { height: 100%; transition: width 0.5s ease; }
+.seg-active { background: #0f0; }
+.seg-wired { background: #f5a623; }
+.seg-compressed { background: #3b82f6; }
+.mem-card.over .mem-bar { border-color: rgba(239,68,68,0.6); box-shadow: 0 0 8px rgba(239,68,68,0.4); }
+.mem-legend {
+  display: flex; justify-content: space-between;
+  font-size: 8px; color: rgba(255,255,255,0.4);
+}
+.mem-legend span { display: inline-flex; align-items: center; gap: 3px; }
+.mem-legend .swatch { width: 6px; height: 6px; border-radius: 1px; display: inline-block; }
+.sw-active { background: #0f0; }
+.sw-wired { background: #f5a623; }
+.sw-compressed { background: #3b82f6; }
+.mem-value {
+  font-size: 13px; color: #0f0; font-weight: 600;
+  font-variant-numeric: tabular-nums; text-align: center;
+  text-shadow: 0 0 8px rgba(0,255,100,0.3);
+}
+.mem-card.over .mem-value { color: #ef4444; text-shadow: 0 0 8px rgba(239,68,68,0.4); }
+
 /* Column 2 & 3: Messages / Alerts */
 .msg-col, .alert-col {
   display: flex; flex-direction: column;

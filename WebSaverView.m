@@ -25,6 +25,7 @@
 #import "WKWebViewPrivate.h"
 #include <mach/mach.h>
 #include <mach/mach_host.h>
+#include <sys/sysctl.h>
 #include <IOKit/IOKitLib.h>
 
 @implementation WEBSAVER_CLASS
@@ -117,15 +118,20 @@
         hasPrevCpu = true;
     }
 
-    // Memory used (active + wired + compressed)
-    int64_t memUsed = 0;
+    // Memory: total physical + active/wired/compressed components
+    int64_t memTotal = 0, memActive = 0, memWired = 0, memCompressed = 0;
     vm_size_t pageSize;
     host_page_size(mach_host_self(), &pageSize);
     vm_statistics64_data_t vmStats;
     mach_msg_type_number_t vmCount = HOST_VM_INFO64_COUNT;
     if (host_statistics64(mach_host_self(), HOST_VM_INFO64, (host_info_t)&vmStats, &vmCount) == KERN_SUCCESS) {
-        memUsed = (int64_t)(vmStats.active_count + vmStats.wire_count + vmStats.compressor_page_count) * pageSize;
+        memActive     = (int64_t)vmStats.active_count     * pageSize;
+        memWired      = (int64_t)vmStats.wire_count       * pageSize;
+        memCompressed = (int64_t)vmStats.compressor_page_count * pageSize;
     }
+    // Total physical memory (hw.memsize)
+    size_t len = sizeof(memTotal);
+    sysctlbyname("hw.memsize", &memTotal, &len, NULL, 0);
 
     // Thermal via IOKit (TC0D = CPU die temp)
     double temp = 0;
@@ -147,8 +153,8 @@
     }
 
     NSString *js = [NSString stringWithFormat:
-        @"if (window.applySystemStats) applySystemStats({cpu: %.1f, memory: %lld, temperature: %.1f});",
-        cpuUsage, memUsed, temp];
+        @"if (window.applySystemStats) applySystemStats({cpu: %.1f, memory: %lld, memTotal: %lld, memActive: %lld, memWired: %lld, memCompressed: %lld, temperature: %.1f});",
+        cpuUsage, memActive + memWired + memCompressed, memTotal, memActive, memWired, memCompressed, temp];
     [webView evaluateJavaScript:js completionHandler:nil];
 }
 

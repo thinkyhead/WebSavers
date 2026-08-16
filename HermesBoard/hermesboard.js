@@ -128,11 +128,81 @@ function clearGauges() {
   for (const k in gauges) delete gauges[k];
 }
 
+// Horizontal stacked memory bar: active / wired / compressed relative to total
+function buildMemoryBar() {
+  const card = document.createElement('div');
+  card.className = 'gauge-card mem-card';
+  card.id = 'mem-card';
+
+  const title = document.createElement('div');
+  title.className = 'gauge-title';
+  title.textContent = 'MEMORY';
+  card.appendChild(title);
+
+  const bar = document.createElement('div');
+  bar.className = 'mem-bar';
+  bar.innerHTML = `
+    <div class="mem-seg seg-active"></div>
+    <div class="mem-seg seg-wired"></div>
+    <div class="mem-seg seg-compressed"></div>
+  `;
+  card.appendChild(bar);
+
+  const legend = document.createElement('div');
+  legend.className = 'mem-legend';
+  legend.innerHTML = `
+    <span><i class="swatch sw-active"></i>Active</span>
+    <span><i class="swatch sw-wired"></i>Wired</span>
+    <span><i class="swatch sw-compressed"></i>Compressed</span>
+  `;
+  card.appendChild(legend);
+
+  const value = document.createElement('div');
+  value.className = 'mem-value';
+  value.textContent = '-- / --';
+  card.appendChild(value);
+
+  document.getElementById('gauges-col').appendChild(card);
+  return card;
+}
+
+// Memory state, populated from applySystemStats
+let memState = null;
+
+function updateMemoryBar() {
+  const card = document.getElementById('mem-card');
+  if (!card || !memState) return;
+  const total = memState.total;
+  if (!total) return;
+
+  const active = memState.active, wired = memState.wired, compressed = memState.compressed;
+  const used = active + wired + compressed;
+  const pct = Math.min(100, (used / total) * 100);
+  const pctActive = (active / total) * 100;
+  const pctWired = (wired / total) * 100;
+  const pctCompressed = (compressed / total) * 100;
+
+  const segA = card.querySelector('.seg-active');
+  const segW = card.querySelector('.seg-wired');
+  const segC = card.querySelector('.seg-compressed');
+  segA.style.width = pctActive + '%';
+  segW.style.width = pctWired + '%';
+  segC.style.width = pctCompressed + '%';
+
+  // If used exceeds physical RAM (swap), mark the bar hot
+  const over = used > total;
+  card.classList.toggle('over', over);
+
+  const gb = v => (v / (1024*1024*1024)).toFixed(1);
+  card.querySelector('.mem-value').textContent =
+    `${gb(used)} / ${gb(total)} GB${over ? ' (swapping)' : ''}`;
+}
+
 // Build a set of system gauges
 function renderSystemGauges() {
   clearGauges();
   buildGauge('cpu', 'CPU', { maxValue: 100, majorTicks: ['0','25','50','75','100'] });
-  buildGauge('memory', 'MEMORY', { maxValue: 32, majorTicks: ['0','8','16','24','32'], units: 'GB' });
+  buildMemoryBar();
   buildGauge('temp', 'TEMP', { maxValue: 100, majorTicks: ['0','25','50','75','100'], units: '°C' });
 }
 
@@ -142,10 +212,10 @@ function renderFeedStats(stats) {
   for (const [k, v] of Object.entries(stats)) {
     const kl = k.toLowerCase();
     if (kl.includes('cpu')) setGauge('cpu', parseFloat(String(v))||0);
-    else if (kl.includes('memory') || kl.includes('mem')) setGauge('memory', parseFloat(String(v))||0);
     else if (kl.includes('temp')) setGauge('temp', parseFloat(String(v))||0);
     else extra[k] = v;
   }
+  updateMemoryBar();
   // Show any extra non-system stats as small text rows below the gauges
   const col = document.getElementById('gauges-col');
   const existing = document.getElementById('extra-stats');
@@ -222,9 +292,14 @@ async function checkFeed() {
 }
 
 window.applySystemStats = function(stats) {
+  memState = {
+    total: stats.memTotal || 0,
+    active: stats.memActive || 0,
+    wired: stats.memWired || 0,
+    compressed: stats.memCompressed || 0
+  };
   liveStats = {
     'CPU': stats.cpu.toFixed(1) + '%',
-    'Memory': (stats.memory / (1024*1024*1024)).toFixed(1) + ' GB',
     'Temperature': stats.temperature.toFixed(0) + '°C'
   };
   renderFeedStats(Object.assign({}, liveStats, feedStats));
