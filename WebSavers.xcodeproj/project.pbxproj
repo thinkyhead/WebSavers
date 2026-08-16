@@ -124,6 +124,7 @@
 		5046BA132BA1FE6400811EB7 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		5E2C212946B4AE0CBB8CFA06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BF33C56D5CD368E1A82D0E /* Foundation.framework */; };
 		634090D7C6BA61B05E62E65A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190E882A8B93C0B0A878CE43 /* AppKit.framework */; };
+		6ED2313AEAE32FA3307430CD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F30454FC5CF837CD7D31E /* IOKit.framework */; };
 		861F1E1F0D934DAA0089B530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861F1E1E0D934DAA0089B530 /* IOKit.framework */; };
 		8D255AC70486D3F9007BF209 /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		8D255AC80486D3F9007BF209 /* WebSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = F50079790118B23001CA0E54 /* WebSaverView.h */; };
@@ -282,6 +283,7 @@
 		448D6B642F05F0CA0050C47D /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewPrivate.h; sourceTree = "<group>"; };
 		5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewPrivate.m; sourceTree = "<group>"; };
+		837F30454FC5CF837CD7D31E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = SDKROOT; };
 		861F1E1E0D934DAA0089B530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9A377AC1C95290F36FA8C051 /* HermesBoard.bundle */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; includeInIndex = 0; path = HermesBoard.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +407,7 @@
 				1D6771DE72BCFB50C4C02A10 /* ScreenSaver.framework in Frameworks */,
 				5E2C212946B4AE0CBB8CFA06 /* Foundation.framework in Frameworks */,
 				634090D7C6BA61B05E62E65A /* AppKit.framework in Frameworks */,
+				6ED2313AEAE32FA3307430CD /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +631,7 @@
 				A3513EF680691918BAE3F59F /* ScreenSaver.framework */,
 				D8BF33C56D5CD368E1A82D0E /* Foundation.framework */,
 				190E882A8B93C0B0A878CE43 /* AppKit.framework */,
+				837F30454FC5CF837CD7D31E /* IOKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

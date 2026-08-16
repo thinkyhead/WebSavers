@@ -750,11 +750,11 @@
     }
     else if ([cls isEqualToString:@"HermesBoardView"]) {
         js = [NSString stringWithFormat:
-            @"if (window.applySettings) applySettings({clock:%@, clockPosition:%ld, seconds:%@, imagePanel:%ld});",
+            @"if (window.applySettings) applySettings({clock:%@, clockPosition:%ld, seconds:%@, image:%@});",
             [defaults boolForKey:@"clock"] ? @"true" : @"false",
             [defaults integerForKey:@"clockPosition"],
             [defaults boolForKey:@"seconds"] ? @"true" : @"false",
-            [defaults integerForKey:@"imagePanel"]];
+            [defaults boolForKey:@"image"] ? @"true" : @"false"];
     }
 
     if (js) {
