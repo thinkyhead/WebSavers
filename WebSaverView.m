@@ -79,8 +79,9 @@
     [super startAnimation];
     [self loadIndexWithConfig:YES];
 
-    // HermesBoard: gather live system stats and push to JS every 2s
-    if ([NSStringFromClass([self class]) isEqualToString:@"HermesBoardView"]) {
+    // HermesBoard and P5Alert: gather live system stats and push to JS every 2s
+    if ([NSStringFromClass([self class]) isEqualToString:@"HermesBoardView"] ||
+        [NSStringFromClass([self class]) isEqualToString:@"P5AlertView"]) {
         statsTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
                                                       target:self
                                                     selector:@selector(pushSystemStats)
