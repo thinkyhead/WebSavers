@@ -14,6 +14,7 @@
 		24204640149E593AE77358CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EF22D5245EC526118ACA1C /* Cocoa.framework */; };
 		2724FBF58263C9A915F6CFE6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16640193329DC4C795DD5277 /* IOKit.framework */; };
 		289EE80109F47CE000C096EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289EE80009F47CE000C096EC /* WebKit.framework */; };
+		3022DBB8FC8EF01938C9AC15 /* WKWebViewPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046BA082BA1FE6400811EB7 /* WKWebViewPrivate.m */; };
 		4311D5152F9D4BD0A80EA28D /* hermesboard.js in Resources */ = {isa = PBXBuildFile; fileRef = 8E661A0A780B1810D2A01CF7 /* hermesboard.js */; };
 		441C357A2F4BD888003F0FBE /* WebSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* WebSaver_Prefix.pch */; };
 		441C357B2F4BD888003F0FBE /* WKWebViewPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5046BA072BA1FE6400811EB7 /* WKWebViewPrivate.h */; };
@@ -1349,6 +1350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52248152741A4E0172E7C716 /* WebSaverView.m in Sources */,
+				3022DBB8FC8EF01938C9AC15 /* WKWebViewPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1433,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=P5AlertView";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Info.plist;
@@ -1823,6 +1826,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREFIX_HEADER = WebSaver_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "WEBSAVER_CLASS=P5AlertView";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Info.plist;

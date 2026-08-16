@@ -116,9 +116,9 @@ const sketch = (p) => {
     // CPU gauge (top-left)
     drawCircularGauge(pt, cx, cy, gaugeRadius, stats.cpu / 100, "CPU", stats.cpu.toFixed(0) + "%");
 
-    // Memory gauge (top-center)
+    // Memory gauge (top-center) — convert bytes to GB
     const memPct = stats.memTotal > 0 ? stats.memory / stats.memTotal : 0;
-    drawCircularGauge(pt, cx + spacing, cy, gaugeRadius, memPct, "MEM", stats.memory.toFixed(1) + "G");
+    drawCircularGauge(pt, cx + spacing, cy, gaugeRadius, memPct, "MEM", (stats.memory / (1024*1024*1024)).toFixed(1) + "G");
 
     // Temperature gauge (top-right)
     drawCircularGauge(pt, cx + spacing * 2, cy, gaugeRadius, Math.min(stats.temperature / 100, 1), "TEMP", stats.temperature.toFixed(0) + "°");
@@ -146,9 +146,9 @@ const sketch = (p) => {
     pt.strokeCap(p.PROJECT);
     pt.arc(0, 0, r * 2, r * 2, startAngle, endAngle);
 
-    // Needle
+    // Needle — middle red (HSB: hue 0, saturated, medium brightness)
     const needleAngle = startAngle + p.TWO_PI * Math.min(Math.max(pct, 0), 1);
-    pt.stroke(0, 0, 100, 90);
+    pt.stroke(0, 85, 75, 90);
     pt.strokeWeight(2);
     pt.line(0, 0, Math.cos(needleAngle) * r * 0.8, Math.sin(needleAngle) * r * 0.8);
 
