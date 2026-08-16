@@ -88,7 +88,7 @@
     NSButton *clockCheckbox;
     NSPopUpButton *clockPositionPopup;
     NSButton *secondsCheckbox;
-    NSPopUpButton *imagePopup;
+    NSButton *imageCheckbox;
 }
 
 - (IBAction)configCancel:(id)sender;

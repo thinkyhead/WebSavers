@@ -443,11 +443,9 @@
         [content addSubview:secondsCheckbox];
         y -= 35;
 
-        // Image display
-        [content addSubview:[self labelAt:NSMakeRect(10, y, 110, 20) text:@"Image panel:" alignment:NSTextAlignmentRight]];
-        imagePopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(125, y - 3, 240, 25) pullsDown:NO];
-        [imagePopup addItemsWithTitles:@[@"None", @"Stats", @"Messages", @"Alerts"]];
-        [content addSubview:imagePopup];
+        // Show image
+        imageCheckbox = [self checkboxAt:NSMakeRect(125, y, 240, 20) title:@"Show image"];
+        [content addSubview:imageCheckbox];
         y -= 45;
     }
 
@@ -584,7 +582,7 @@
         [clockCheckbox setState:[defaults boolForKey:@"clock"] ? NSControlStateValueOn : NSControlStateValueOff];
         [clockPositionPopup selectItemAtIndex:[defaults integerForKey:@"clockPosition"]];
         [secondsCheckbox setState:[defaults boolForKey:@"seconds"] ? NSControlStateValueOn : NSControlStateValueOff];
-        [imagePopup setState:[defaults boolForKey:@"image"] ? NSControlStateValueOn : NSControlStateValueOff];
+        [imageCheckbox setState:[defaults boolForKey:@"image"] ? NSControlStateValueOn : NSControlStateValueOff];
     }
 
     [self updateValueLabels];
@@ -765,7 +763,7 @@
         [defaults setBool:[clockCheckbox state] == NSControlStateValueOn forKey:@"clock"];
         [defaults setInteger:[clockPositionPopup indexOfSelectedItem] forKey:@"clockPosition"];
         [defaults setBool:[secondsCheckbox state] == NSControlStateValueOn forKey:@"seconds"];
-        [defaults setInteger:[imagePopup indexOfSelectedItem] forKey:@"imagePanel"];
+        [defaults setBool:[imageCheckbox state] == NSControlStateValueOn forKey:@"image"];
     }
 
     [defaults synchronize];
@@ -822,7 +820,7 @@
     clockCheckbox = nil;
     clockPositionPopup = nil;
     secondsCheckbox = nil;
-    imagePopup = nil;
+    imageCheckbox = nil;
 }
 
 - (void)dealloc {
