@@ -792,8 +792,10 @@
 - (IBAction)configCancel:(id)sender {
     MGLog(@"configCancel: configSheet=%p", configSheet);
     [[NSApplication sharedApplication] endSheet:configSheet];
-    [self releaseControls];
-    MGLog(@"  controls nilled out");
+    // Defer cleanup so the sheet animation fully completes before the
+    // window/controls are released; otherwise Options won't re-show.
+    [self performSelector:@selector(releaseControls) withObject:nil afterDelay:0.1];
+    MGLog(@"  deferred controls release");
 }
 
 - (IBAction)configOK:(id)sender {
@@ -864,7 +866,9 @@
     [self loadIndexWithConfig:YES];
 
     [[NSApplication sharedApplication] endSheet:configSheet];
-    [self releaseControls];
+    // Defer cleanup so the sheet animation fully completes before the
+    // window/controls are released; otherwise Options won't re-show.
+    [self performSelector:@selector(releaseControls) withObject:nil afterDelay:0.1];
     MGLog(@"  settings saved for %@", cls);
 }
 
