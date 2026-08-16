@@ -203,7 +203,13 @@
 
 - (NSWindow*)configureSheet {
     MGLog(@"configureSheet called (existing configSheet=%p)", configSheet);
-    [self buildConfigSheet];
+    // The system retains the window we return (readonly, strong property)
+    // and re-presents it each time Options is clicked. Build it ONCE and
+    // return the same window every call; just refresh the control values
+    // from the saved settings. Nilling/rebuilding breaks re-presentation.
+    if (!configSheet) {
+        [self buildConfigSheet];
+    }
     [self loadDefaultsIntoSheet];
     MGLog(@"  returning configSheet=%p, parentWindow=%p", configSheet, [configSheet parentWindow]);
     return configSheet;
@@ -792,10 +798,10 @@
 - (IBAction)configCancel:(id)sender {
     MGLog(@"configCancel: configSheet=%p", configSheet);
     [[NSApplication sharedApplication] endSheet:configSheet];
-    // Defer cleanup so the sheet animation fully completes before the
-    // window/controls are released; otherwise Options won't re-show.
-    [self performSelector:@selector(releaseControls) withObject:nil afterDelay:0.1];
-    MGLog(@"  deferred controls release");
+    // Keep configSheet retained (the system owns it via the readonly strong
+    // configureSheet property). We re-present the same window next time, so
+    // don't nil controls here — configureSheet just reloads values.
+    MGLog(@"  sheet ended, retained for reuse");
 }
 
 - (IBAction)configOK:(id)sender {
@@ -866,60 +872,10 @@
     [self loadIndexWithConfig:YES];
 
     [[NSApplication sharedApplication] endSheet:configSheet];
-    // Defer cleanup so the sheet animation fully completes before the
-    // window/controls are released; otherwise Options won't re-show.
-    [self performSelector:@selector(releaseControls) withObject:nil afterDelay:0.1];
+    // Keep configSheet retained (the system owns it via the readonly strong
+    // configureSheet property). We re-present the same window next time, so
+    // don't nil controls here — configureSheet just reloads values.
     MGLog(@"  settings saved for %@", cls);
-}
-
-- (void)releaseControls {
-    configSheet = nil;
-    themePopup = nil;
-    alphaCheckbox = nil;
-    punctuationCheckbox = nil;
-    overlayPopup = nil;
-    flipCheckbox = nil;
-    changeSlider = nil;
-    changeLabel = nil;
-    fpsSlider = nil;
-    fpsLabel = nil;
-    minSpeedSlider = nil;
-    minSpeedLabel = nil;
-    maxSpeedSlider = nil;
-    maxSpeedLabel = nil;
-    fadeSlider = nil;
-    fadeLabel = nil;
-    starCountSlider = nil;
-    starCountLabel = nil;
-    speedSlider = nil;
-    speedLabel = nil;
-    trailCountSlider = nil;
-    trailCountLabel = nil;
-    trailLengthSlider = nil;
-    trailLengthLabel = nil;
-    colorPopup = nil;
-    fontSizeSlider = nil;
-    fontSizeLabel = nil;
-    countSlider = nil;
-    countLabel = nil;
-    spreadSlider = nil;
-    spreadLabel = nil;
-    starFieldSlider = nil;
-    starFieldLabel = nil;
-    colorCycleSlider = nil;
-    colorCycleLabel = nil;
-    shapePopup = nil;
-    particleCountSlider = nil;
-    particleCountLabel = nil;
-    morphIntervalSlider = nil;
-    morphIntervalLabel = nil;
-
-    // HermesBoard
-    clockCheckbox = nil;
-    clockPositionPopup = nil;
-    secondsCheckbox = nil;
-    imageCheckbox = nil;
-    showAlertCheckbox = nil;
 }
 
 - (void)dealloc {
