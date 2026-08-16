@@ -96,18 +96,18 @@ function buildGauge(id, title, opts) {
     minorTicks: 4,
     strokeTicks: false,
     highlights: [{ from: 80, to: 100, color: 'rgba(239,68,68,0.25)' }],
-    colorPlate: 'rgba(10,15,12,0)',
-    colorMajorTicks: '#0a0f0c',
-    colorMinorTicks: '#0f0',
-    colorNumbers: 'rgba(0,255,100,0.6)',
-    colorNeedle: '#0f0',
-    colorNeedleEnd: '#0f0',
-    colorNeedleCircleOuter: '#0f0',
+    colorPlate: 'rgba(10,18,40,0)',           // dark navy plate (was gray)
+    colorMajorTicks: '#0a1428',
+    colorMinorTicks: '#7fae8a',                // softened green
+    colorNumbers: 'rgba(230,210,120,0.85)',    // warm yellow
+    colorNeedle: '#e6d278',
+    colorNeedleEnd: '#e6d278',
+    colorNeedleCircleOuter: '#e6d278',
     colorNeedleCircleInner: '#fff',
     colorNeedleShadowUp: 'rgba(0,0,0,0)',
     colorNeedleShadowDown: 'rgba(0,0,0,0)',
-    colorValueBox: 'rgba(0,0,0,0)',
-    colorValueText: '#0f0',
+    colorValueBox: 'rgba(10,18,40,0)',
+    colorValueText: '#f2e28a',                 // yellow value text
     valueBox: true,
     fontValue: 'Menlo',
     fontNumbers: 'Menlo',

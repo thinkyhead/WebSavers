@@ -40,12 +40,12 @@ body { overflow: hidden; background: #05050a; font-family: 'SF Mono', 'Menlo', m
 .gauges-col::-webkit-scrollbar { width: 3px; }
 .gauges-col::-webkit-scrollbar-thumb { background: rgba(0,255,100,0.15); }
 .gauge-card {
-  background: rgba(10, 15, 12, 0.5);
-  border: 1px solid rgba(0,255,100,0.06);
+  background: rgba(12, 22, 48, 0.6);
+  border: 1px solid rgba(230, 210, 120, 0.08);
   border-radius: 6px; padding: 4px;
   display: flex; flex-direction: column; align-items: center;
 }
-.gauge-card .gauge-title { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,255,100,0.5); margin-top: 2px; }
+.gauge-card .gauge-title { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(230,210,120,0.6); margin-top: 2px; }
 .gauge-card canvas { width: 100%; height: auto; }
 
 /* Memory horizontal stacked bar */
