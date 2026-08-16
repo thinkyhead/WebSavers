@@ -1,15 +1,12 @@
 // P5Alert — p5.js flow field dashboard with floating gauges and alerts
-// No DOM buttons (any interaction closes the saver). All visuals are
-// drawn in p5. Alerts float in space and auto-fade, only once.
+// Alerts float in the space, drifting over time. Hidden by default,
+// can be shown from the Options sheet for development.
 "use strict";
 
 // ─── Alert state ─────────────────────────────────────────────────
 const ALERT_SHOWN_KEY = "p5alert_shown_v1";
-let alertShown = false;
-let alertAlpha = 0;
-let alertTargetAlpha = 0;
-let alertText = "";
-let alertTitle = "";
+let alertCards = [];
+let alertDrift = 0;
 
 // ─── Live stats (updated from ObjC via window.applySystemStats) ──
 let stats = { cpu: 0, memory: 0, memTotal: 64, memActive: 0, memWired: 0, memCompressed: 0, temperature: 0 };
@@ -17,6 +14,30 @@ let stats = { cpu: 0, memory: 0, memTotal: 64, memActive: 0, memWired: 0, memCom
 window.applySystemStats = function(s) {
   stats = s;
 };
+
+// ─── Settings ─────────────────────────────────────────────────────
+let settings = { showAlert: false };
+
+window.applySettings = function(s) {
+  if (s.showAlert !== undefined) settings.showAlert = s.showAlert;
+  if (settings.showAlert && alertCards.length === 0) {
+    addAlert("P5Alert", "Flow-field dashboard\nCPU  Memory  Temperature");
+  }
+};
+
+function addAlert(title, text) {
+  // Drifting card with animated position
+  alertCards.push({
+    title: title,
+    text: text,
+    alpha: 0,
+    targetAlpha: 100,
+    x: 0, y: 0,
+    vx: (Math.random() - 0.5) * 0.8,
+    vy: (Math.random() - 0.5) * 0.8,
+    born: performance.now()
+  });
+}
 
 // ─── p5.js sketch ─────────────────────────────────────────────────
 const sketch = (p) => {
@@ -26,7 +47,6 @@ const sketch = (p) => {
   let particles = [];
   let flowField = [];
   let zOff = 0;
-  let gaugeAngle = 0;
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -40,18 +60,6 @@ const sketch = (p) => {
     for (let i = 0; i < NUM_PARTICLES; i++) {
       particles.push(new Particle(p));
     }
-
-    // Show alert if never shown
-    try {
-      if (!localStorage.getItem(ALERT_SHOWN_KEY)) {
-        alertTitle = "P5Alert";
-        alertText = "Flow-field dashboard\nCPU  Memory  Temperature\n\nClick anywhere to dismiss";
-        alertTargetAlpha = 100;
-        alertShown = false;
-      } else {
-        alertShown = true;
-      }
-    } catch (e) {}
   };
 
   p.windowResized = () => {
@@ -60,17 +68,8 @@ const sketch = (p) => {
     rows = Math.floor(p.height / SCALE);
   };
 
-  p.mousePressed = () => {
-    // Click dismisses the alert permanently
-    if (!alertShown && alertAlpha > 5) {
-      alertTargetAlpha = 0;
-      alertShown = true;
-      try { localStorage.setItem(ALERT_SHOWN_KEY, "1"); } catch (e) {}
-    }
-  };
-
   p.draw = () => {
-    // Semi-transparent background for trail effect
+    // Semi-transparent background for trail effect (no blur)
     p.noStroke();
     p.fill(220, 50, 5, 8);
     p.rect(0, 0, p.width, p.height);
@@ -102,10 +101,10 @@ const sketch = (p) => {
     // Draw gauges as overlay
     drawGauges(p);
 
-    // Draw floating alert
-    drawAlert(p);
+    // Draw drifting alert cards
+    drawAlerts(p);
 
-    gaugeAngle += 0.005;
+    alertDrift += 0.01;
   };
 
   function drawGauges(pt) {
@@ -173,45 +172,53 @@ const sketch = (p) => {
     pt.pop();
   }
 
-  function drawAlert(pt) {
-    if (alertAlpha <= 0.5) return;
+  function drawAlerts(pt) {
+    const cardW = 260;
+    const cardH = 120;
 
-    // Smooth fade
-    alertAlpha = p.lerp(alertAlpha, alertTargetAlpha, 0.05);
-    if (alertAlpha < 0.5) return;
+    alertCards.forEach((card, i) => {
+      // Smooth fade-in
+      card.alpha = p.lerp(card.alpha, card.targetAlpha, 0.05);
+      if (card.alpha < 0.5) return;
 
-    pt.push();
-    pt.translate(pt.width / 2, pt.height / 2);
+      // Drift position — each card gets a unique drift path
+      const t = alertDrift + i * 1.7;
+      const driftX = Math.sin(t * 0.7 + i) * (pt.width * 0.15);
+      const driftY = Math.cos(t * 0.5 + i * 2.3) * (pt.height * 0.15);
+      const baseX = pt.width * 0.5 + driftX;
+      const baseY = pt.height * 0.5 + driftY;
 
-    // Card background
-    const cardW = 320;
-    const cardH = 160;
-    pt.noStroke();
-    pt.fill(220, 30, 15, alertAlpha * 0.85);
-    pt.rectMode(p.CENTER);
-    pt.rect(0, 0, cardW, cardH, 12);
+      pt.push();
+      pt.translate(baseX, baseY);
 
-    // Card border
-    pt.noFill();
-    pt.stroke(200, 60, 70, alertAlpha * 0.3);
-    pt.strokeWeight(1);
-    pt.rect(0, 0, cardW, cardH, 12);
+      // Card background (no blur — just translucent)
+      pt.noStroke();
+      pt.fill(220, 30, 15, card.alpha * 0.8);
+      pt.rectMode(p.CENTER);
+      pt.rect(0, 0, cardW, cardH, 10);
 
-    // Title
-    pt.noStroke();
-    pt.fill(200, 60, 80, alertAlpha);
-    pt.textAlign(p.CENTER, p.CENTER);
-    pt.textSize(16);
-    pt.textStyle(p.BOLD);
-    pt.text(alertTitle, 0, -45);
+      // Card border
+      pt.noFill();
+      pt.stroke(200, 60, 70, card.alpha * 0.3);
+      pt.strokeWeight(1);
+      pt.rect(0, 0, cardW, cardH, 10);
 
-    // Message
-    pt.textStyle(p.NORMAL);
-    pt.textSize(11);
-    pt.fill(0, 0, 90, alertAlpha * 0.7);
-    pt.text(alertText, 0, 10);
+      // Title
+      pt.noStroke();
+      pt.fill(200, 60, 80, card.alpha);
+      pt.textAlign(p.CENTER, p.CENTER);
+      pt.textSize(14);
+      pt.textStyle(p.BOLD);
+      pt.text(card.title, 0, -30);
 
-    pt.pop();
+      // Message
+      pt.textStyle(p.NORMAL);
+      pt.textSize(10);
+      pt.fill(0, 0, 90, card.alpha * 0.65);
+      pt.text(card.text, 0, 12);
+
+      pt.pop();
+    });
   }
 
   class Particle {
@@ -283,8 +290,3 @@ const sketch = (p) => {
 };
 
 new p5(sketch);
-
-// Settings (for config sheet, if any)
-window.applySettings = function(settings) {
-  // Currently no settings
-};

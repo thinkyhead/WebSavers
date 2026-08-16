@@ -524,6 +524,12 @@
         [content addSubview:imageCheckbox];
         y -= 45;
     }
+    else if ([cls isEqualToString:@"P5AlertView"]) {
+        // Show alert (for development)
+        showAlertCheckbox = [self checkboxAt:NSMakeRect(125, y, 240, 20) title:@"Show alert"];
+        [content addSubview:showAlertCheckbox];
+        y -= 45;
+    }
 
     // OK button
     NSButton *okButton = [[NSButton alloc] initWithFrame:NSMakeRect(290, 10, 75, 28)];
@@ -660,6 +666,10 @@
         [secondsCheckbox setState:[defaults boolForKey:@"seconds"] ? NSControlStateValueOn : NSControlStateValueOff];
         [imageCheckbox setState:[defaults boolForKey:@"image"] ? NSControlStateValueOn : NSControlStateValueOff];
     }
+    else if ([cls isEqualToString:@"P5AlertView"]) {
+        [defaults registerDefaults:@{@"showAlert":@NO}];
+        [showAlertCheckbox setState:[defaults boolForKey:@"showAlert"] ? NSControlStateValueOn : NSControlStateValueOff];
+    }
 
     [self updateValueLabels];
     MGLog(@"  defaults loaded for %@", cls);
@@ -763,6 +773,11 @@
             [defaults boolForKey:@"seconds"] ? @"true" : @"false",
             [defaults boolForKey:@"image"] ? @"true" : @"false"];
     }
+    else if ([cls isEqualToString:@"P5AlertView"]) {
+        js = [NSString stringWithFormat:
+            @"if (window.applySettings) applySettings({showAlert:%@});",
+            [defaults boolForKey:@"showAlert"] ? @"true" : @"false"];
+    }
 
     if (js) {
         [webView evaluateJavaScript:js completionHandler:nil];
@@ -841,6 +856,9 @@
         [defaults setBool:[secondsCheckbox state] == NSControlStateValueOn forKey:@"seconds"];
         [defaults setBool:[imageCheckbox state] == NSControlStateValueOn forKey:@"image"];
     }
+    else if ([cls isEqualToString:@"P5AlertView"]) {
+        [defaults setBool:[showAlertCheckbox state] == NSControlStateValueOn forKey:@"showAlert"];
+    }
 
     [defaults synchronize];
     [self loadIndexWithConfig:YES];
@@ -897,6 +915,7 @@
     clockPositionPopup = nil;
     secondsCheckbox = nil;
     imageCheckbox = nil;
+    showAlertCheckbox = nil;
 }
 
 - (void)dealloc {

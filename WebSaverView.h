@@ -90,6 +90,9 @@
     NSButton *secondsCheckbox;
     NSButton *imageCheckbox;
 
+    // P5Alert
+    NSButton *showAlertCheckbox;
+
     NSTimer *statsTimer;
     host_cpu_load_info_data_t prevCpuLoad;
     bool hasPrevCpu;
