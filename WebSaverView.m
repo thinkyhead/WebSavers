@@ -203,14 +203,12 @@
 
 - (NSWindow*)configureSheet {
     MGLog(@"configureSheet called (existing configSheet=%p, isVisible=%d)", configSheet, configSheet ? [configSheet isVisible] : -1);
-    // The system retains the window we return (readonly, strong property)
-    // and re-presents it each time Options is clicked. Build it ONCE and
-    // return the same window every call; just refresh the control values
-    // from the saved settings. Nilling/rebuilding breaks re-presentation.
-    if (!configSheet) {
-        MGLog(@"  building config sheet for %@", [self saverName]);
-        [self buildConfigSheet];
-    }
+    // The system retains the window we return (readonly, strong property) and
+    // re-presents the SAME window each time Options is clicked. The saver view
+    // can be deallocated between panel-exit and re-entry, which would release
+    // an instance-held window and orphan the system's cached reference — so the
+    // sheet window must be a per-class singleton that outlives any one view.
+    [self buildConfigSheet];
     [self loadDefaultsIntoSheet];
     MGLog(@"  returning configSheet=%p, parentWindow=%p, isSheet=%d",
           configSheet, [configSheet parentWindow],
@@ -234,15 +232,46 @@
     if ([cls isEqualToString:@"VibeSpheresView"]) height = 320;
     if ([cls isEqualToString:@"HermesBoardView"]) height = 200;
 
-    configSheet = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height)
-                                             styleMask:NSWindowStyleMaskTitled
-                                               backing:NSBackingStoreBuffered
-                                                 defer:NO];
-    NSString *title = [cls stringByReplacingOccurrencesOfString:@"View" withString:@""];
-    if (![cls isEqualToString:@"HermesBoardView"]) title = [title stringByAppendingString:@" Settings"];
-    [configSheet setTitle:title];
+    // The system caches the window returned from configureSheet (readonly,
+    // strong) and re-presents that SAME object. But the saver view can be
+    // deallocated between panel-exit and re-entry, which would release an
+    // instance-held window and orphan the system's cached reference. So keep
+    // one persistent NSWindow per class in a static store — it outlives any
+    // single view instance, so configureSheet returns the same object the
+    // system already holds. Rebuild the controls each call so the current
+    // view instance owns fresh control ivars.
+    static NSMutableDictionary *sheets;
+    if (!sheets) sheets = [NSMutableDictionary new];
+    configSheet = sheets[cls];
+    if (!configSheet) {
+        configSheet = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height)
+                                                 styleMask:NSWindowStyleMaskTitled
+                                                   backing:NSBackingStoreBuffered
+                                                     defer:NO];
+        NSString *title = [cls stringByReplacingOccurrencesOfString:@"View" withString:@""];
+        if (![cls isEqualToString:@"HermesBoardView"]) title = [title stringByAppendingString:@" Settings"];
+        [configSheet setTitle:title];
+        sheets[cls] = configSheet;
+        MGLog(@"  created persistent sheet %p for %@", configSheet, cls);
+    }
 
+    // Clear any controls left over from a previous view instance, then rebuild.
     NSView *content = [configSheet contentView];
+    for (NSView *v in [content.subviews copy]) [v removeFromSuperview];
+
+    // Reset the control ivars so the current view owns fresh ones.
+    themePopup = nil; alphaCheckbox = nil; punctuationCheckbox = nil; overlayPopup = nil; flipCheckbox = nil;
+    changeSlider = nil; changeLabel = nil; fpsSlider = nil; fpsLabel = nil;
+    minSpeedSlider = nil; minSpeedLabel = nil; maxSpeedSlider = nil; maxSpeedLabel = nil;
+    fadeSlider = nil; fadeLabel = nil; starCountSlider = nil; starCountLabel = nil;
+    speedSlider = nil; speedLabel = nil; trailCountSlider = nil; trailCountLabel = nil;
+    trailLengthSlider = nil; trailLengthLabel = nil; colorPopup = nil; fontSizeSlider = nil; fontSizeLabel = nil;
+    countSlider = nil; countLabel = nil; spreadSlider = nil; spreadLabel = nil;
+    starFieldSlider = nil; starFieldLabel = nil; colorCycleSlider = nil; colorCycleLabel = nil;
+    shapePopup = nil; particleCountSlider = nil; particleCountLabel = nil;
+    morphIntervalSlider = nil; morphIntervalLabel = nil; clockCheckbox = nil; clockPositionPopup = nil;
+    secondsCheckbox = nil; imageCheckbox = nil; showAlertCheckbox = nil;
+
     CGFloat y = height - 30;
 
     if ([cls isEqualToString:@"MatrixGridView"] || [cls isEqualToString:@"MatrixView"]) {
