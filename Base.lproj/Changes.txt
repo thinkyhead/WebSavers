@@ -12,3 +12,7 @@
 
 2025/12/31 v1.0.3
    - Add some vibe-coded animations for fun
+
+2026/08/19 v1.0.4
+   - Fix unreliable screensaver selection (with subclasses)
+   - Add Options to send parameters to the screensaver JS
